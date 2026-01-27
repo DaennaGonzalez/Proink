@@ -5,6 +5,7 @@
   ✅ Manchas fijas (misma ubicación)
   ✅ Logo pequeño acompaña al menú
   ✅ Burbuja WhatsApp fija
+  ✅ Hamburguesa + overlay (móvil) SIN mover nada
 ============================================================ */
 
 /* =========================
@@ -115,6 +116,7 @@ body{
 
   background: rgba(26,42,108,.45);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   transition: background .25s var(--ease), backdrop-filter .25s var(--ease);
 }
@@ -123,7 +125,7 @@ body{
   width: min(var(--container), calc(100% - 32px));
   margin: 0 auto;
 
-  /* 👉 CLAVE: slogan arriba, menú abajo */
+  /* slogan arriba, menú abajo */
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-areas:
@@ -162,7 +164,6 @@ body{
   grid-area: slogan;
   justify-self: center;
   text-align: center;
-  pointer-events: none;
 }
 
 .top-slogan .slogan{
@@ -187,11 +188,12 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   position: relative;
   min-width: 0;
 }
 
-/* Cápsula */
+/* Cápsula (DESKTOP) */
 .main-nav__list{
   list-style: none;
   margin: 0;
@@ -211,6 +213,7 @@ body{
   background: rgba(255,255,255,.10);
   border: 1px solid rgba(255,255,255,.18);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   box-shadow:
     0 18px 30px rgba(0,0,0,.22),
@@ -227,7 +230,6 @@ body{
 
 .main-nav__item{ margin: 0; }
 
-/* Botones */
 .main-nav__link{
   position: relative;
   display: inline-block;
@@ -303,111 +305,59 @@ body{
   100% { transform: scaleX(1); opacity: 1; }
 }
 
-/* Ajustes graduales */
-@media (max-width: 1700px){
-  :root{
-    --nav-pad-x: clamp(10px, 1.0vw, 14px);
-    --nav-gap: clamp(7px, 0.8vw, 9px);
-    --nav-link-pad-x: clamp(9px, 0.8vw, 12px);
-  }
-}
-@media (max-width: 1150px){
-  :root{
-    --nav-font: clamp(12px, 0.9vw, 13px);
-    --nav-link-pad-y: clamp(8px, 0.7vw, 9px);
-  }
-}
-
 /* =========================
-  6) WHATSAPP FLOAT
+  6) HAMBURGUESA (lo que te faltaba)
 ========================= */
-.whatsapp-float{
-  position: fixed;
-  right: clamp(14px, 2vw, 22px);
-  bottom: clamp(14px, 2vw, 22px);
-  z-index: 999;
+.nav-toggle{
+  display: none; /* solo móvil */
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
 
-  width: clamp(54px, 4.2vw, 76px);
-  height: clamp(54px, 4.2vw, 76px);
+  background: linear-gradient(90deg, var(--grad-a) 0%, var(--grad-b) 100%);
+  box-shadow: var(--shadow-soft);
 
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-
-  background: rgba(255,255,255,.10);
-  border: 1px solid rgba(255,255,255,.22);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 18px 30px rgba(0,0,0,.25);
-
-  transition: transform .18s var(--ease), filter .18s var(--ease);
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0;
 }
 
-.whatsapp-float:hover{
-  transform: translateY(-4px);
-  filter: brightness(1.08);
-}
-
-.whatsapp-float img{
-  width: 70%;
-  height: 70%;
-  object-fit: contain;
+.nav-toggle__bar,
+.nav-toggle span{
   display: block;
+  width: 22px;
+  height: 3px;
+  background: #000;
+  border-radius: 999px;
 }
 
 /* =========================
-  7) MOBILE (si tu interna usa hamburguesa, aquí la dejas)
-  Si tus internas NO llevan hamburguesa, puedes borrar este bloque.
+  7) MENÚ MÓVIL OVERLAY (ENCIMA DE TODO)
 ========================= */
-@media (max-width: 900px){
-  .header-inner{
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "logo slogan"
-      "logo nav";
-    row-gap: 10px;
-  }
-
-  .top-slogan .slogan{
-    font-size: clamp(14px, 3.2vw, 18px);
-  }
-
-  .splash-top-right{
-    top: -20px;
-    right: -30px;
-    width: min(380px, 70vw);
-  }
-
-  .splash-bottom-left{
-    bottom: -30px;
-    left: -30px;
-    width: min(380px, 70vw);
-  }
-}
-/* =========================================================
-   MENÚ MÓVIL OVERLAY (ENCIMA DE TODO + BLUR SIN RECORRER NADA)
-========================================================= */
-
 .mobile-nav{
   position: fixed;
-  inset: 0;               /* top:0 right:0 bottom:0 left:0 */
-  z-index: 9999;          /* encima del header y todo */
-  display: none;          /* cerrado */
+  inset: 0;
+  z-index: 9999;
+  display: none; /* cerrado */
 }
 
-/* abierto */
 .mobile-nav.is-open{
   display: block;
 }
 
-/* overlay: cubre TODO y desenfoca */
+/* overlay desenfoque */
 .mobile-nav__overlay{
   position: absolute;
   inset: 0;
+  background: rgba(0,0,0,.18); /* para que se note el blur */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* panel del menú: la caja */
+/* panel */
 .mobile-nav__panel{
   position: absolute;
   top: clamp(16px, 3vw, 28px);
@@ -415,8 +365,8 @@ body{
   left: clamp(14px, 3vw, 24px);
 
   max-width: 520px;
-  margin-left: auto; /* lo pega más a la derecha visualmente */
-  
+  margin-left: auto;
+
   border-radius: 22px;
   padding: 16px;
 
@@ -431,17 +381,15 @@ body{
   opacity: 0;
 
   transition:
-    transform .22s cubic-bezier(.2,.8,.2,1),
-    opacity .22s cubic-bezier(.2,.8,.2,1);
+    transform .22s var(--ease),
+    opacity .22s var(--ease);
 }
 
-/* animación al abrir */
 .mobile-nav.is-open .mobile-nav__panel{
   transform: translateY(0);
   opacity: 1;
 }
 
-/* botón cerrar arriba */
 .mobile-nav__close{
   position: absolute;
   top: 10px;
@@ -460,12 +408,194 @@ body{
   box-shadow: 0 10px 18px rgba(0,0,0,.22);
 }
 
-/* evita “scroll” dentro del overlay si no se requiere */
 .mobile-nav__list{
-  margin-top: 46px; /* para que no choque con el botón cerrar */
+  list-style: none;
+  margin: 46px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.mobile-nav__link{
+  display: block;
+  text-decoration: none;
+  padding: 12px 14px;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(11, 207, 241, .72) 0%,
+    rgba(250, 255, 18, .72) 100%
+  );
+
+  color: #000;
+  font-weight: 800;
+  letter-spacing: .2px;
+
+  border: 1px solid rgba(0,0,0,.12);
+  box-shadow: 0 10px 16px rgba(0,0,0,.12);
+
+  transition: transform .18s var(--ease), filter .18s var(--ease);
+}
+
+.mobile-nav__link:hover{
+  transform: translateY(-3px);
+  filter: brightness(1.06);
+}
+
+.mobile-nav__link.active{
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,.75);
+  background: rgba(26,42,108,.38);
+  border: 1px solid rgba(255,255,255,.28);
+  box-shadow:
+    0 16px 26px rgba(0,0,0,.22),
+    0 0 22px rgba(11, 207, 241, .32);
 }
 
 /* cuando esté abierto, bloquea scroll del body */
 body.menu-open{
   overflow: hidden;
+}
+
+/* =========================
+  8) WHATSAPP FLOAT
+========================= */
+.whatsapp-float{
+  position: fixed;
+  right: clamp(14px, 2vw, 22px);
+  bottom: clamp(14px, 2vw, 22px);
+  z-index: 9990;
+
+  width: clamp(54px, 4.2vw, 76px);
+  height: clamp(54px, 4.2vw, 76px);
+
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 18px 30px rgba(0,0,0,.25);
+
+  transition: transform .18s var(--ease), filter .18s var(--ease);
+}
+
+.whatsapp-float:hover{
+  transform: translateY(-4px);
+  filter: brightness(1.08);
+}
+
+.whatsapp-float__icon{
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  display: block;
+}
+
+/* =========================
+  9) RESPONSIVE (CLAVE: ocultar desktop y mostrar hamburguesa)
+========================= */
+@media (max-width: 900px){
+  /* 🔥 ESTA ES LA PARTE QUE TE FALTABA:
+     - ocultar el menú desktop
+     - mostrar el botón hamburguesa */
+  .main-nav{
+    justify-content: flex-end;
+  }
+
+  .main-nav__list{
+    display: none;
+  }
+
+  .nav-toggle{
+    display: inline-flex;
+  }
+
+  .top-slogan .slogan{
+    font-size: clamp(14px, 3.2vw, 18px);
+  }
+
+  .splash-top-right{
+    top: -20px;
+    right: -30px;
+    width: min(380px, 70vw);
+  }
+
+  .splash-bottom-left{
+    bottom: -30px;
+    left: -30px;
+    width: min(380px, 70vw);
+  }
+}
+
+
+/* =========================================
+  WHATSAPP — EXCEPCIÓN MÓVIL (más grande y más “fluido”)
+  - En móvil crece más con el ancho (vw)
+  - Inicia un poco más grande
+========================================= */
+
+/* Base (todas las pantallas): un poco más grande */
+.whatsapp-float{
+  width: clamp(60px, 4.8vw, 82px);
+  height: clamp(60px, 4.8vw, 82px);
+}
+
+/* Móvil: que crezca más conforme aumenta la pantalla (hasta 900px) */
+@media (max-width: 900px){
+  .whatsapp-float{
+    width: clamp(64px, 12vw, 96px);
+    height: clamp(64px, 12vw, 96px);
+  }
+
+  .whatsapp-float__icon{
+    width: 74%;
+    height: 74%;
+  }
+}
+
+/* Móvil pequeño: que no se pase (pero siga grande) */
+@media (max-width: 420px){
+  .whatsapp-float{
+    width: clamp(62px, 16vw, 88px);
+    height: clamp(62px, 16vw, 88px);
+  }
+}
+/* =========================
+  BOTONES MENÚ MÓVIL — SÓLIDOS (sin transparencia)
+========================= */
+.mobile-nav__link{
+  /* ✅ fondo sólido (sin rgba) */
+  background: linear-gradient(90deg, #0bcff1 0%, #faff12 100%) !important;
+
+  /* ✅ texto bien visible */
+  color: #000 !important;
+  font-weight: 900;
+  letter-spacing: .3px;
+  text-shadow: none;
+
+  /* ✅ que no “se lave” con blur o filtros */
+  opacity: 1 !important;
+  filter: none !important;
+
+  /* ✅ borde y sombra como botón real */
+  border: 1px solid rgba(0,0,0,.18);
+  box-shadow: 0 10px 18px rgba(0,0,0,.20);
+}
+
+/* Hover (solo efecto, sin cambiar visibilidad del texto) */
+.mobile-nav__link:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 24px rgba(0,0,0,.22);
+}
+
+/* Activo: sólido también */
+.mobile-nav__link.active{
+  background: rgba(26,42,108,.95) !important; /* sólido */
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,.28);
+  text-shadow: 0 2px 10px rgba(0,0,0,.65);
 }

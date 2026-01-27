@@ -253,3 +253,104 @@
     });
   });
 })();
+
+
+const openMobileNav = () => {
+  mobileNav.classList.add("is-open");
+  mobileNav.style.display = "block";
+  setAria(true);
+  body.classList.add("menu-open");   // ✅ AÑADIR
+};
+
+const closeMobileNav = () => {
+  mobileNav.classList.remove("is-open");
+  mobileNav.style.display = "";
+  setAria(false);
+  body.classList.remove("menu-open"); // ✅ AÑADIR
+};
+
+
+
+/* =========================================================
+  VIDEO FULL WIDTH — AUTOPLAY FIX + CTA SCROLL
+========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.querySelector(".home-video-full__video");
+  const ctaBtn = document.querySelector(".home-video-full__button");
+
+  // 1) Intento de autoplay (en iOS/Android puede fallar aunque esté muted)
+  if (video) {
+    // Asegura condiciones de autoplay
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+
+    const tryPlay = async () => {
+      try {
+        await video.play();
+      } catch (err) {
+        // Autoplay bloqueado: no hacemos nada agresivo.
+        // Queda listo para que el usuario toque el video o el botón.
+        // console.warn("Autoplay bloqueado:", err);
+      }
+    };
+
+    // Primer intento
+    tryPlay();
+
+    // Reintento cuando la pestaña vuelve a estar activa (muy común en móvil)
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) tryPlay();
+    });
+
+    // Opcional: click/tap en el video = play/pause (útil cuando autoplay falla)
+    video.addEventListener("click", () => {
+      if (video.paused) video.play().catch(() => {});
+      else video.pause();
+    });
+  }
+
+  // 2) Botón CTA: scroll suave a "¿Quiénes somos?" (ajusta el destino)
+  if (ctaBtn) {
+    ctaBtn.addEventListener("click", (e) => {
+      // Si lo dejaste como link a otra página, NO prevenimos
+      // Si lo quieres para scroll dentro del index, usa #quienesSomos
+      const href = ctaBtn.getAttribute("href") || "";
+
+      // Caso A: es ancla interna (#algo)
+      if (href.startsWith("#")) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      // Caso B: si quieres forzar scroll a una sección específica del index
+      // aunque no sea ancla (descomenta y ajusta):
+      /*
+      e.preventDefault();
+      const target = document.querySelector("#quienesSomos");
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      */
+    });
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const v = document.querySelector(".hero-video__media");
+  if (!v) return;
+
+  // intento de autoplay (por si Safari se pone especial)
+  const tryPlay = () => {
+    v.muted = true;
+    v.playsInline = true;
+    const p = v.play();
+    if (p && typeof p.catch === "function") p.catch(() => {});
+  };
+
+  tryPlay();
+
+  // si el navegador bloquea, se activa al primer toque
+  window.addEventListener("touchstart", tryPlay, { once: true });
+});
