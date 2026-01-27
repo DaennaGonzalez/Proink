@@ -1,0 +1,924 @@
+/* ============================================================
+  styles.css — PRONK Printed Designs (Landing)
+  STYLES DE MENU INICIO
+============================================================ */
+
+/* =========================
+  0) VARIABLES / BASE
+========================= */
+:root{
+  --bg: #1a2a6c;
+
+  --grad-a: #0bcff1;
+  --grad-b: #faff12;
+
+  --text: #ffffff;
+  --text-dark: #000000;
+
+  --shadow-soft: 0 10px 25px rgba(0,0,0,.25);
+  --shadow-text: 0 2px 10px rgba(0,0,0,.65);
+
+  --radius-pill: 999px;
+
+  --header-h: 92px;
+  --header-h-compact: 72px;
+
+  --container: 1200px;
+
+  --slogan-yellow: #faff12;
+  --slogan-blue: #0bcff1;
+
+  --ease: cubic-bezier(.2,.8,.2,1);
+
+  /* ✅ NAV FLUIDA (para que no haya “brinco”) */
+  --nav-pad-y: clamp(10px, 0.9vw, 12px);
+  --nav-pad-x: clamp(12px, 1.2vw, 18px);
+
+  --nav-gap: clamp(8px, 0.9vw, 10px);
+  --nav-row-gap: clamp(8px, 0.9vw, 10px);
+
+  --nav-link-pad-y: clamp(8px, 0.75vw, 10px);
+  --nav-link-pad-x: clamp(10px, 0.9vw, 14px);
+  --nav-font: clamp(12px, 0.95vw, 14px);
+}
+
+*,
+*::before,
+*::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* =========================
+  1) FONDO: MANCHAS / SPLASHES
+========================= */
+.bg-splashes{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.splash{
+  position: absolute;
+  height: auto;
+  opacity: 1;
+  filter: drop-shadow(0 12px 18px rgba(0,0,0,.25));
+}
+
+.splash-top-right{
+  top: -30px;
+  right: -40px;
+  width: min(520px, 60vw);
+}
+
+.splash-bottom-left{
+  bottom: -40px;
+  left: -40px;
+  width: min(520px, 60vw);
+}
+
+/* Mancha curva (reveal) */
+.splash-curve{
+  top: 108%;
+  right: -6%;
+  left: auto;
+  width: min(520px, 58vw);
+  opacity: 0;
+  transform: translateY(6%) scale(.92);
+}
+
+.splash--reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: watercolorPop .85s var(--ease) both;
+}
+
+@keyframes watercolorPop{
+  0%   { transform: translateY(8%) scale(.85); filter: blur(1.5px); }
+  55%  { transform: translateY(-2%) scale(1.06); filter: blur(0); }
+  80%  { transform: translateY(1%) scale(.98); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* =========================
+  2) HEADER (2 ESTADOS)
+========================= */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  /* ✅ altura/padding FLUIDOS: se siente “gradual” */
+  height: auto;
+  padding: clamp(10px, 1.1vw, 14px) 0 clamp(10px, 1.0vw, 12px);
+
+  display: flex;
+  align-items: center;
+
+  transition:
+    background .25s var(--ease),
+    backdrop-filter .25s var(--ease);
+}
+
+/* glass al scrollear */
+body.scrolled .site-header{
+  background: rgba(26,42,108,.55);
+  backdrop-filter: blur(10px);
+}
+
+/* Solo cuando se reduce la pantalla (tu ajuste original, pero suave) */
+@media (max-width: 1100px){
+  .site-header{
+    padding-top: clamp(14px, 2.2vw, 1.2%);
+    padding-bottom: 10px;
+  }
+}
+
+.header-inner{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+}
+
+/* =========================
+  3) LOGOS
+========================= */
+.brand{
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand__logo{ display: block; height: auto; }
+
+.brand__logo--small{
+  width: 74px;
+  max-width: 74px;
+  transition: transform .25s var(--ease), width .25s var(--ease);
+}
+
+
+.brand__logo--hero{
+  width: min(520px, 80vw);
+  max-width: 520px;
+  filter: drop-shadow(0 12px 22px rgba(0,0,0,.28));
+}
+
+/* =========================
+  4) SLOGAN (TOP Y HERO)
+========================= */
+.slogan,
+.hero__slogan{
+  font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  text-shadow: var(--shadow-text);
+  line-height: 1.1;
+  letter-spacing: .2px;
+}
+
+.top-slogan{
+  justify-self: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity .25s var(--ease), transform .25s var(--ease);
+}
+
+body.scrolled .top-slogan{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.top-slogan .slogan{
+  margin: 0;
+  font-size: clamp(13px, 1.4vw, 18px);
+}
+
+.word-yellow{ color: var(--slogan-yellow); }
+.word-blue{ color: var(--slogan-blue); }
+
+/* =========================
+  5) NAV — GLASS NEON + PINTURA (FLUIDA + 2 FILAS SUAVE)
+========================= */
+.main-nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  min-width: 0;
+}
+
+/* Cápsula */
+.main-nav__list{
+  list-style: none;
+  margin: 0;
+  padding: var(--nav-pad-y) var(--nav-pad-x);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* ✅ Por defecto: permite WRAP (para que nunca se “corte”).
+     En pantallas realmente amplias lo forzamos a 1 fila abajo. */
+  flex-wrap: wrap;
+
+  column-gap: var(--nav-gap);
+  row-gap: var(--nav-row-gap);
+
+  /* ✅ ancho FLUIDO: se adapta sin brincar */
+  width: min(100%, 1100px);
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.22),
+    0 0 28px rgba(11, 207, 241, .25),
+    0 0 18px rgba(250, 255, 18, .16);
+
+  overflow: visible;
+  min-width: 0;
+}
+
+/* ✅ Solo en pantallas MUY amplias (donde sí cabe): 1 fila */
+@media (min-width: 1500px){
+  .main-nav__list{ flex-wrap: nowrap; }
+}
+
+/* ✅ Quitamos el “corrimiento” en scrolled para evitar recortes con zoom */
+body.scrolled .main-nav__list{
+  transform: none;
+  transition: padding .25s var(--ease);
+}
+
+.main-nav__item{ margin: 0; }
+
+/* Botones */
+.main-nav__link{
+  position: relative;
+  display: inline-block;
+
+  padding: var(--nav-link-pad-y) var(--nav-link-pad-x);
+  border-radius: 999px;
+  text-decoration: none;
+
+  color: #000;
+  font-weight: 800;
+  font-size: var(--nav-font);
+  letter-spacing: .2px;
+  white-space: nowrap;
+
+  background: linear-gradient(
+    90deg,
+    rgba(11, 207, 241, .72) 0%,
+    rgba(250, 255, 18, .72) 100%
+  );
+
+  border: 1px solid rgba(0,0,0,.12);
+  box-shadow: 0 10px 16px rgba(0,0,0,.12);
+
+  transition:
+    transform .18s var(--ease),
+    box-shadow .18s var(--ease),
+    filter .18s var(--ease),
+    color .18s var(--ease),
+    text-shadow .18s var(--ease),
+    background .18s var(--ease);
+}
+
+.main-nav__link:hover{
+  transform: translateY(-4px);
+  filter: brightness(1.08);
+  box-shadow:
+    0 16px 24px rgba(0,0,0,.18),
+    0 0 18px rgba(11, 207, 241, .22);
+}
+
+.main-nav__link.active{
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,.70);
+
+  background: rgba(26,42,108,.38);
+  border: 1px solid rgba(255,255,255,.28);
+
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.22),
+    0 0 26px rgba(11, 207, 241, .40),
+    0 0 18px rgba(250, 255, 18, .22);
+}
+
+.main-nav__link.active::after{
+  content: "";
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: -20%;
+  height: 6px;
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, #0bcff1 0%, #faff12 100%);
+  filter: blur(.1rem);
+
+  box-shadow:
+    0 0 14px rgba(11, 207, 241, .35),
+    0 0 12px rgba(250, 255, 18, .25);
+
+  transform-origin: left center;
+  animation: paintSwipe .22s var(--ease) both;
+}
+
+@keyframes paintSwipe{
+  0%   { transform: scaleX(.2); opacity: 0; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+
+/* ✅ Ajustes aún más graduales (sin “brinco”):
+   vamos apretando la cápsula y los botones poco a poco */
+@media (max-width: 1700px){
+  :root{
+    --nav-pad-x: clamp(10px, 1.0vw, 14px);
+    --nav-gap: clamp(7px, 0.8vw, 9px);
+    --nav-link-pad-x: clamp(9px, 0.8vw, 12px);
+  }
+}
+@media (max-width: 1150px){
+  :root{
+    --nav-font: clamp(12px, 0.9vw, 13px);
+    --nav-link-pad-y: clamp(8px, 0.7vw, 9px);
+  }
+}
+
+/* =========================
+  6) HAMBURGUESA + MENÚ MÓVIL
+========================= */
+.nav-toggle{
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(90deg, var(--grad-a) 0%, var(--grad-b) 100%);
+  box-shadow: var(--shadow-soft);
+
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0;
+}
+
+.nav-toggle span{
+  display: block;
+  width: 22px;
+  height: 3px;
+  background: #000;
+  border-radius: 999px;
+}
+
+.mobile-nav{
+  display: none;
+  width: min(var(--container), calc(100% - 32px));
+  margin: 10px auto 0 auto;
+  padding: 12px;
+  border-radius: 18px;
+
+  background: rgba(0,0,0,.18);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft);
+}
+
+.mobile-nav__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.mobile-nav__link{
+  display: block;
+  text-decoration: none;
+  padding: 12px 14px;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(11, 207, 241, .72) 0%,
+    rgba(250, 255, 18, .72) 100%
+  );
+
+  color: #000;
+  font-weight: 800;
+  letter-spacing: .2px;
+
+  border: 1px solid rgba(0,0,0,.12);
+  box-shadow: 0 10px 16px rgba(0,0,0,.12);
+
+  transition: transform .18s var(--ease), color .18s var(--ease), text-shadow .18s var(--ease), filter .18s var(--ease);
+}
+
+.mobile-nav__link:hover{
+  transform: translateY(-3px);
+  filter: brightness(1.06);
+}
+
+.mobile-nav__link.active{
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,.75);
+  background: rgba(26,42,108,.38);
+  border: 1px solid rgba(255,255,255,.28);
+  box-shadow:
+    0 16px 26px rgba(0,0,0,.22),
+    0 0 22px rgba(11, 207, 241, .32);
+}
+
+/* =========================
+  7) HERO (INICIO)
+========================= */
+.hero{
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - var(--header-h));
+  display: grid;
+  align-content: start;
+  padding: 0 0 32px;
+}
+
+.hero__content{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 18px;
+  padding-top: 22px;
+}
+
+.hero__slogan{
+  margin: 0;
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 800;
+  max-width: 980px;
+}
+
+/* =========================
+  8) VIDEO HOME
+========================= */
+.home-video{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 24px auto 0;
+  z-index: 1;
+}
+
+.home-video__frame{
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+
+  background: rgba(0,0,0,.2);
+  backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+.home-video__video{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+  9) BLOQUE “2ª SECCIÓN”
+========================= */
+.home-next-block{
+  position: relative;
+  z-index: 1;
+  width: min(var(--container), calc(100% - 32px));
+  margin: 60px auto 0;
+  padding-bottom: 60px;
+}
+
+.home-next-block__inner{
+  padding: 26px 24px;
+  border-radius: 22px;
+
+  background: rgba(0,0,0,.14);
+  backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: var(--shadow-soft);
+}
+
+.home-next-block__title{
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.4vw, 34px);
+  font-weight: 800;
+}
+
+.home-next-block__text{
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: .95;
+}
+
+/* =========================
+  10) FOOTER
+========================= */
+.site-footer{
+  position: relative;
+  z-index: 1;
+  padding: 24px 0 34px;
+}
+
+.site-footer p{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+  text-align: center;
+  opacity: .9;
+}
+
+/* =========================
+  11) RESPONSIVE
+========================= */
+@media (max-width: 1024px){
+  .splash-curve{
+    right: -10%;
+    width: min(480px, 64vw);
+    top: 112%;
+  }
+}
+
+/* ✅ Punto “ya muy chico” → hamburguesa (móvil) */
+@media (max-width: 900px){
+  .header-inner{
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+  }
+
+  .main-nav{ justify-content: flex-end; }
+
+  .main-nav__list{ display: none; }
+  .nav-toggle{ display: inline-flex; }
+
+  .top-slogan .slogan{ font-size: 14px; }
+
+  .mobile-nav{ display: none; }
+  .mobile-nav.is-open{ display: block; }
+
+  .hero{
+    padding: 26px 0 40px;
+    min-height: auto;
+  }
+
+  .brand__logo--hero{
+    width: min(360px, 78vw);
+    max-width: 360px;
+  }
+
+  .hero__slogan{
+    font-size: 20px;
+    padding: 0 6px;
+  }
+
+  .splash-top-right{
+    top: -20px;
+    right: -30px;
+    width: min(380px, 70vw);
+    opacity: .95;
+  }
+
+  .splash-bottom-left{
+    bottom: -30px;
+    left: -30px;
+    width: min(380px, 70vw);
+    opacity: .95;
+  }
+
+  .splash-curve{
+    top: 120%;
+    right: -14%;
+    width: min(420px, 78vw);
+  }
+
+  .home-next-block{
+    margin-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .home-next-block__inner{
+    padding: 20px 18px;
+  }
+}
+
+@media (max-width: 420px){
+  .brand__logo--small{ width: 58px; }
+  .top-slogan{ display: none; }
+
+  .nav-toggle{ width: 42px; height: 42px; }
+
+  .home-video__frame{ border-radius: 18px; }
+  .home-next-block__inner{ border-radius: 18px; }
+
+  .splash-curve{
+    top: 124%;
+    right: -18%;
+    width: min(380px, 86vw);
+  }
+}
+/* ✅ Reduce el espacio arriba del menú */
+.site-header{
+  padding: clamp(6px, 0.7vw, 10px) 0 clamp(8px, 0.8vw, 12px);
+}
+
+/* === COMPACTAR ESPACIO HEADER → HERO === */
+/* =========================================================
+   PROPORCIONES (override) — Pegar al FINAL del CSS
+   Controla: logo pequeño, ancho del menú, padding header, hero arriba
+========================================================= */
+
+/* Valores base (sirven para tamaños intermedios) */
+:root{
+  /* logo del menú (ancho) */
+ --logo-small-w: clamp(74px, 4.5vw, 255px);
+
+  /* ancho máximo de cápsula del menú (rectángulo) */
+  --menu-area-w: 1100px;
+
+  /* padding vertical del header */
+  --header-pad-top: clamp(6px, 0.7vw, 10px);
+  --header-pad-bot: clamp(8px, 0.8vw, 12px);
+
+  /* subir/bajar el contenido del hero */
+  --hero-content-top: 8px;
+}
+
+/* aplicar variables (sin cambiar tu estructura) */
+.site-header{
+  padding-top: var(--header-pad-top);
+  padding-bottom: var(--header-pad-bot);
+}
+
+/* tamaño logo pequeño (menú) */
+.brand__logo--small{
+  width: var(--logo-small-w);
+  max-width: var(--logo-small-w);
+}
+
+/* ancho del menú/cápsula */
+.main-nav__list{
+  width: min(100%, var(--menu-area-w));
+}
+
+/* subir el hero (lo que pediste) */
+.hero__content{
+  padding-top: var(--hero-content-top);
+}
+
+
+/* =========================================================
+   AJUSTE ESPECÍFICO ~1245x672 (rango similar)
+   - Logo menú más grande y menos pegado a la izquierda
+   - Hero un poco más abajo (sin afectar otras medidas)
+========================================================= */
+@media (max-width: 1300px) and (min-width: 1180px) and (max-height: 720px){
+
+  /* 1) Aumenta logo del menú (estaba muy pequeño) */
+  :root{
+    --logo-small-w: clamp(95px, 10vw, 130px);
+  /* ajusta si quieres más grande */
+    --hero-content-top: 14px;                  /* baja el contenido del hero */
+  }
+
+  /* 2) Evita que el logo del menú se pegue demasiado a la izquierda */
+  .header-inner{
+    /* más “margen” interno, ayuda a que no se vea aplastado */
+    width: min(var(--container), calc(100% - 44px));
+    gap: 18px; /* separa más columnas */
+  }
+
+  /* 3) Dale un pequeño empujón a la derecha al logo pequeño */
+  .brand.brand--small{
+    margin-left: clamp(6px, 1.2vw, 14px);
+  }
+
+  /* 4) Si el menú se siente muy encima del hero, añade un pelín de padding abajo */
+  .site-header{
+    padding-bottom: clamp(10px, 1.2vw, 14px);
+  }
+
+  /* 5) Bajar el hero completo un poco más (opcional, pero ayuda en pantallas bajitas) */
+  .hero{
+    padding-top: 10px;
+  }
+
+  @media (min-width: 1301px){
+  :root{
+    --logo-small-w: clamp(90px, 3.2vw, 255px);
+  }
+}
+
+}
+
+
+/* =========================================================
+   FIX REAL: LOGO MENÚ NO SE ACHICA EN GRANDE
+   1) scrolled no debe forzar 62px fijo
+   2) NO anidar @media (sacar el min-width:1301 afuera)
+========================================================= */
+
+/* base: el logo crece con pantalla */
+:root{
+  --logo-small-w: clamp(95px, 4.5vw, 255px);           /* normal */
+  --logo-small-w-scrolled: clamp(80px, 3.2vw, 210px);  /* cuando haces scroll */
+}
+
+/* aplica variables */
+.brand__logo--small{
+  width: var(--logo-small-w);
+  max-width: var(--logo-small-w);
+  height: auto;
+}
+
+/* scrolled: YA NO 62px fijo */
+body.scrolled .brand__logo--small{
+  width: var(--logo-small-w-scrolled);
+  max-width: var(--logo-small-w-scrolled);
+}
+
+/* ====== ajuste específico ~1245x672 ====== */
+@media (max-width: 1300px) and (min-width: 1180px) and (max-height: 720px){
+  :root{
+    --logo-small-w: clamp(110px, 10vw, 150px);
+    --logo-small-w-scrolled: clamp(95px, 8vw, 130px);
+    --hero-content-top: 14px;
+  }
+
+  .header-inner{
+    width: min(var(--container), calc(100% - 44px));
+    gap: 18px;
+  }
+
+  .brand.brand--small{
+    margin-left: clamp(6px, 1.2vw, 14px);
+  }
+
+  .site-header{
+    padding-bottom: clamp(10px, 1.2vw, 14px);
+  }
+
+  .hero{ padding-top: 10px; }
+}
+
+/* ====== pantallas GRANDES: refuerzo (NO anidado) ====== */
+@media (min-width: 1301px){
+  :root{
+    --logo-small-w: clamp(120px, 3.6vw, 255px);
+    --logo-small-w-scrolled: clamp(100px, 2.8vw, 210px);
+  }
+}
+/* ============================================================
+  
+  STYLES DE OTRO MENU
+============================================================ */
+/* =========================================================
+   MENÚ MÓVIL OVERLAY (ENCIMA DE TODO + BLUR SIN RECORRER NADA)
+========================================================= */
+
+.mobile-nav{
+  position: fixed;
+  inset: 0;               /* top:0 right:0 bottom:0 left:0 */
+  z-index: 9999;          /* encima del header y todo */
+  display: none;          /* cerrado */
+}
+
+/* abierto */
+.mobile-nav.is-open{
+  display: block;
+}
+
+/* overlay: cubre TODO y desenfoca */
+.mobile-nav__overlay{
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* panel del menú: la caja */
+.mobile-nav__panel{
+  position: absolute;
+  top: clamp(16px, 3vw, 28px);
+  right: clamp(14px, 3vw, 24px);
+  left: clamp(14px, 3vw, 24px);
+
+  max-width: 520px;
+  margin-left: auto; /* lo pega más a la derecha visualmente */
+  
+  border-radius: 22px;
+  padding: 16px;
+
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+
+  transform: translateY(-8px);
+  opacity: 0;
+
+  transition:
+    transform .22s cubic-bezier(.2,.8,.2,1),
+    opacity .22s cubic-bezier(.2,.8,.2,1);
+}
+
+/* animación al abrir */
+.mobile-nav.is-open .mobile-nav__panel{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* botón cerrar arriba */
+.mobile-nav__close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+
+  background: linear-gradient(90deg, rgba(11, 207, 241, .8), rgba(250, 255, 18, .8));
+  color: #000;
+  font-weight: 900;
+
+  box-shadow: 0 10px 18px rgba(0,0,0,.22);
+}
+
+/* evita “scroll” dentro del overlay si no se requiere */
+.mobile-nav__list{
+  margin-top: 46px; /* para que no choque con el botón cerrar */
+}
+
+/* cuando esté abierto, bloquea scroll del body */
+body.menu-open{
+  overflow: hidden;
+}
+
+
+
+/* =========================
+  6) WHATSAPP FLOAT
+========================= */
+.whatsapp-float{
+  position: fixed;
+  right: clamp(14px, 2vw, 22px);
+  bottom: clamp(14px, 2vw, 22px);
+  z-index: 999;
+
+  width: clamp(54px, 4.2vw, 76px);
+  height: clamp(54px, 4.2vw, 76px);
+
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 30px rgba(0,0,0,.25);
+
+  transition: transform .18s var(--ease), filter .18s var(--ease);
+}
+
+.whatsapp-float:hover{
+  transform: translateY(-4px);
+  filter: brightness(1.08);
+}
+
+.whatsapp-float img{
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  display: block;
+}

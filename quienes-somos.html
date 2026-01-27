@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>¿Quiénes somos? — PRONK Printed Designs</title>
+
+  <!-- Fuentes (opcional si ya las cargas globalmente) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ✅ CSS base para internas -->
+  <link rel="stylesheet" href="styles-base.css" />
+</head>
+
+<body>
+
+  <!-- ✅ Manchas  -->
+  <div class="bg-splashes" aria-hidden="true">
+    <img class="splash splash-top-right" src="imgs/manchader.webp" alt="">
+    <img class="splash splash-bottom-left" src="imgs/manchaizq.webp" alt="">
+  </div>
+
+  <!-- ✅ Header (slogan ARRIBA del menú) -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <!-- Logo que acompaña al menú -->
+      <a class="brand brand--small" href="index.html" aria-label="Ir a Inicio">
+        <img class="brand__logo brand__logo--small" src="imgs/logo-proink.webp" alt="PRONK">
+      </a>
+
+      <!-- Slogan centrado arriba del menú -->
+      <div class="top-slogan">
+        <p class="slogan">
+          Hay más <span class="word-yellow">creatividad</span> en un litro de
+          <span class="word-blue">tinta</span> que en un lienzo vacío
+        </p>
+      </div>
+
+      <!-- Menú -->
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list">
+          <li class="main-nav__item"><a class="main-nav__link" href="index.html">INICIO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link active" href="quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="productos.html">PRODUCTOS</a></li>
+           <li class="main-nav__item"><a class="main-nav__link" href="produccion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="catalogo.html">CATÁLOGO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="ubicacion.html">UBICACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="blog.html">BLOG</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ✅ Contenido de prueba -->
+  <main style="position:relative; z-index:1;">
+    <section style="
+      width:min(1200px, calc(100% - 32px));
+      margin: 36px auto 0;
+      padding: 26px 24px;
+      border-radius: 22px;
+      background: rgba(0,0,0,.14);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    ">
+      <h1 style="margin:0 0 10px; font-size: clamp(26px, 3vw, 40px); font-weight:800;">
+        ¿Quiénes somos?
+      </h1>
+
+      <p style="margin:0; line-height:1.65; opacity:.95;">
+        Este es un contenido de prueba para validar el header de internas:
+        slogan arriba del menú, logo acompañando al menú, manchas al fondo y burbuja de WhatsApp.
+        Aquí ya puedes empezar a colocar tu contenido real (historia, misión, visión, valores, etc.).
+      </p>
+
+      <div style="height: 900px;"></div>
+      <p style="margin:0; opacity:.9;">Scroll de prueba para validar sticky header.</p>
+    </section>
+  </main>
+
+  <!-- =========================
+  BURBUJA WHATSAPP
+========================= -->
+<a
+  href="https://wa.me/5214461123494"
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener"
+  aria-label="Contactar por WhatsApp"
+>
+  <img
+    src="imgs/icono-whatsapp.png"
+    alt="WhatsApp"
+    class="whatsapp-float__icon"
+  />
+</a>
+
+
+</body>
+</html>

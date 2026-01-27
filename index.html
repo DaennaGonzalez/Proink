@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- =========================================================
+    HEAD / CONFIGURACIÓN GENERAL
+  ========================================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRONK Printed Designs</title>
+
+  <!-- =========================================================
+    GOOGLE FONTS
+    - League Spartan (slogan)
+    - Montserrat (contenido)
+  ========================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="styles.css" />
+  
+</head>
+
+<body class="home">
+  <!-- =========================================================
+    FONDO DECORATIVO (MANCHAS / SPLASHES)
+    - Todas están en /imgs/
+    - Usaremos UBICACIÓN EN PORCENTAJES (NO px) para que escale mejor.
+    - Se posicionan por CSS, pero aquí dejamos comentarios de su intención.
+
+    MANCHAS:
+    1) manchaizq.webp   → Fija en esquina inferior izquierda
+       - Se desplaza ligeramente hacia fuera (izquierda y abajo) con porcentajes.
+    2) manchader.webp   → Fija en esquina superior derecha
+       - Se desplaza ligeramente hacia fuera (derecha y arriba) con porcentajes.
+    3) manchacurva.webp → Aparece al hacer scroll (reveal)
+       - Ubicada “más abajo” para que se vea cuando empieza otra zona.
+  ========================================================== -->
+  <div class="bg-splashes" aria-hidden="true">
+    <!-- Mancha superior derecha -->
+    <img
+      class="splash splash-top-right splash--fixed"
+      src="imgs/manchader.webp"
+      alt=""
+      loading="eager"
+      decoding="async"
+    />
+    <!--
+      CSS (porcentajes):
+      top: -3%;
+      right: -4%;
+      width: 40%;
+      -> Se “sale” un poco hacia arriba y derecha para efecto de fondo.
+    -->
+
+    <!-- Mancha inferior izquierda -->
+    <img
+      class="splash splash-bottom-left splash--fixed"
+      src="imgs/manchaizq.webp"
+      alt=""
+      loading="eager"
+      decoding="async"
+    />
+    <!--
+      CSS (porcentajes):
+      bottom: -5%;
+      left: -4%;
+      width: 42%;
+      -> Se “sale” un poco hacia abajo e izquierda.
+    -->
+
+    <!-- Mancha curva (reveal con scroll) -->
+    <img
+      class="splash splash-curve splash--reveal"
+      id="splashCurve"
+      src="imgs/manchacurva.webp"
+      alt=""
+      loading="lazy"
+      decoding="async"
+      data-reveal
+    />
+    <!--
+      CSS (porcentajes):
+      top: 115%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 55%;
+      -> Arranca fuera de vista (más abajo del hero),
+         aparece conforme haces scroll (animación acuarela/rebote).
+    -->
+  </div>
+
+  <!-- =========================================================
+    HEADER + MENÚ PRINCIPAL (7 MENÚS)
+    - En desktop: menú horizontal
+    - En móvil: hamburguesa + panel
+    - IMPORTANTE: el “ajuste” cuando reduces pantalla se controla con CSS
+      usando porcentajes / clamp / flex-wrap
+  ========================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <!-- =====================================================
+        LOGO PEQUEÑO (arriba-izquierda)
+        - Escala con porcentaje (por CSS) y con max-width.
+      ====================================================== -->
+      <a class="brand brand--small" href="index.html" aria-label="Ir a inicio">
+        <img
+          src="imgs/logo-proink.webp"
+          alt="PRONK Printed Designs"
+          class="brand__logo brand__logo--small"
+        />
+        <!--
+          CSS sugerido (porcentajes):
+          width: 8%;
+          min-width: 52px; (solo si quieres evitar que se haga mini)
+          max-width: 90px;
+        -->
+      </a>
+
+      <!-- =====================================================
+        SLOGAN SUPERIOR (modo compacto)
+        - League Spartan
+      ====================================================== -->
+      <div class="top-slogan" id="topSlogan">
+        <p class="slogan">
+          Hay más <span class="word-yellow">creatividad</span> en un litro de
+          <span class="word-blue">tinta</span> que en un lienzo vacío
+        </p>
+      </div>
+
+      <!-- =====================================================
+        NAV
+        - Desktop: UL con 7 links
+        - Mobile: Botón hamburguesa visible en breakpoints
+      ====================================================== -->
+      <nav class="main-nav" aria-label="Menú principal">
+        <!-- ==========================
+          MENÚ ESCRITORIO
+          - OJO: Para evitar que se tape BLOG cuando reduces,
+            el CSS debe:
+            a) usar flex-wrap: wrap; o
+            b) reducir font-size con clamp() y padding con porcentajes, o
+            c) pasar a hamburguesa antes (breakpoint)
+        =========================== -->
+        <ul class="main-nav__list" id="mainNav">
+          <li class="main-nav__item">
+            <a class="main-nav__link active" href="index.html">INICIO</a>
+          </li>
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="quienes-somos.html">¿QUIÉNES SOMOS?</a>
+          </li>
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="productos.html">PRODUCTOS</a>
+          </li>
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a>
+          </li>
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="catalogo.html">CATÁLOGO</a>
+          </li>
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="ubicacion.html">UBICACIÓN</a>
+          </li>
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="blog.html">BLOG</a>
+          </li>
+        </ul>
+
+        <!-- ==========================
+          BOTÓN HAMBURGUESA
+          - Se muestra en móvil (CSS)
+          - aria-controls apunta al panel #mobileNav
+        =========================== -->
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-controls="mobileNav"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- =========================================================
+      MENÚ MÓVIL (panel con diseño)
+      - Se abre/cierra con JS agregando .is-open a #mobileNav
+      - El overlay cierra al click
+      - El panel no debe mover el layout (CSS: fixed)
+    ========================================================== -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <!-- Overlay (click para cerrar) -->
+      <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
+
+      <!-- Panel -->
+      <div class="mobile-nav__panel" role="dialog" aria-modal="true" aria-label="Menú móvil">
+        <button
+          class="mobile-nav__close"
+          id="mobileNavClose"
+          type="button"
+          aria-label="Cerrar menú"
+        >
+          ✕
+        </button>
+
+        <ul class="mobile-nav__list">
+          <li><a class="mobile-nav__link active" href="index.html">INICIO</a></li>
+          <li><a class="mobile-nav__link" href="quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li><a class="mobile-nav__link" href="productos.html">PRODUCTOS</a></li>
+          <li><a class="mobile-nav__link" href="produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li><a class="mobile-nav__link" href="catalogo.html">CATÁLOGO</a></li>
+          <li><a class="mobile-nav__link" href="ubicacion.html">UBICACIÓN</a></li>
+          <li><a class="mobile-nav__link" href="blog.html">BLOG</a></li>
+        </ul>
+
+        <!-- Opcional: CTA WhatsApp dentro del menú móvil
+        <div class="mobile-nav__extras">
+          <a class="mobile-nav__cta" target="_blank"
+             href="https://wa.me/5214461123494?text=Hola%20PRONK,%20quiero%20información">
+             WhatsApp
+          </a>
+        </div>
+        -->
+      </div>
+    </div>
+  </header>
+
+
+  <!-- =========================================================
+    MAIN (SOLO INICIO)
+  ========================================================== -->
+  <main id="mainContent">
+    <section class="hero" id="inicio">
+      <!-- =====================================================
+        HERO (Logo grande centrado + slogan)
+        - El logo grande solo en INICIO (como tu imagen 1)
+        - Se escala con % y max-width en CSS
+      ====================================================== -->
+      <div class="hero__content">
+        <img
+          src="imgs/logo-proink.webp"
+          alt="PRONK Printed Designs"
+          class="brand__logo brand__logo--hero"
+        />
+        <!--
+          CSS sugerido (porcentajes):
+          width: 45%;
+          max-width: 520px;
+          min-width: 260px;
+        -->
+
+        <p class="hero__slogan">
+          Hay más <span class="word-yellow">creatividad</span> en un litro de
+          <span class="word-blue">tinta</span> que en un lienzo vacío
+        </p>
+      </div>
+
+      <!-- =====================================================
+        VIDEO (autoplay / muted / loop)
+        - Ruta: imgs/video-inicio.mp4
+        - Recomendación: video corto y comprimido (720p)
+      ====================================================== -->
+      <section class="home-video" aria-label="Video principal de inicio">
+        <div class="home-video__frame">
+          <video
+            class="home-video__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source src="imgs/video-inicio.mp4" type="video/mp4" />
+            Tu navegador no soporta videos HTML5.
+          </video>
+        </div>
+      </section>
+
+      <!-- =====================================================
+        ESPACIADOR PARA SCROLL (placeholder)
+        - Sirve para que puedas ver la mancha curva aparecer con scroll
+        - Luego lo reemplazas por contenido real del INICIO
+      ====================================================== -->
+      <section class="home-scroll-space" aria-hidden="true">
+        <div class="home-scroll-space__inner"></div>
+        <!--
+          CSS sugerido:
+          height: 35vh; (esto NO es px; es relativo)
+        -->
+      </section>
+
+      <!-- =====================================================
+        PRÓXIMO BLOQUE (placeholder)
+        - Aquí inicia “otra zona” y ahí se verá manchacurva.webp
+      ====================================================== -->
+      <section class="home-next-block" aria-label="Siguiente bloque (placeholder)">
+        <div class="home-next-block__inner">
+          <h2 class="home-next-block__title">Siguiente sección (placeholder)</h2>
+          <p class="home-next-block__text">
+            Aquí después puedes agregar una preview, botones o un bloque de bienvenida.
+          </p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- =========================================================
+    FOOTER
+  ========================================================== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__text">
+        © <span id="year"></span> PRONK Printed Designs
+      </p>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+    JS
+    - IMPORTANTE:
+      1) Hamburguesa: abre/cierra #mobileNav (agrega .is-open)
+      2) Desactivar scroll spy (porque ya son páginas separadas)
+      3) Reveal manchas: IntersectionObserver para [data-reveal]
+  ========================================================== -->
+  <script src="main.js"></script>
+
+
+  <!-- =========================================================
+    NOTAS PARA AJUSTES PERSONALIZADOS (MÓVIL / DESKTOP)
+    - En CSS te voy a dejar un bloque de breakpoints así:
+      @media (max-width: 1200px) { ... }  / laptops
+      @media (max-width: 992px)  { ... }  / tablet horizontal
+      @media (max-width: 768px)  { ... }  / tablet vertical / móvil grande
+      @media (max-width: 576px)  { ... }  / móvil estándar
+      @media (max-width: 420px)  { ... }  / móvil pequeño
+    - Ahí podrás ajustar:
+      - Tamaño del logo (small y hero)
+      - Ancho/alto de menú capsule
+      - Font-size de links
+      - Tamaño de manchas (width en %)
+      - Posición top/right/left/bottom en %
+  ========================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+  <!-- =========================
+  BURBUJA WHATSAPP
+========================= -->
+<a
+  href="https://wa.me/5214461123494"
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener"
+  aria-label="Contactar por WhatsApp"
+>
+  <img
+    src="imgs/icono-whatsapp.png"
+    alt="WhatsApp"
+    class="whatsapp-float__icon"
+  />
+</a>
+
+
+
+</body>
+</html>
