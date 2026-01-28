@@ -9,18 +9,303 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Tu base -->
   <link rel="stylesheet" href="styles-base.css" />
+
+  <!-- Estilos SOLO para productos (puedes moverlos a un CSS aparte si quieres) -->
+  
+<style>
+
+    /* =========================================================
+  PRODUCTOS — UI (AJUSTADO FINAL)
+  ✅ Proporcional en móvil y desktop
+  ✅ Más espacio lateral (no se amontonan)
+  ✅ Menos espacio sobrante abajo
+  ✅ Imágenes más grandes y sobresalidas
+  ✅ Buscador con Montserrat
+========================================================= */
+
+main.products{
+  position: relative;
+  z-index: 1;
+  padding-bottom: clamp(40px, 5vw, 70px);
+}
+
+.products__wrap{
+  width: min(1200px, calc(100% - 36px));
+  margin: clamp(18px, 3vw, 36px) auto 0;
+}
+
+/* =========================
+  BURBUJA PRINCIPAL
+========================= */
+.page-bubble{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: .25px;
+  color: #000;
+
+  background: linear-gradient(90deg, rgba(255,0,200,.95), rgba(255,153,0,.95));
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.22),
+    0 0 22px rgba(255,0,200,.25);
+
+  margin-bottom: 16px;
+}
+
+/* =========================
+  TOPBAR + BUSCADOR
+========================= */
+.products__topbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(16px, 2.5vw, 22px);
+}
+
+.search{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 14px 26px rgba(0,0,0,.22);
+
+  width: min(520px, 100%);
+}
+
+.search input{
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+
+  color: #fff;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.search input::placeholder{
+  color: rgba(255,255,255,.8);
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 600;
+}
+
+.search .icon{
+  width: 22px;
+  height: 22px;
+  opacity: .9;
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.3));
+}
+
+/* =========================
+  CATEGORÍAS
+========================= */
+.cat{
+  margin: 20px 0 32px;
+}
+
+.cat__title{
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+
+.cat__pill{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 999px;
+
+  font-weight: 900;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  color: #000;
+
+  background: linear-gradient(90deg, rgba(11,207,241,.95), rgba(250,255,18,.95));
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.22),
+    0 0 22px rgba(11,207,241,.25);
+}
+
+/* =========================
+  MARCO GLASS
+========================= */
+.cat__frame{
+  position: relative;
+  border-radius: 28px;
+
+  padding:
+    clamp(26px, 3vw, 32px)
+    clamp(16px, 2.4vw, 22px)
+    clamp(18px, 2vw, 22px);
+
+  background: rgba(0,0,0,.14);
+  border: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.32);
+
+  overflow: visible;
+}
+
+/* =========================
+  GRID (NO SE AMONTONA)
+========================= */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: clamp(18px, 2.6vw, 30px);
+  padding: clamp(8px, 1.6vw, 18px);
+}
+
+/* =========================
+  TARJETA PRODUCTO
+========================= */
+.p-card{
+  position: relative;
+  border-radius: 30px;
+
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 18px 42px rgba(0,0,0,.30);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: clamp(14px, 2vw, 18px);
+  min-height: clamp(300px, 38vw, 380px);
+
+  overflow: hidden;
+  cursor: default;
+
+  transition: transform .2s var(--ease), filter .2s var(--ease);
+}
+
+.p-card:hover{
+  transform: translateY(-6px) scale(1.025);
+  filter: brightness(1.05);
+}
+
+/* =========================
+  IMAGEN (MÁS GRANDE Y SALIDA)
+========================= */
+.p-card__media{
+  position: relative;
+  height: clamp(170px, 22vw, 250px);
+  width: 100%;
+
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.p-card__media img{
+  max-width: 95%;
+  max-height: clamp(190px, 26vw, 280px);
+  object-fit: contain;
+
+  transform: translateY(clamp(-26px, -3vw, -42px));
+  filter: drop-shadow(0 20px 26px rgba(0,0,0,.38));
+}
+
+@media (min-width: 1100px){
+  .p-card__media img{
+    transform: translateY(1vw);
+  }
+}
+
+/* =========================
+  NOMBRE PRODUCTO
+========================= */
+.p-card__tag{
+  margin-top: clamp(6px, 1.2vw, 10px);
+
+  padding: 12px 18px;
+  border-radius: 999px;
+
+  font-weight: 900;
+  letter-spacing: .25px;
+  color: #000;
+  text-align: center;
+
+  width: min(260px, 90%);
+
+  background: linear-gradient(90deg, rgba(11,207,241,.95), rgba(250,255,18,.95));
+  box-shadow: 0 16px 26px rgba(0,0,0,.22);
+
+  border: 1px solid rgba(0,0,0,.12);
+  user-select: none;
+}
+
+/* Variante rosa */
+.p-card[data-tone="pink"] .p-card__tag{
+  background: linear-gradient(90deg, rgba(255,0,200,.95), rgba(255,153,0,.95));
+}
+
+/* =========================
+  RESPONSIVE FINO
+========================= */
+@media (max-width: 520px){
+  .products__wrap{
+    width: min(1200px, calc(100% - 26px));
+  }
+
+  .grid{
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 8px;
+  }
+
+  .p-card{
+    min-height: 320px;
+  }
+
+  .p-card__media{
+    height: 200px;
+  }
+
+  .p-card__media img{
+    max-height: 260px;
+    transform: translateY(-34px);
+  }
+}
+
+
+</style>
+
+  
+
+
+
+
 </head>
 
 <body class="inner">
-
   <!-- ✅ Manchas -->
   <div class="bg-splashes" aria-hidden="true">
     <img class="splash splash-top-right" src="imgs/manchader.webp" alt="">
     <img class="splash splash-bottom-left" src="imgs/manchaizq.webp" alt="">
   </div>
 
-  <!-- ✅ Header -->
+  <!-- ✅ Header (igual que internas) -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
 
@@ -59,9 +344,9 @@
           <span class="nav-toggle__bar"></span>
         </button>
       </nav>
-
     </div>
 
+    <!-- ✅ Menú móvil -->
     <div class="mobile-nav" id="mobileNav" aria-hidden="true">
       <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
 
@@ -82,27 +367,20 @@
   </header>
 
   <!-- ✅ Contenido -->
-  <main style="position:relative; z-index:1;">
-    <section style="
-      width:min(1200px, calc(100% - 32px));
-      margin: 36px auto 0;
-      padding: 26px 24px;
-      border-radius: 22px;
-      background: rgba(0,0,0,.14);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
-    ">
-      <h1 style="margin:0 0 10px; font-size: clamp(26px, 3vw, 40px); font-weight:800;">
-        Productos
-      </h1>
+  <main class="products">
+    <section class="products__wrap">
+      <div class="products__topbar">
+        <div class="page-bubble">Productos</div>
 
-      <p style="margin:0; line-height:1.65; opacity:.95;">
-        Contenido en construcción. Aquí irá el catálogo de productos / categorías.
-      </p>
+        <label class="search" aria-label="Buscar productos">
+          <!-- tu icono de lupa (si tienes otra imagen, cámbiala) -->
+          <img class="icon" src="imgs/icono-buscador.webp" alt="" aria-hidden="true">
+          <input id="productSearch" type="search" placeholder="Buscar producto..." autocomplete="off">
+        </label>
+      </div>
 
-      <div style="height: 900px;"></div>
-      <p style="margin:0; opacity:.9;">Scroll de prueba.</p>
+      <!-- Aquí se inyectan las categorías -->
+      <div id="productsMount"></div>
     </section>
   </main>
 
@@ -117,6 +395,195 @@
     <img src="imgs/icono-whatsapp.png" alt="WhatsApp" class="whatsapp-float__icon" />
   </a>
 
+  <!-- ✅ JS -->
   <script src="js-principal.js"></script>
+
+  <!-- Render + gelatina/bounce -->
+  <script>
+  const PRODUCT_CATEGORIES = [
+    {
+      title: "PROMOCIONALES",
+      items: [
+        "Gorras","Playeras","Termos","Cilindros","Antiestrés","Agendas","Plumas",
+        "Llaveros","Carpetas","Accesorios de oficina","Tazas","Lanyards","Foto botones"
+      ]
+    },
+    {
+      title: "PAPELERÍA CORPORATIVA",
+      items: [
+        "Tarjetas de presentación","Notas","Posters","Hojas membretadas","Sellos","Volantes",
+        "Etiquetas vinil","Recetas","Comandas","Credenciales","Manuales","Diplomas",
+        "Blocks personalizados","Etiquetas papel adhesivo"
+      ]
+    },
+    {
+      title: "PERSONALIZACIÓN DE OFICINAS",
+      items: [
+        "Vinil decorativo","Letreros 3D","Señalética","Marco de luz","Anuncio circular",
+        "Caja de luz","Canva","Letras","Placas"
+      ]
+    },
+    {
+      title: "DISPLAYS PUBLICITARIOS",
+      items: [
+        "Banner araña","Banner roll up","Muro publicitario","Stand publicitario",
+        "Display publicitario triangular","Banderas"
+      ]
+    },
+    {
+      title: "UNIFORMES",
+      items: [
+        "Bordados","DTF textil","Vinil textil impreso","Sublimado","Corte vinil textil"
+      ]
+    },
+    {
+      title: "PAPELERÍA CREATIVA",
+      items: [
+        "Menús","Corbatines para botellas","Cajas personalizadas","Kits para fiestas",
+        "Decoración impresa para eventos"
+      ]
+    }
+  ];
+
+  // ✅ IMÁGENES INVENTADAS (una por producto)
+  // Ruta sugerida: imgs/productos/<archivo>.webp
+  const PRODUCT_IMAGES = {
+    // PROMOCIONALES
+    "Gorras": "imgs/gorra.webp",
+    "Playeras": "imgs/playera.webp",
+    "Termos": "imgs/termo.webp",
+    "Cilindros": "imgs/cilindros.webp",
+    "Antiestrés": "imgs/antiestres.webp",
+    "Agendas": "imgs/agenda.webp",
+    "Plumas": "imgs/plumas.webp",
+    "Llaveros": "imgs/llavero.webp",
+    "Carpetas": "imgs/carpeta.webp",
+    "Accesorios de oficina": "imgs/articulosoficina.webp",
+    "Tazas": "imgs/tazapersonalizada.webp",
+    "Lanyards": "imgs/lanyard.webp",
+    "Foto botones": "imgs/fotobotones.webp",
+
+    // PAPELERÍA CORPORATIVA
+    "Tarjetas de presentación": "imgs/tarjetapresentacion.webp",
+    "Notas": "imgs/notas.webp",
+    "Posters": "imgs/poster.webp",
+    "Hojas membretadas": "imgs/hojamembretada.webp",
+    "Sellos": "imgs/sellos.webp",
+    "Volantes": "imgs/volantes.webp",
+    "Etiquetas vinil": "imgs/etiquetavinil.webp",
+    "Recetas": "imgs/recetas.webp",
+    "Comandas": "imgs/comandas.webp",
+    "Credenciales": "imgs/credenciales.webp",
+    "Manuales": "imgs/manuales.webp",
+    "Diplomas": "imgs/diploma.webp",
+    "Blocks personalizados": "imgs/blocks.webp",
+    "Etiquetas papel adhesivo": "imgs/etiquetaspapel.webp",
+
+    // PERSONALIZACIÓN DE OFICINAS
+    "Vinil decorativo": "imgs/vinildecorativo.webp",
+    "Letreros 3D": "imgs/letreros3d.webp",
+    "Señalética": "imgs/señaletica.webp",
+    "Marco de luz": "imgs/marcoluz.webp",
+    "Anuncio circular": "imgs/anunciocircular.webp",
+    "Caja de luz": "imgs/cajaluz.webp",
+    "Canva": "imgs/canva.webp",
+    "Letras": "imgs/letras.webp",
+    "Placas": "imgs/placas.webp",
+
+    // DISPLAYS PUBLICITARIOS
+    "Banner araña": "imgs/bannerarana.webp",
+    "Banner roll up": "imgs/bannerrollup.webp",
+    "Muro publicitario": "imgs/muropublicitario.webp",
+    "Stand publicitario": "imgs/standpublicitario.webp",
+    "Display publicitario triangular": "imgs/displaytriangular.webp",
+    "Banderas": "imgs/banderas.webp",
+
+    // UNIFORMES
+    "Bordados": "imgs/bordados.webp",
+    "DTF textil": "imgs/DTFtextil.webp",
+    "Vinil textil impreso": "imgs/viniltextilimpreso.webp",
+    "Sublimado": "imgs/sublimado.webp",
+    "Corte vinil textil": "imgs/corteviniltextil.webp",
+
+    // PAPELERÍA CREATIVA
+    "Menús": "imgs/menus.webp",
+    "Corbatines para botellas": "imgs/corbatinesbotellas.webp",
+    "Cajas personalizadas": "imgs/cajaspersonalizadas.webp",
+    "Kits para fiestas": "imgs/kitsfiesta.webp",
+    "Decoración impresa para eventos": "imgs/decoracionimpresaeventos.webp"
+  };
+
+  // Si un nombre no está en el mapa, cae a placeholder
+  const imgFor = (name) => PRODUCT_IMAGES[name] || "imgs/productos/placeholder.webp";
+
+  const mount = document.getElementById("productsMount");
+  const search = document.getElementById("productSearch");
+
+  function render(filterText = "") {
+    const q = filterText.trim().toLowerCase();
+    mount.innerHTML = "";
+
+    PRODUCT_CATEGORIES.forEach(cat => {
+      const filtered = cat.items.filter(p => p.toLowerCase().includes(q));
+      if (!filtered.length) return;
+
+      const section = document.createElement("section");
+      section.className = "cat";
+
+      section.innerHTML = `
+        <div class="cat__title">
+          <div class="cat__pill">${cat.title}</div>
+        </div>
+
+        <div class="cat__frame">
+          <div class="grid">
+            ${filtered.map(name => `
+              <article class="p-card" data-tone="${cat.tone || ""}" tabindex="0" aria-label="${name}">
+                <div class="p-card__media" aria-hidden="true">
+                  <img src="${imgFor(name)}" alt="" onerror="this.src='imgs/productos/placeholder.webp'">
+                </div>
+                <div class="p-card__tag">${name}</div>
+              </article>
+            `).join("")}
+          </div>
+        </div>
+      `;
+
+      mount.appendChild(section);
+    });
+
+    bindGelatina();
+  }
+
+  function gelatina(el, duration = 750) {
+    if (!el) return;
+    el.getAnimations?.().forEach(a => a.cancel());
+
+    el.animate(
+      [
+        { transform: "translateY(0) scale(1)" },
+        { transform: "translateY(-6px) scale(1.08, 0.92)" },
+        { transform: "translateY(0) scale(0.96, 1.08)" },
+        { transform: "translateY(-2px) scale(1.04, 0.98)" },
+        { transform: "translateY(0) scale(1)" }
+      ],
+      { duration, easing: "cubic-bezier(.25,1.7,.45,1)", fill: "both" }
+    );
+  }
+
+  function bindGelatina() {
+    document.querySelectorAll(".p-card").forEach(card => {
+      card.addEventListener("mouseenter", () => gelatina(card, 780));
+      card.addEventListener("click", () => gelatina(card, 950));
+      card.addEventListener("focusin", () => gelatina(card, 780));
+      card.addEventListener("touchstart", () => gelatina(card, 820), { passive: true });
+    });
+  }
+
+  render();
+
+  search?.addEventListener("input", (e) => render(e.target.value));
+</script>
+
 </body>
 </html>

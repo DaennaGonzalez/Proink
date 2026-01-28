@@ -170,3 +170,31 @@
   });
 })();
 
+
+/* =========================================================
+   COPIAR CORREO AL PORTAPAPELES (EMAIL)
+========================================================= */
+const emailBtn = document.getElementById('emailBtn');
+
+if (emailBtn) {
+  emailBtn.addEventListener('click', () => {
+    const email = 'proinkqro@gmail.com';
+
+    navigator.clipboard.writeText(email).then(() => {
+      // Feedback visual
+      emailBtn.classList.add('is-copied');
+
+      // Cambiar texto temporalmente
+      const label = emailBtn.querySelector('.contacto-proink__label');
+      const originalText = label.textContent;
+      label.textContent = '¡Correo copiado! proinkqro@gmail.com';
+
+      setTimeout(() => {
+        label.textContent = originalText;
+        emailBtn.classList.remove('is-copied');
+      }, 1600);
+    }).catch(err => {
+      console.error('Error al copiar el correo:', err);
+    });
+  });
+}

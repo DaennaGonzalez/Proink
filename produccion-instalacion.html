@@ -10,6 +10,281 @@
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles-base.css" />
+
+  <style>
+    /* =========================================================
+      PRODUCCIÓN E INSTALACIÓN — UI (IGUAL QUE PRODUCTOS)
+      ✅ Buscador Montserrat
+      ✅ Secciones con marco glass + cards
+      ✅ Cards con imagen (solo secciones indicadas)
+      ✅ Listado dentro del card (para items)
+      ✅ Efecto gelatina en hover/click
+    ========================================================= */
+
+    main.prodinst{
+      position: relative;
+      z-index: 1;
+      padding-bottom: clamp(40px, 5vw, 70px);
+    }
+
+    .prodinst__wrap{
+      width: min(1200px, calc(100% - 36px));
+      margin: clamp(18px, 3vw, 36px) auto 0;
+    }
+
+    /* Burbuja principal */
+    .page-bubble{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: .25px;
+      color: #000;
+
+      background: linear-gradient(90deg, rgba(255,0,200,.95), rgba(255,153,0,.95));
+      box-shadow:
+        0 18px 30px rgba(0,0,0,.22),
+        0 0 22px rgba(255,0,200,.25);
+
+      margin-bottom: 16px;
+    }
+
+    /* Topbar + buscador */
+    .prodinst__topbar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: clamp(16px, 2.5vw, 22px);
+    }
+
+    .search{
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 14px 26px rgba(0,0,0,.22);
+
+      width: min(520px, 100%);
+    }
+
+    .search input{
+      width: 100%;
+      border: 0;
+      outline: none;
+      background: transparent;
+
+      color: #fff;
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .search input::placeholder{
+      color: rgba(255,255,255,.8);
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 600;
+    }
+
+    .search .icon{
+      width: 22px;
+      height: 22px;
+      opacity: .9;
+      filter: drop-shadow(0 8px 14px rgba(0,0,0,.3));
+    }
+
+    /* Sección */
+    .sec{
+      margin: 20px 0 32px;
+    }
+
+    .sec__title{
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+    }
+
+    .sec__pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 999px;
+
+      font-weight: 900;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      color: #000;
+
+      background: linear-gradient(90deg, rgba(11,207,241,.95), rgba(250,255,18,.95));
+      box-shadow:
+        0 18px 30px rgba(0,0,0,.22),
+        0 0 22px rgba(11,207,241,.25);
+      text-align: center;
+    }
+
+    /* Marco glass */
+    .sec__frame{
+      position: relative;
+      border-radius: 28px;
+
+      padding:
+        clamp(26px, 3vw, 32px)
+        clamp(16px, 2.4vw, 22px)
+        clamp(18px, 2vw, 22px);
+
+      background: rgba(0,0,0,.14);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 40px rgba(0,0,0,.32);
+
+      overflow: visible;
+    }
+
+    /* Grid cards */
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: clamp(18px, 2.6vw, 30px);
+      padding: clamp(8px, 1.6vw, 18px);
+    }
+
+    /* Card */
+    .p-card{
+      position: relative;
+      border-radius: 30px;
+
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 18px 42px rgba(0,0,0,.30);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      padding: clamp(14px, 2vw, 18px);
+      min-height: clamp(310px, 38vw, 390px);
+
+      overflow: hidden;
+      cursor: default;
+
+      transition: transform .2s var(--ease), filter .2s var(--ease);
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .p-card:hover{
+      transform: translateY(-6px) scale(1.025);
+      filter: brightness(1.05);
+    }
+
+    /* Imagen (solo cards que la traen) */
+    .p-card__media{
+      position: relative;
+      height: clamp(170px, 22vw, 250px);
+      width: 100%;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+
+    .p-card__media img{
+      max-width: 95%;
+      max-height: clamp(190px, 26vw, 280px);
+      object-fit: contain;
+      transform: translateY(clamp(-26px, -3vw, -42px));
+      filter: drop-shadow(0 20px 26px rgba(0,0,0,.38));
+    }
+
+    /* ✅ Ajuste (desktop) como tú lo manejas */
+    @media (min-width: 1100px){
+      .p-card__media img{
+        transform: translateY(1vw);
+      }
+    }
+
+    /* Título dentro del card */
+    .p-card__tag{
+      margin-top: clamp(6px, 1.2vw, 10px);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: .25px;
+      color: #000;
+      text-align: center;
+      width: min(300px, 92%);
+
+      background: linear-gradient(90deg, rgba(255,0,200,.95), rgba(255,153,0,.95));
+      box-shadow: 0 16px 26px rgba(0,0,0,.22);
+      border: 1px solid rgba(0,0,0,.12);
+      user-select: none;
+    }
+
+    /* Lista de items */
+    .p-card__list{
+      width: 100%;
+      margin: 14px 0 0;
+      padding: 0;
+
+      display: grid;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .p-card__item{
+      padding: 10px 12px;
+      border-radius: 16px;
+
+      background: rgba(0,0,0,.14);
+      border: 1px solid rgba(255,255,255,.12);
+
+      font-weight: 800;
+      letter-spacing: .15px;
+      line-height: 1.2;
+      text-align: center;
+
+      box-shadow: 0 12px 20px rgba(0,0,0,.18);
+    }
+
+    /* Responsive fino */
+    @media (max-width: 520px){
+      .prodinst__wrap{
+        width: min(1200px, calc(100% - 26px));
+      }
+
+      .grid{
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 8px;
+      }
+
+      .p-card{
+        min-height: 330px;
+      }
+
+      .p-card__media{
+        height: 200px;
+      }
+
+      .p-card__media img{
+        max-height: 260px;
+        transform: translateY(-34px);
+      }
+    }
+  </style>
 </head>
 
 <body class="inner">
@@ -46,7 +321,6 @@
           <li class="main-nav__item"><a class="main-nav__link" href="blog.html">BLOG</a></li>
         </ul>
 
-        <!-- ✅ Hamburguesa -->
         <button
           class="nav-toggle"
           id="navToggle"
@@ -68,9 +342,7 @@
       <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
 
       <div class="mobile-nav__panel" role="dialog" aria-label="Menú móvil">
-        <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Cerrar menú">
-          ✕
-        </button>
+        <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Cerrar menú">✕</button>
 
         <ul class="mobile-nav__list">
           <li><a class="mobile-nav__link" href="index.html">INICIO</a></li>
@@ -86,31 +358,22 @@
   </header>
 
   <!-- ✅ Contenido -->
-  <main style="position:relative; z-index:1;">
-    <section style="
-      width:min(1200px, calc(100% - 32px));
-      margin: 36px auto 0;
-      padding: 26px 24px;
-      border-radius: 22px;
-      background: rgba(0,0,0,.14);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
-    ">
-      <h1 style="margin:0 0 10px; font-size: clamp(26px, 3vw, 40px); font-weight:800;">
-        Producción e instalación
-      </h1>
+  <main class="prodinst">
+    <section class="prodinst__wrap">
+      <div class="prodinst__topbar">
+        <div class="page-bubble">Producción e instalación</div>
 
-      <p style="margin:0; line-height:1.65; opacity:.95;">
-        Contenido en construcción. Aquí irá el flujo de producción, materiales, tiempos e instalación.
-      </p>
+        <label class="search" aria-label="Buscar procesos">
+          <img class="icon" src="imgs/icono-buscador.webp" alt="" aria-hidden="true">
+          <input id="procSearch" type="search" placeholder="Buscar..." autocomplete="off">
+        </label>
+      </div>
 
-      <div style="height: 900px;"></div>
-      <p style="margin:0; opacity:.9;">Scroll de prueba.</p>
+      <div id="procMount"></div>
     </section>
   </main>
 
-  <!-- ✅ Burbuja WhatsApp -->
+  <!-- ✅ WhatsApp -->
   <a
     href="https://wa.me/5214461123494"
     class="whatsapp-float"
@@ -123,5 +386,130 @@
 
   <!-- ✅ JS base -->
   <script src="js-principal.js"></script>
+
+  <!-- Render + gelatina -->
+  <script>
+    const SECTIONS = [
+      {
+        title: "CORTES Y MATERIALES",
+        image: "imgs/cortecnc.webp", // ✅ sin imagen
+        items: ["Corte CNC","Corte láser","Alucobond","Graboplac","Acrílico","MDF","Estireno","PVC"]
+      },
+      {
+        title: "GRABADO Y ACABADOS",
+        image: "imgs/grabadoyacabados.webp",
+        items: ["Grabado láser"]
+      },
+      {
+        title: "BALIZADO Y ROTULACIÓN",
+        image: "imgs/balizado.webp",
+        items: ["Balizado empresarial","Rotulación vehicular"]
+      },
+      {
+        title: "TECNOLOGÍAS DE IMPRESIÓN",
+        image: "imgs/tecnologiasimpresion.webp",
+        items: ["DTF UV","DTF Textil"]
+      },
+      {
+        title: "IMPRESIÓN EN VINIL (ALTA RESOLUCIÓN)",
+        image: "imgs/impresionvinil.webp",
+        items: ["Vinil brillante","Vinil mate","Vinil textil","Vinil electrostático","Vinil microperforado"]
+      },
+      {
+        title: "IMPRESIÓN EN LONA",
+        image: "imgs/impresionlona.webp",
+        items: ["Lona brillante","Lona blackout","Lona mesh"]
+      },
+      {
+        title: "IMPRESIONES ESPECIALES",
+        image: "imgs/impresionespecial.webp",
+        items: ["Impresión poliéster","Impresión canva"]
+      },
+      {
+        title: "IMPRESIÓN EN RÍGIDOS",
+        image: "imgs/impresionrigido.webp",
+        items: ["Coroplast","Estireno (rígido)","PVC rígido"]
+      },
+      {
+        title: "IMPRESIÓN DIGITAL",
+        image: "imgs/impresiondigital.webp",
+        items: ["Impresión digital couche","Impresión digital opalina"]
+      },
+      {
+        title: "TÉCNICAS TEXTILES",
+        image: "imgs/tecnicastextiles.webp",
+        items: ["Bordado","Serigrafía","Sublimación"]
+      }
+    ];
+
+    const mount = document.getElementById("procMount");
+    const search = document.getElementById("procSearch");
+
+    function render(filterText = "") {
+      const q = filterText.trim().toLowerCase();
+      mount.innerHTML = "";
+
+      SECTIONS.forEach(sec => {
+        const inTitle = sec.title.toLowerCase().includes(q);
+        const filteredItems = sec.items.filter(it => it.toLowerCase().includes(q));
+
+        if (!q) {
+          // sin filtro: render normal
+        } else if (!inTitle && !filteredItems.length) {
+          return; // no coincide
+        }
+
+        const section = document.createElement("section");
+        section.className = "sec";
+
+        section.innerHTML = `
+          <div class="sec__title">
+            <div class="sec__pill">${sec.title}</div>
+          </div>
+
+          <div class="sec__frame">
+            <div class="grid">
+              <article class="p-card" tabindex="0" aria-label="${sec.title}">
+                ${sec.image ? `
+                  <div class="p-card__media" aria-hidden="true">
+                    <img src="${sec.image}" alt="" onerror="this.style.display='none'">
+                  </div>
+                ` : `
+                  <div style="height:12px;"></div>
+                `}
+
+               
+
+                <ul class="p-card__list">
+                  ${(q ? filteredItems : sec.items).map(it => `
+                    <li class="p-card__item">${it}</li>
+                  `).join("")}
+                </ul>
+              </article>
+            </div>
+          </div>
+        `;
+
+        mount.appendChild(section);
+      });
+
+      bindGelatina();
+    }
+
+   
+
+    function bindGelatina() {
+      document.querySelectorAll(".p-card").forEach(card => {
+        card.addEventListener("mouseenter", () => gelatina(card, 780));
+        card.addEventListener("click", () => gelatina(card, 950));
+        card.addEventListener("focusin", () => gelatina(card, 780));
+        card.addEventListener("touchstart", () => gelatina(card, 820), { passive: true });
+      });
+    }
+
+    render();
+    search?.addEventListener("input", (e) => render(e.target.value));
+  </script>
+
 </body>
 </html>

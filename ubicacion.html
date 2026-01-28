@@ -9,16 +9,902 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles-base.css" />
+  <style>
+    /* ============================================================
+      BASE (copiado del styles-base.css) + extras para Ubicación
+    ============================================================ */
+
+    :root{
+      --bg: #1a2a6c;
+
+      --grad-a: #0bcff1;
+      --grad-b: #faff12;
+
+      --text: #ffffff;
+      --text-dark: #000000;
+
+      --shadow-soft: 0 10px 25px rgba(0,0,0,.25);
+      --shadow-text: 0 2px 10px rgba(0,0,0,.65);
+
+      --radius-pill: 999px;
+      --container: 1200px;
+
+      --slogan-yellow: #faff12;
+      --slogan-blue: #0bcff1;
+
+      --ease: cubic-bezier(.2,.8,.2,1);
+
+      --nav-pad-y: clamp(10px, 0.9vw, 12px);
+      --nav-pad-x: clamp(12px, 1.2vw, 18px);
+
+      --nav-gap: clamp(8px, 0.9vw, 10px);
+      --nav-row-gap: clamp(8px, 0.9vw, 10px);
+
+      --nav-link-pad-y: clamp(8px, 0.75vw, 10px);
+      --nav-link-pad-x: clamp(10px, 0.9vw, 14px);
+      --nav-font: clamp(12px, 0.95vw, 14px);
+
+      --logo-small-w: clamp(74px, 4.5vw, 255px);
+
+      --menu-area-w: 1100px;
+
+      --header-pad-top: clamp(10px, 1vw, 14px);
+      --header-pad-bot: clamp(10px, 1vw, 12px);
+
+      --header-slogan-size: clamp(16px, 1.35vw, 22px);
+      --header-slogan-gap: clamp(8px, 1vw, 12px);
+    }
+
+    *,
+    *::before,
+    *::after{ box-sizing: border-box; }
+
+    html{ scroll-behavior: smooth; }
+
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .bg-splashes{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .splash{
+      position: absolute;
+      height: auto;
+      opacity: 1;
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,.25));
+    }
+
+    .splash-top-right{
+      top: -30px;
+      right: -40px;
+      width: min(520px, 60vw);
+    }
+
+    .splash-bottom-left{
+      bottom: -40px;
+      left: -40px;
+      width: min(520px, 60vw);
+    }
+
+    .site-header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+
+      height: auto;
+      padding: var(--header-pad-top) 0 var(--header-pad-bot);
+
+      display: flex;
+      align-items: center;
+
+      background: rgba(26,42,108,.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      transition: background .25s var(--ease), backdrop-filter .25s var(--ease);
+    }
+
+    
+/*DISEÑO PARA ULTIMA SECCION Y FOOTER*/
+
+/* ============================================================
+  SECCIÓN: CONTACTO PROINK + FOOTER SIMPLE
+  (pegar AL FINAL de tu styles.css)
+============================================================ */
+
+/* =========================
+  CONTACTO (sección)
+========================= */
+.contacto-proink{
+  position: relative;
+  z-index: 2; /* encima de splashes */
+  padding: clamp(44px, 5vw, 70px) 0 clamp(26px, 4vw, 46px);
+}
+
+.contacto-proink__inner{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contacto-proink__title{
+  margin: 0 0 10px;
+  font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: 1.05;
+
+  color: #fff;
+  text-shadow: var(--shadow-text);
+}
+
+.contacto-proink__sub{
+  margin: 0 auto 18px;
+  max-width: 880px;
+  font-size: clamp(14px, 1.35vw, 18px);
+  line-height: 1.6;
+  opacity: .95;
+}
+
+/* =========================
+  ICONOS (cards clicables)
+========================= */
+.contacto-proink__icons{
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 1.5vw, 18px);
+  align-items: stretch;
+}
+
+.contacto-proink__icon{
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 22px;
+  background: rgba(0,0,0,.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  padding: clamp(14px, 1.6vw, 18px);
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+  color: #fff;
+
+  box-shadow: 0 18px 30px rgba(0,0,0,.22);
+  transition:
+    transform .22s var(--ease),
+    box-shadow .22s var(--ease),
+    filter .22s var(--ease),
+    border-color .22s var(--ease);
+}
+
+/* Para que el <button> se vea igual que <a> */
+.contacto-proink__icon--email{
+  width: 100%;
+  font-family: inherit;
+}
+
+/* Imagen del icono */
+.contacto-proink__icon img{
+  width: clamp(54px, 5.8vw, 78px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.28));
+}
+
+/* Etiqueta */
+.contacto-proink__label{
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-size: clamp(13px, 1.2vw, 16px);
+  text-shadow: var(--shadow-text);
+}
+
+/* Hover (rebote suave + “aluzado”) */
+.contacto-proink__icon:hover{
+  transform: translateY(-6px) scale(1.02);
+  filter: brightness(1.06);
+  border-color: rgba(255,255,255,.28);
+  box-shadow:
+    0 22px 40px rgba(0,0,0,.28),
+    0 0 24px rgba(11, 207, 241, .20),
+    0 0 18px rgba(250, 255, 18, .12);
+}
+
+/* Click (remarca) */
+.contacto-proink__icon:active{
+  transform: translateY(-2px) scale(0.99);
+  filter: brightness(1.12);
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.22),
+    0 0 22px rgba(11, 207, 241, .26),
+    0 0 18px rgba(250, 255, 18, .18);
+}
+
+/* Accesibilidad: focus visible */
+.contacto-proink__icon:focus-visible{
+  outline: 3px solid rgba(250, 255, 18, .65);
+  outline-offset: 4px;
+}
+
+/* =========================
+  MINI MODAL EMAIL
+========================= */
+.email-mini{
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none; /* cerrado */
+}
+
+.email-mini.is-open{
+  display: block;
+}
+
+.email-mini__overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.email-mini__panel{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -52%);
+  width: min(520px, calc(100% - 36px));
+
+  border-radius: 20px;
+  padding: 18px 16px 16px;
+
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 26px 60px rgba(0,0,0,.38);
+  animation: emailPop .22s var(--ease) both;
+}
+
+@keyframes emailPop{
+  0%   { transform: translate(-50%, -50%) scale(.96); opacity: 0; }
+  100% { transform: translate(-50%, -52%) scale(1); opacity: 1; }
+}
+
+.email-mini__close{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(90deg, rgba(11,207,241,.85), rgba(250,255,18,.85));
+  color: #000;
+  font-weight: 900;
+
+  box-shadow: 0 12px 22px rgba(0,0,0,.28);
+  transition: transform .18s var(--ease), filter .18s var(--ease);
+}
+
+.email-mini__close:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.email-mini__title{
+  margin: 6px 0 10px;
+  text-align: center;
+  font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: #fff;
+  text-shadow: var(--shadow-text);
+}
+
+.email-mini__mail{
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: .3px;
+  font-size: clamp(15px, 2.8vw, 18px);
+  color: #fff;
+  text-shadow: var(--shadow-text);
+
+  padding: 12px 10px;
+  border-radius: 16px;
+
+  background: rgba(0,0,0,.14);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+/* =========================
+  RESPONSIVE
+========================= */
+@media (max-width: 900px){
+  .contacto-proink__icons{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .contacto-proink__icon{
+    border-radius: 18px;
+  }
+}
+
+/* =========================
+  FOOTER SIMPLE
+========================= */
+.footer-simple{
+  position: relative;
+  z-index: 2;
+  padding: 18px 0 22px;
+}
+
+.footer-simple__text{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+  text-align: center;
+
+  color: rgba(255,255,255,.92);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.footer-simple__text + .footer-simple__text{
+  margin-top: 6px;
+}
+
+.footer-simple__text strong{
+  font-weight: 800;
+  color: rgba(255,255,255,.98);
+}
+
+
+
+/* =========================
+  EMAIL COPIADO – FEEDBACK
+========================= */
+.contacto-proink__icon--email.is-copied{
+  transform: scale(1.08);
+  box-shadow:
+    0 0 18px rgba(11, 207, 241, .45),
+    0 0 26px rgba(250, 255, 18, .35);
+}
+
+.contacto-proink__icon--email.is-copied img{
+  filter: brightness(1.15);
+}
+
+
+
+
+    .header-inner{
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-areas:
+        "logo slogan"
+        "logo nav";
+      align-items: center;
+
+      column-gap: clamp(12px, 1.6vw, 22px);
+      row-gap: var(--header-slogan-gap);
+    }
+
+    .brand{
+      grid-area: logo;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .brand__logo{ display: block; height: auto; }
+    .brand__logo--small{ width: var(--logo-small-w); max-width: var(--logo-small-w); }
+
+    .top-slogan{
+      grid-area: slogan;
+      justify-self: center;
+      text-align: center;
+    }
+
+    .top-slogan .slogan{
+      margin: 0;
+      font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      text-shadow: var(--shadow-text);
+      line-height: 1.1;
+      letter-spacing: .2px;
+
+      font-size: var(--header-slogan-size);
+      font-weight: 800;
+    }
+
+    .word-yellow{ color: var(--slogan-yellow); }
+    .word-blue{ color: var(--slogan-blue); }
+
+    .main-nav{
+      grid-area: nav;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      min-width: 0;
+    }
+
+    .main-nav__list{
+      list-style: none;
+      margin: 0;
+      padding: var(--nav-pad-y) var(--nav-pad-x);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      column-gap: var(--nav-gap);
+      row-gap: var(--nav-row-gap);
+
+      width: min(100%, var(--menu-area-w));
+
+      border-radius: var(--radius-pill);
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      box-shadow:
+        0 18px 30px rgba(0,0,0,.22),
+        0 0 28px rgba(11, 207, 241, .25),
+        0 0 18px rgba(250, 255, 18, .16);
+    }
+
+    @media (min-width: 1500px){
+      .main-nav__list{ flex-wrap: nowrap; }
+    }
+
+    .main-nav__item{ margin: 0; }
+
+    .main-nav__link{
+      position: relative;
+      display: inline-block;
+
+      padding: var(--nav-link-pad-y) var(--nav-link-pad-x);
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+
+      color: #000;
+      font-weight: 800;
+      font-size: var(--nav-font);
+      letter-spacing: .2px;
+      white-space: nowrap;
+
+      background: linear-gradient(90deg, rgba(11, 207, 241, .72) 0%, rgba(250, 255, 18, .72) 100%);
+      border: 1px solid rgba(0,0,0,.12);
+      box-shadow: 0 10px 16px rgba(0,0,0,.12);
+
+      transition: transform .18s var(--ease), box-shadow .18s var(--ease), filter .18s var(--ease);
+    }
+
+    .main-nav__link:hover{
+      transform: translateY(-4px);
+      filter: brightness(1.08);
+      box-shadow: 0 16px 24px rgba(0,0,0,.18), 0 0 18px rgba(11, 207, 241, .22);
+    }
+
+    .main-nav__link.active{
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,.70);
+
+      background: rgba(26,42,108,.38);
+      border: 1px solid rgba(255,255,255,.28);
+
+      box-shadow:
+        0 18px 30px rgba(0,0,0,.22),
+        0 0 26px rgba(11, 207, 241, .40),
+        0 0 18px rgba(250, 255, 18, .22);
+    }
+
+    .main-nav__link.active::after{
+      content: "";
+      position: absolute;
+      left: 14%;
+      right: 14%;
+      bottom: -20%;
+      height: 6px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(90deg, #0bcff1 0%, #faff12 100%);
+      filter: blur(.1rem);
+      box-shadow: 0 0 14px rgba(11, 207, 241, .35), 0 0 12px rgba(250, 255, 18, .25);
+      animation: paintSwipe .22s var(--ease) both;
+    }
+
+    @keyframes paintSwipe{
+      0%   { transform: scaleX(.2); opacity: 0; }
+      100% { transform: scaleX(1); opacity: 1; }
+    }
+
+    .nav-toggle{
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+
+      background: linear-gradient(90deg, var(--grad-a) 0%, var(--grad-b) 100%);
+      box-shadow: var(--shadow-soft);
+
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0;
+    }
+
+    .nav-toggle__bar,
+    .nav-toggle span{
+      display: block;
+      width: 22px;
+      height: 3px;
+      background: #000;
+      border-radius: 999px;
+    }
+
+    .mobile-nav{
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+    }
+
+    .mobile-nav.is-open{ display: block; }
+
+    .mobile-nav__overlay{
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .mobile-nav__panel{
+      position: absolute;
+      top: clamp(16px, 3vw, 28px);
+      right: clamp(14px, 3vw, 24px);
+      left: clamp(14px, 3vw, 24px);
+
+      max-width: 520px;
+      margin-left: auto;
+
+      border-radius: 22px;
+      padding: 16px;
+
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+
+      transform: translateY(-8px);
+      opacity: 0;
+
+      transition: transform .22s var(--ease), opacity .22s var(--ease);
+    }
+
+    .mobile-nav.is-open .mobile-nav__panel{
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-nav__close{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+
+      background: linear-gradient(90deg, rgba(11, 207, 241, .8), rgba(250, 255, 18, .8));
+      color: #000;
+      font-weight: 900;
+
+      box-shadow: 0 10px 18px rgba(0,0,0,.22);
+    }
+
+    .mobile-nav__list{
+      list-style: none;
+      margin: 46px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-nav__link{
+      display: block;
+      text-decoration: none;
+      padding: 12px 14px;
+      border-radius: 14px;
+
+      background: linear-gradient(90deg, #0bcff1 0%, #faff12 100%) !important;
+      color: #000 !important;
+      font-weight: 900;
+      letter-spacing: .3px;
+
+      border: 1px solid rgba(0,0,0,.18);
+      box-shadow: 0 10px 18px rgba(0,0,0,.20);
+
+      transition: transform .18s var(--ease), box-shadow .18s var(--ease);
+    }
+
+    .mobile-nav__link:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 16px 24px rgba(0,0,0,.22);
+    }
+
+    .mobile-nav__link.active{
+      background: rgba(26,42,108,.95) !important;
+      color: #fff !important;
+      border: 1px solid rgba(255,255,255,.28);
+      text-shadow: 0 2px 10px rgba(0,0,0,.65);
+    }
+
+    body.menu-open{ overflow: hidden; }
+
+    .whatsapp-float{
+      position: fixed;
+      right: clamp(14px, 2vw, 22px);
+      bottom: clamp(14px, 2vw, 22px);
+      z-index: 9990;
+
+      width: clamp(60px, 4.8vw, 82px);
+      height: clamp(60px, 4.8vw, 82px);
+
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 30px rgba(0,0,0,.25);
+
+      transition: transform .18s var(--ease), filter .18s var(--ease);
+    }
+
+    .whatsapp-float:hover{
+      transform: translateY(-4px);
+      filter: brightness(1.08);
+    }
+
+    .whatsapp-float__icon{
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      display: block;
+    }
+
+    @media (max-width: 900px){
+      .main-nav{ justify-content: flex-end; }
+      .main-nav__list{ display: none; }
+      .nav-toggle{ display: inline-flex; }
+
+      .top-slogan .slogan{ font-size: clamp(14px, 3.2vw, 18px); }
+
+      .splash-top-right{ top: -20px; right: -30px; width: min(380px, 70vw); }
+      .splash-bottom-left{ bottom: -30px; left: -30px; width: min(380px, 70vw); }
+
+      .whatsapp-float{
+        width: clamp(64px, 12vw, 96px);
+        height: clamp(64px, 12vw, 96px);
+      }
+
+      .whatsapp-float__icon{
+        width: 74%;
+        height: 74%;
+      }
+    }
+
+    @media (max-width: 420px){
+      .whatsapp-float{
+        width: clamp(62px, 16vw, 88px);
+        height: clamp(62px, 16vw, 88px);
+      }
+    }
+
+    /* ============================================================
+  ✅ EXTRA: UBICACIÓN (CORREGIDO)
+  - Card de dirección
+  - Map embebido (iframe) + botón abrir maps
+  - Icono grande arriba-derecha, flotante
+  - Bordes redondos del mapa ✅ (con clip interno)
+============================================================ */
+main.ubi{
+  position: relative;
+  z-index: 1;
+}
+
+.ubi__wrap{
+  width: min(1200px, calc(100% - 32px));
+  margin: clamp(18px, 2.6vw, 34px) auto 54px;
+}
+
+.ubi__bubble{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, rgba(11, 207, 241, .95), rgba(250, 255, 18, .95));
+  color: #000;
+  font-weight: 900;
+  letter-spacing: .2px;
+
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.22),
+    0 0 24px rgba(11, 207, 241, .22),
+    0 0 18px rgba(250, 255, 18, .12);
+
+  margin: 0 0 16px;
+}
+
+.ubi__grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.ubi__card{
+  padding: clamp(18px, 2.2vw, 26px);
+  border-radius: 24px;
+
+  background: rgba(0,0,0,.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+}
+
+.ubi__title{
+  margin: 0 0 10px;
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 900;
+  font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  text-shadow: var(--shadow-text);
+}
+
+.ubi__address{
+  margin: 0 0 14px;
+  line-height: 1.7;
+  opacity: .96;
+  font-weight: 600;
+}
+
+.ubi__actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.ubi__btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 14px;
+  border-radius: 14px;
+  text-decoration: none;
+
+  background: linear-gradient(90deg, rgba(11, 207, 241, .92), rgba(250, 255, 18, .92));
+  color: #000;
+  font-weight: 900;
+  letter-spacing: .2px;
+
+  border: 1px solid rgba(0,0,0,.18);
+  box-shadow: 0 12px 20px rgba(0,0,0,.20);
+
+  transition: transform .18s var(--ease), filter .18s var(--ease);
+}
+
+.ubi__btn:hover{
+  transform: translateY(-3px);
+  filter: brightness(1.06);
+}
+
+/* ✅ CONTENEDOR GENERAL
+   - overflow visible para permitir que el icono salga
+   - el recorte real del mapa lo hace .ubi__mapClip */
+.ubi__mapWrap{
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+
+/* ✅ CLIP REAL DEL MAPA (aquí van los bordes redondos) */
+.ubi__mapClip{
+  overflow: hidden;
+  border-radius: 26px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+}
+
+/* ✅ ICONO GRANDE, FLOTANTE, ARRIBA-DERECHA */
+.ubi__mapBadge{
+  position: absolute;
+  right: clamp(22px, 3.2vw, 44px);
+  top: 0;
+
+  transform: translateY(-60%);
+  z-index: 99999;
+
+  width: clamp(140px, 18vw, 240px);
+  height: auto;
+
+  filter: drop-shadow(0 22px 28px rgba(0,0,0,.45));
+  pointer-events: none;
+}
+
+/* MAPA */
+.ubi__iframe{
+  display: block;
+  width: 100%;
+  height: clamp(340px, 48vw, 520px);
+  border: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px){
+  .ubi__iframe{
+    height: 360px;
+  }
+
+  .ubi__mapBadge{
+    width: clamp(140px, 34vw, 220px);
+    transform: translateY(-65%);
+    right: clamp(14px, 4vw, 20px);
+  }
+}
+
+  </style>
 </head>
 
 <body class="inner">
 
+  <!-- ✅ Manchas -->
   <div class="bg-splashes" aria-hidden="true">
     <img class="splash splash-top-right" src="imgs/manchader.webp" alt="">
     <img class="splash splash-bottom-left" src="imgs/manchaizq.webp" alt="">
   </div>
 
+  <!-- ✅ Header -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
 
@@ -60,11 +946,14 @@
 
     </div>
 
+    <!-- ✅ Menú móvil -->
     <div class="mobile-nav" id="mobileNav" aria-hidden="true">
       <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
 
       <div class="mobile-nav__panel" role="dialog" aria-label="Menú móvil">
-        <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Cerrar menú">✕</button>
+        <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Cerrar menú">
+          ✕
+        </button>
 
         <ul class="mobile-nav__list">
           <li><a class="mobile-nav__link" href="index.html">INICIO</a></li>
@@ -79,30 +968,129 @@
     </div>
   </header>
 
-  <main style="position:relative; z-index:1;">
-    <section style="
-      width:min(1200px, calc(100% - 32px));
-      margin: 36px auto 0;
-      padding: 26px 24px;
-      border-radius: 22px;
-      background: rgba(0,0,0,.14);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
-    ">
-      <h1 style="margin:0 0 10px; font-size: clamp(26px, 3vw, 40px); font-weight:800;">
-        Ubicación
-      </h1>
+  <!-- ✅ Contenido -->
+  <main class="ubi">
+    <section class="ubi__wrap">
+      <div class="ubi__bubble">Ubicación</div>
 
-      <p style="margin:0; line-height:1.65; opacity:.95;">
-        Contenido en construcción. Aquí irá el mapa, dirección, horarios y formas de contacto.
-      </p>
+      <div class="ubi__grid">
+        <div class="ubi__card">
+          <h1 class="ubi__title">Encuéntranos</h1>
+          <p class="ubi__address">
+            P.º Las Plazas 3, Las Plazas, 76180 Santiago de Querétaro, Qro.
+          </p>
 
-      <div style="height: 900px;"></div>
-      <p style="margin:0; opacity:.9;">Scroll de prueba.</p>
+          <div class="ubi__actions">
+            <a class="ubi__btn" href="https://maps.app.goo.gl/RcyjBTRdYcuRyk4r6" target="_blank" rel="noopener">
+              Abrir en Google Maps
+            </a>
+          </div>
+        </div>
+
+       <div class="ubi__mapWrap">
+  <img class="ubi__mapBadge" src="imgs/icono-ubicacion.webp" alt="" aria-hidden="true">
+
+  <!-- 👇 NUEVO wrapper interno -->
+  <div class="ubi__mapClip">
+    <iframe
+      class="ubi__iframe"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=P.%C2%BA%20Las%20Plazas%203%2C%20Las%20Plazas%2C%2076180%20Santiago%20de%20Quer%C3%A9taro%2C%20Qro.&output=embed"
+      title="Mapa de ubicación PROINK Printed Designs"
+    ></iframe>
+  </div>
+</div>
+
+      </div>
     </section>
+
+
+
+    
+<!-- =========================================================
+  SECCIÓN: CONTACTO / COTIZA (FINAL)
+  - Facebook / WhatsApp: links normales
+  - Email: abre un mini modal con el correo (se cierra con ✕)
+========================================================== -->
+<section class="contacto-proink" id="contacto" aria-label="Cotiza tu proyecto con ProINK">
+  <div class="contacto-proink__inner">
+
+    <h2 class="contacto-proink__title">
+      Cotiza tu proyecto con nosotros
+    </h2>
+
+    <p class="contacto-proink__sub">
+      Elige tu canal preferido y cuéntanos qué necesitas. Te respondemos lo antes posible.
+    </p>
+
+    <div class="contacto-proink__icons" role="list">
+
+      <!-- FACEBOOK -->
+      <a
+        class="contacto-proink__icon"
+        role="listitem"
+        href="https://www.facebook.com/profile.php?id=61553374752364"
+        target="_blank"
+        rel="noopener"
+        aria-label="Abrir Facebook de ProINK"
+      >
+        <img src="imgs/logo-facebook.png" alt="Facebook" />
+        <span class="contacto-proink__label">Facebook</span>
+      </a>
+
+      <!-- WHATSAPP -->
+      <a
+        class="contacto-proink__icon"
+        role="listitem"
+        href="https://wa.me/5214461123494?text=Hola%20ProINK,%20quiero%20cotizar%20un%20proyecto%20personalizado"
+        target="_blank"
+        rel="noopener"
+        aria-label="Cotizar por WhatsApp"
+      >
+        <img src="imgs/icono-whatsapp.png" alt="WhatsApp" />
+        <span class="contacto-proink__label">WhatsApp</span>
+      </a>
+
+     <!-- EMAIL (NO REDIRIGE – ABRE MODAL) -->
+<button
+  class="contacto-proink__icon contacto-proink__icon--email"
+  role="listitem"
+  type="button"
+  aria-label="Mostrar correo de ProINK"
+  aria-controls="emailMiniModal"
+  aria-expanded="false"
+  id="emailBtn"
+>
+  <img src="imgs/logo-email.webp" alt="Correo" />
+  <span class="contacto-proink__label">Correo</span>
+</button>
+
+
+    </div>
+  </div>
+
+  
+</section>
+
+
+<!-- =========================================================
+  FOOTER SIMPLE (solo texto, blanco y pequeño)
+========================================================== -->
+<footer class="footer-simple" aria-label="Pie de página">
+  <p class="footer-simple__text">
+    © <span id="year"></span> 2026 ProINK Printed Designs. Todos los derechos reservados.
+  </p>
+  <p class="footer-simple__text">
+    Sitio web elaborado por <strong>Daenna González</strong>.
+  </p>
+</footer>
+
+
+
   </main>
 
+  <!-- ✅ Burbuja WhatsApp -->
   <a
     href="https://wa.me/5214461123494"
     class="whatsapp-float"
@@ -113,6 +1101,8 @@
     <img src="imgs/icono-whatsapp.png" alt="WhatsApp" class="whatsapp-float__icon" />
   </a>
 
+  <!-- ✅ JS -->
   <script src="js-principal.js"></script>
+    
 </body>
 </html>
