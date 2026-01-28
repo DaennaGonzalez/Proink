@@ -354,3 +354,171 @@ document.addEventListener("DOMContentLoaded", () => {
   // si el navegador bloquea, se activa al primer toque
   window.addEventListener("touchstart", tryPlay, { once: true });
 });
+
+
+
+
+//EFECTO REBOTE ELEMENTOSDE SECCION PARA TU NEGOCIO 
+
+/* =========================================================
+   EFECTO “REBOTE” (hover) — Sección Vida a tus ideas
+   ✅ Aplica a las 6 tarjetas completas (texto + imagen)
+   ✅ Rebota también la etiqueta del título
+   ✅ Sin librerías, solo JS + Web Animations API
+   ✅ Pega ESTO AL FINAL de tu main.js
+========================================================= */
+
+(() => {
+  // Si no existe la sección, no hacemos nada
+  const contenedor = document.querySelector('.vida-ideas');
+  if (!contenedor) return;
+
+  // Selecciona las 6 tarjetas (ajusta el selector si tu clase cambia)
+  const tarjetas = Array.from(contenedor.querySelectorAll('.tarjeta-servicio'));
+
+  // Reutilizables: animaciones
+  const bounceIn = (el, scale = 1.02, y = -6, dur = 360) => {
+    if (!el) return;
+
+    // Cancela animaciones previas
+    el.getAnimations?.().forEach(a => a.cancel());
+
+    el.animate(
+      [
+        { transform: 'translateY(0) scale(1)', offset: 0 },
+        { transform: `translateY(${y}px) scale(${scale})`, offset: 0.55 },
+        { transform: 'translateY(0) scale(1)', offset: 1 }
+      ],
+      { duration: dur, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'both' }
+    );
+  };
+
+  const tagPop = (el, scale = 1.05, dur = 220) => {
+    if (!el) return;
+
+    el.getAnimations?.().forEach(a => a.cancel());
+
+    el.animate(
+      [
+        { transform: 'translateY(0) scale(1)' },
+        { transform: `translateY(-2px) scale(${scale})` },
+        { transform: 'translateY(0) scale(1)' }
+      ],
+      { duration: dur, easing: 'cubic-bezier(.2,.9,.2,1)', fill: 'both' }
+    );
+  };
+
+  // Helper: agrega listeners de manera segura
+  const bindHover = (card) => {
+    if (!card) return;
+
+    const mediaImg = card.querySelector('.tarjeta-servicio__media img');
+    const titulo = card.querySelector('.tarjeta-servicio__titulo');
+
+    // Hover/Focus: rebote
+    const onEnter = () => {
+      // Tarjeta completa
+      bounceIn(card, 1.07, -8, 480);
+
+      // Imagen (un poquito más)
+      bounceIn(mediaImg, 1.07, -10, 560);
+
+      // Título (pop)
+      tagPop(titulo, 1.09, 410);
+    };
+
+    // Salida: vuelve suave a normal (por si quedó algún transform)
+    const onLeave = () => {
+      [card, mediaImg, titulo].forEach((el) => {
+        if (!el) return;
+        el.getAnimations?.().forEach(a => a.cancel());
+        el.style.transform = 'translateY(0) scale(1)';
+      });
+    };
+
+    card.addEventListener('mouseenter', onEnter);
+    card.addEventListener('mouseleave', onLeave);
+
+    // Accesibilidad: teclado
+    card.addEventListener('focusin', onEnter);
+    card.addEventListener('focusout', onLeave);
+
+    // En móvil no hay hover real; al tocar, hacemos “tap bounce”
+    card.addEventListener('touchstart', () => onEnter(), { passive: true });
+    card.addEventListener('touchend', () => onLeave(), { passive: true });
+  };
+
+  tarjetas.forEach(bindHover);
+})();
+const onEnter = () => {
+  bounceIn(card, 1.02, -8, 480);
+  bounceIn(mediaImg, 1.04, -12, 520);
+  tagPop(titulo, 1.08, 420);
+};
+
+
+/* =========================================================
+   COPIAR CORREO AL PORTAPAPELES (EMAIL)
+========================================================= */
+const emailBtn = document.getElementById('emailBtn');
+
+if (emailBtn) {
+  emailBtn.addEventListener('click', () => {
+    const email = 'proinkqro@gmail.com';
+
+    navigator.clipboard.writeText(email).then(() => {
+      // Feedback visual
+      emailBtn.classList.add('is-copied');
+
+      // Cambiar texto temporalmente
+      const label = emailBtn.querySelector('.contacto-proink__label');
+      const originalText = label.textContent;
+      label.textContent = '¡Correo copiado! proinkqro@gmail.com';
+
+      setTimeout(() => {
+        label.textContent = originalText;
+        emailBtn.classList.remove('is-copied');
+      }, 1600);
+    }).catch(err => {
+      console.error('Error al copiar el correo:', err);
+    });
+  });
+}
+
+/* =========================================================
+   EFECTO GELATINA INTENSO — WHATSAPP FLOAT
+========================================================= */
+(function () {
+  const whatsapp = document.querySelector('.whatsapp-float');
+  if (!whatsapp) return;
+
+  function gelatinaFuerte(element, duration = 850) {
+    element.animate(
+      [
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.35, 0.70)' },
+        { transform: 'scale(0.75, 1.33)' },
+        { transform: 'scale(1.25, 0.85)' },
+        { transform: 'scale(0.9, 1.6)' },
+        { transform: 'scale(1.08)' },
+        { transform: 'scale(1)' }
+      ],
+      {
+        duration,
+        easing: 'cubic-bezier(.25,1.7,.45,1)',
+        fill: 'both'
+      }
+    );
+  }
+
+  // Hover → rebote grande
+  whatsapp.addEventListener('mouseenter', () => {
+    gelatinaFuerte(whatsapp, 750);
+  });
+
+  // Click → rebote MÁS fuerte
+  whatsapp.addEventListener('click', () => {
+    gelatinaFuerte(whatsapp, 1000);
+  });
+})();
+

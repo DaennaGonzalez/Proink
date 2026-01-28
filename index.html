@@ -306,66 +306,381 @@
 
 
 
-      <!-- =====================================================
-        PRÓXIMO BLOQUE (placeholder)
-        - Aquí inicia “otra zona” y ahí se verá manchacurva.webp
-      ====================================================== -->
-      <section class="home-next-block" aria-label="Siguiente bloque (placeholder)">
-        <div class="home-next-block__inner">
-          <h2 class="home-next-block__title">Siguiente sección (placeholder)</h2>
-          <p class="home-next-block__text">
-            Aquí después puedes agregar una preview, botones o un bloque de bienvenida.
-          </p>
+
+
+<!-- =========================================================
+  SECCIÓN: DESCRIPCIÓN PROINK
+========================================================== -->
+<section class="about-proink" aria-label="Sobre ProINK Printed Designs">
+
+  <div class="about-proink__inner">
+
+    <!-- Imagen izquierda (empleada) -->
+    <div class="about-proink__image">
+      <img
+        src="imgs/chica-empleada.webp"
+        alt="Equipo ProINK Printed Designs"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <!-- Contenedor texto + fondo -->
+    <div class="about-proink__content">
+
+      <!-- Fondo verde translúcido -->
+      <div class="about-proink__card">
+
+        <p class="about-proink__text">
+          En <strong>ProINK Printed Designs</strong> transformamos ideas en
+          impresiones que destacan. Somos un estudio creativo especializado en
+          serigrafía y personalización de productos, combinando diseño, color y
+          calidad para dar vida a cada proyecto.
+          <br /><br />
+          Nos apasiona convertir cada prenda o cada objeto en una pieza única,
+          cuidando cada detalle desde el concepto hasta la impresión final.
+          Creemos que la creatividad no tiene límites y que cada diseño es una
+          forma de expresión que merece ser impresa con excelencia.
+        </p>
+
+        <!-- Imagen inferior (idea → diseño → impresión) -->
+        <div class="about-proink__steps">
+          <img
+            src="imgs/idea-diseno-impresion.webp"
+            alt="Proceso creativo: Idea, Diseño e Impresión"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
-      </section>
-    </section>
+
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
+<!-- =========================================================
+  SECCIÓN: DAMOS VIDA A TUS IDEAS (bloques + servicios + cierre)
+========================================================== -->
+<section class="vida-ideas" aria-label="En Proink damos vida a tus ideas">
 
+  <!-- ====== Encabezado (centrado) ====== -->
+  <div class="vida-ideas__header">
+    <h2 class="vida-ideas__titulo">
+      En Proink <span class="vida-ideas__titulo--amarillo">damos vida</span> a tus ideas
+    </h2>
 
+    <p class="vida-ideas__descripcion">
+      En Proink Printed Designs nos especializamos en impresión y personalización de productos para todo tipo de necesidades.
+      <br />
+      Trabajamos cada proyecto con cuidado, creatividad y materiales de calidad para que el resultado se vea profesional y llamativo.
+    </p>
 
-
-<!-- =====================================================
-        SECCION NUEVA
-      ===================
-
-
-      <!-=====================================================
-        OTRA SECCIÒN
-      ===================
-
-
-
-      
-
-  </main>
-
-
-
-<!-=====================================================
-        SECCION NUEVA
-      ===================
-
-
-      <!-=====================================================
-        OTRA SECCIÒN
-      ===================
-
-
-
-
+    <!-- Imagen central -->
+    <div class="vida-ideas__imagen-central">
+      <img
+        src="imgs/vida-a-tus-ideas.webp"
+        alt="Productos personalizados Proink"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
 
 
   <!-- =========================================================
-    FOOTER
+    BLOQUE 1 (2 tarjetas): OFICINA / EVENTOS
   ========================================================== -->
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <p class="site-footer__text">
-        © <span id="year"></span> 2026 PROINK Printed Designs
-      </p>
+  <div class="vida-ideas__bloque vida-ideas__bloque--uno" aria-label="Servicios: Oficina y Eventos">
+    <div class="vida-ideas__bloque-inner">
+
+      <!-- Tarjeta 1: Oficina (imagen izquierda) -->
+      <article class="tarjeta-servicio tarjeta-servicio--imagen-izq" aria-label="Para tu oficina">
+        <div class="tarjeta-servicio__media">
+          <img
+            src="imgs/para-oficina.webp"
+            alt="Productos para oficina"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="tarjeta-servicio__contenido">
+          <h3 class="tarjeta-servicio__titulo">
+            Para tu <span class="tarjeta-servicio__titulo-resaltado">OFICINA</span>
+          </h3>
+
+          <p class="tarjeta-servicio__texto">
+            Diseñamos e imprimimos soluciones que hacen de tu oficina un espacio funcional y con identidad.
+            Desde señalización interna, vinil decorativo, cuadros motivacionales y letreros, hasta papelería y materiales
+            personalizados que refuerzan la imagen de tu empresa y crean un ambiente profesional.
+          </p>
+        </div>
+      </article>
+
+      <!-- Tarjeta 2: Eventos (imagen derecha) -->
+      <article class="tarjeta-servicio tarjeta-servicio--imagen-der" aria-label="Para tus eventos">
+        <div class="tarjeta-servicio__contenido">
+          <h3 class="tarjeta-servicio__titulo">
+            🎊 Para tus <span class="tarjeta-servicio__titulo-resaltado">EVENTOS</span>
+          </h3>
+
+          <p class="tarjeta-servicio__texto">
+            Diseñamos e imprimimos todo lo necesario para eventos sociales y especiales.
+            Desde letreros de bienvenida, menús, papelería creativa y decoración,
+            hasta piezas personalizadas que marcan la diferencia.
+          </p>
+        </div>
+
+        <div class="tarjeta-servicio__media">
+          <img
+            src="imgs/para-eventos.webp"
+            alt="Productos para eventos"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </article>
+
     </div>
-  </footer>
+  </div>
+
+
+  <!-- =========================================================
+    BLOQUE 2 (2 tarjetas): NEGOCIO / EQUIPO
+  ========================================================== -->
+  <div class="vida-ideas__bloque vida-ideas__bloque--dos" aria-label="Servicios: Negocio y Equipo">
+    <div class="vida-ideas__bloque-inner">
+
+      <!-- Tarjeta 3: Negocio (imagen izquierda) -->
+      <article class="tarjeta-servicio tarjeta-servicio--imagen-izq" aria-label="Para tu negocio">
+        <div class="tarjeta-servicio__media">
+          <img
+            src="imgs/para-negocio.webp"
+            alt="Material para negocios"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="tarjeta-servicio__contenido">
+          <h3 class="tarjeta-servicio__titulo">
+            💼 Para tu <span class="tarjeta-servicio__titulo-resaltado">NEGOCIO</span>
+          </h3>
+
+          <p class="tarjeta-servicio__texto">
+            Ayudamos a fortalecer la imagen de tu marca.
+            Imprimimos tarjetas de presentación, volantes, etiquetas, menús, papelería corporativa y material publicitario
+            para que tu negocio se vea profesional.
+          </p>
+        </div>
+      </article>
+
+      <!-- Tarjeta 4: Equipo (imagen derecha) -->
+      <article class="tarjeta-servicio tarjeta-servicio--imagen-der" aria-label="Para tu equipo o empresa">
+        <div class="tarjeta-servicio__contenido">
+          <h3 class="tarjeta-servicio__titulo">
+            Para tu <span class="tarjeta-servicio__titulo-resaltado">EQUIPO</span> o <span class="tarjeta-servicio__titulo-resaltado">EMPRESA</span>
+          </h3>
+
+          <p class="tarjeta-servicio__texto">
+            Personalizamos uniformes, playeras, polos y gorras con bordado, serigrafía o impresión,
+            ideales para empresas, equipos de trabajo y promociones.
+          </p>
+        </div>
+
+        <div class="tarjeta-servicio__media">
+          <img
+            src="imgs/para-equipo.webp"
+            alt="Uniformes y prendas personalizadas"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+
+  <!-- =========================================================
+    BLOQUE 3 (2 tarjetas): PRODUCCIÓN / INSTALACIÓN
+  ========================================================== -->
+  <div class="vida-ideas__bloque vida-ideas__bloque--tres" aria-label="Servicios: Producción e Instalación">
+    <div class="vida-ideas__bloque-inner">
+
+      <!-- Tarjeta 5: Producción (imagen izquierda) -->
+      <article class="tarjeta-servicio tarjeta-servicio--imagen-izq" aria-label="Producción e impresión">
+        <div class="tarjeta-servicio__media">
+          <img
+            src="imgs/produccion-impresion.webp"
+            alt="Producción e impresión"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="tarjeta-servicio__contenido">
+          <h3 class="tarjeta-servicio__titulo">
+            🖨️ Producción e <span class="tarjeta-servicio__titulo-resaltado">IMPRESIÓN</span>
+          </h3>
+
+          <p class="tarjeta-servicio__texto">
+            Contamos con tecnología para ofrecer impresión de alta calidad en diferentes materiales como vinil, lona, rígidos,
+            papel y textiles, cuidando cada detalle del proceso.
+          </p>
+        </div>
+      </article>
+
+      <!-- Tarjeta 6: Instalación (imagen derecha) -->
+      <article class="tarjeta-servicio tarjeta-servicio--imagen-der" aria-label="Instalación y proyectos especiales">
+        <div class="tarjeta-servicio__contenido">
+          <h3 class="tarjeta-servicio__titulo">
+            Instalación y <span class="tarjeta-servicio__titulo-resaltado">PROYECTOS ESPECIALES</span>
+          </h3>
+
+          <p class="tarjeta-servicio__texto">
+            Realizamos producción e instalación de señalética, letreros, vinil decorativo, displays y proyectos personalizados
+            para interiores y exteriores.
+          </p>
+        </div>
+
+        <div class="tarjeta-servicio__media">
+          <img
+            src="imgs/instalacion-proyespeciales.webp"
+            alt="Instalación y proyectos especiales"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+
+  <!-- =========================================================
+    CIERRE: ALIADO + TEXTO + IMAGEN + FRASE + LOGO
+  ========================================================== -->
+  <div class="vida-ideas__cierre" aria-label="Proink es tu aliado en impresión">
+
+    <h3 class="vida-ideas__aliado">
+      ✨ Proink es tu <span class="vida-ideas__aliado-resaltado">aliado</span> en impresión
+    </h3>
+
+    <p class="vida-ideas__cierre-texto">
+      Ya sea para una fiesta, un evento, un negocio o un proyecto especial,
+      <br />
+      en Proink te ayudamos a transformar tus ideas en algo real.
+    </p>
+
+    <div class="vida-ideas__cierre-imagen">
+      <img
+        src="imgs/imagina-nosotros-imprimimos.webp"
+        alt="Tú imagina, nosotros lo imprimimos"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <p class="vida-ideas__frase-final">
+      Tú imagina, <span class="vida-ideas__frase-final--gradiente">nosotros lo imprimimos.</span>
+    </p>
+
+    <div class="vida-ideas__logo-final">
+      <img
+        src="imgs/logo-proink.webp"
+        alt="Proink Printed Designs"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+  </div>
+
+</section>
+
+  
+<!-- =========================================================
+  SECCIÓN: CONTACTO / COTIZA (FINAL)
+  - Facebook / WhatsApp: links normales
+  - Email: abre un mini modal con el correo (se cierra con ✕)
+========================================================== -->
+<section class="contacto-proink" id="contacto" aria-label="Cotiza tu proyecto con ProINK">
+  <div class="contacto-proink__inner">
+
+    <h2 class="contacto-proink__title">
+      Cotiza tu proyecto con nosotros
+    </h2>
+
+    <p class="contacto-proink__sub">
+      Elige tu canal preferido y cuéntanos qué necesitas. Te respondemos lo antes posible.
+    </p>
+
+    <div class="contacto-proink__icons" role="list">
+
+      <!-- FACEBOOK -->
+      <a
+        class="contacto-proink__icon"
+        role="listitem"
+        href="https://www.facebook.com/profile.php?id=61553374752364"
+        target="_blank"
+        rel="noopener"
+        aria-label="Abrir Facebook de ProINK"
+      >
+        <img src="imgs/logo-facebook.png" alt="Facebook" />
+        <span class="contacto-proink__label">Facebook</span>
+      </a>
+
+      <!-- WHATSAPP -->
+      <a
+        class="contacto-proink__icon"
+        role="listitem"
+        href="https://wa.me/5214461123494?text=Hola%20ProINK,%20quiero%20cotizar%20un%20proyecto%20personalizado"
+        target="_blank"
+        rel="noopener"
+        aria-label="Cotizar por WhatsApp"
+      >
+        <img src="imgs/icono-whatsapp.png" alt="WhatsApp" />
+        <span class="contacto-proink__label">WhatsApp</span>
+      </a>
+
+     <!-- EMAIL (NO REDIRIGE – ABRE MODAL) -->
+<button
+  class="contacto-proink__icon contacto-proink__icon--email"
+  role="listitem"
+  type="button"
+  aria-label="Mostrar correo de ProINK"
+  aria-controls="emailMiniModal"
+  aria-expanded="false"
+  id="emailBtn"
+>
+  <img src="imgs/logo-email.webp" alt="Correo" />
+  <span class="contacto-proink__label">Correo</span>
+</button>
+
+
+    </div>
+  </div>
+
+  
+</section>
+
+
+<!-- =========================================================
+  FOOTER SIMPLE (solo texto, blanco y pequeño)
+========================================================== -->
+<footer class="footer-simple" aria-label="Pie de página">
+  <p class="footer-simple__text">
+    © <span id="year"></span> 2026 ProINK Printed Designs. Todos los derechos reservados.
+  </p>
+  <p class="footer-simple__text">
+    Sitio web elaborado por <strong>Daenna González</strong>.
+  </p>
+</footer>
+
+
 
   <!-- =========================================================
     JS
@@ -392,13 +707,6 @@
       - Tamaño de manchas (width en %)
       - Posición top/right/left/bottom en %
   ========================================================== -->
-
-
-
-
-
-
-
 
 
 

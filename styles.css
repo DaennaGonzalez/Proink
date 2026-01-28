@@ -1066,3 +1066,1108 @@ body.menu-open{
   /* ✅ ESTE ES EL ESPACIO */
   margin-top: clamp(60px, 12vw, 70px);
 }
+
+
+
+/* =========================================================
+   SECCIÓN: ABOUT PROINK (estilo como "Siguiente sección")
+   - Glass oscuro + texto blanco con sombra
+   - Recuadro llega casi hasta la imagen de pasos
+========================================================= */
+.about-proink{
+  position: relative;
+  z-index: 1;
+  width: 100%;
+   padding: 30px 0 0;
+}
+
+/* Contenedor principal */
+.about-proink__inner{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(260px, 420px) 1fr;
+  align-items: center;
+  gap: clamp(18px, 4vw, 42px);
+}
+
+/* Imagen izquierda (empleada) */
+.about-proink__image{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.about-proink__image img{
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 32px rgba(0,0,0,.28));
+}
+
+/* Columna derecha */
+.about-proink__content{
+  position: relative;
+}
+
+/* ===== CARD GLASS (igual estilo al placeholder) ===== */
+.about-proink__card{
+  position: relative;
+  z-index: 2;
+
+  /* 🔥 le damos más espacio abajo para "abrazar" la imagen */
+  padding: clamp(22px, 2.6vw, 30px);
+  padding-bottom: clamp(52px, 6vw, 88px);
+
+  border-radius: 22px;
+
+  /* igual vibe que tu home-next-block__inner */
+  background: rgba(0,0,0,.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+}
+
+/* Texto blanco + sombra */
+.about-proink__text{
+  margin: 0;
+  color: #fff;
+
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.65;
+  font-weight: 500;
+
+  text-shadow: 0 2px 10px rgba(0,0,0,.55);
+}
+
+/* Resaltar nombre sin meter negro (se mantiene blanco) */
+.about-proink__text strong{
+  color: #fff;
+  font-weight: 800;
+}
+
+/* ===== Imagen pasos (pegada al borde inferior del recuadro) ===== */
+.about-proink__steps{
+  position: absolute;
+
+  /* aquí está el "pegado": sube poquito para que parezca que sale del recuadro */
+  bottom: clamp(-24px, -2.2vw, -18px);
+
+  /* alineación derecha como en referencia */
+  right: clamp(10px, 2.6vw, 26px);
+
+  z-index: 3;
+  pointer-events: none;
+}
+
+.about-proink__steps img{
+  width: min(900px, 92%);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 28px rgba(0,0,0,.34));
+}
+
+.about-proink__steps img{
+  transform: translateY(12vw);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+/* =========================
+   RESPONSIVE (MÓVIL) — CORREGIDO
+   - Muchacha más pegada al recuadro
+   - “Marcos” más anchos (padding) para que el texto no quede a la orilla
+   - Steps (idea/diseño/impresión) centrado y estable en móvil
+========================= */
+@media (max-width: 980px){
+
+  .about-proink__inner{
+    grid-template-columns: 1fr;
+    gap: 12px; /* antes 30px: esto pegó más la imagen al recuadro */
+  }
+
+  /* Imagen chica: más cerca del recuadro */
+  .about-proink__image{
+    margin-bottom: -18px; /* ⬅️ pega la imagen al card */
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-proink__image img{
+    max-width: 420px;
+    width: min(420px, 92vw);
+    height: auto;
+    display: block;
+  }
+
+  /* Card más ancho + más padding (marcos) */
+  .about-proink__card{
+    width: min(92vw, 760px);
+    margin: 0 auto;
+    padding: 20px 18px 12px; /* ⬅️ marcos más anchos */
+  }
+
+  /* Texto con buen respiro */
+  .about-proink__text{
+    font-size: clamp(14px, 3.6vw, 16px);
+    line-height: 1.55;
+  }
+
+  /* Steps: NO flotante, centrado y que no “salte” */
+  .about-proink__steps{
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .about-proink__steps img{
+    width: min(420px, 92vw);
+    height: auto;
+    display: block;
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 520px){
+
+  .about-proink{
+    padding: 22px 0 42px;
+  }
+
+  /* Aún más pegado en móvil chico */
+  .about-proink__image{
+    margin-bottom: -22px;
+  }
+
+  /* Card más compacto pero con padding suficiente */
+  .about-proink__card{
+    border-radius: 18px;
+    width: min(94vw, 520px);
+   padding: 20px 18px 12px; /* ⬅️ evita texto pegado a la orilla */
+  }
+
+  .about-proink__text{
+    font-size: clamp(14px, 4.1vw, 16px);
+  }
+
+  .about-proink__steps img{
+    width: min(380px, 94vw);
+    transform: translateY(-6px);
+  }
+}
+
+
+/*DISEÑO SECCION DE TEXTO PARA TU NEGOCIO Y ESAS
+
+/* =========================================================
+   SECCIÓN: VIDA A TUS IDEAS (CSS) — v2 (como pediste)
+   ✅ Marco / glass SOLO en el bloque de TEXTO (título + párrafo)
+   ✅ La IMAGEN NO tiene marco (va “suelta”)
+   ✅ Imagen pegada al bloque de texto (gap pequeño)
+   ✅ El degradado VA EN EL MISMO RECTÁNGULO DEL TÍTULO (tipo etiqueta)
+   ✅ Colores degradados estilo menú (azul + amarillo)
+   ✅ Responsive: alterna izq/der en desktop, apila en móvil
+========================================================= */
+
+/* =========================
+   VARIABLES (AJUSTES RÁPIDOS)
+========================= */
+:root{
+  --vida-max: 1200px;
+
+  /* glass del bloque texto */
+  --vida-textbox-bg: rgba(255,255,255,.07);
+  --vida-textbox-border: rgba(255,255,255,.14);
+  --vida-textbox-blur: 12px;
+  --vida-textbox-radius: 24px;
+
+  /* sombras */
+  --vida-shadow: 0 18px 45px rgba(0,0,0,.30);
+
+  /* textos */
+  --vida-text: rgba(255,255,255,.92);
+  --vida-text-soft: rgba(255,255,255,.84);
+
+  /* etiqueta (título) degradado estilo menú */
+  --vida-tag-grad: linear-gradient(
+    90deg,
+    rgba(11, 207, 241, .90) 0%,
+    rgba(250, 255, 18, .90) 100%
+  );
+  --vida-tag-text: #000;
+
+  /* espacios */
+  --vida-pad-y: clamp(26px, 4vw, 70px);
+  --vida-gap: clamp(10px, 1.2vw, 14px); /* 👈 más pegado imagen-texto */
+  --vida-card-pad: clamp(14px, 2vw, 22px);
+
+  /* tipografías */
+  --vida-title: clamp(22px, 3vw, 40px);
+  --vida-p: clamp(14px, 1.2vw, 17px);
+}
+
+/* =========================
+   CONTENEDOR GENERAL
+========================= */
+.vida-ideas{
+  position: relative;
+  z-index: 2;
+  padding: var(--vida-pad-y) 0;
+}
+
+.vida-ideas__header,
+.vida-ideas__bloque-inner,
+.vida-ideas__cierre{
+  width: min(var(--vida-max), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+/* =========================
+   HEADER (TÍTULO + TEXTO + IMAGEN CENTRAL)
+========================= */
+.vida-ideas__header{
+  text-align: center;
+  display: grid;
+  gap: 14px;
+  margin-bottom: clamp(18px, 2.4vw, 28px);
+}
+
+.vida-ideas__titulo{
+  margin: 0;
+  font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-size: var(--vida-title);
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.55);
+}
+
+.vida-ideas__titulo--amarillo{
+  color: var(--slogan-yellow, #faff12);
+}
+
+.vida-ideas__descripcion{
+  margin: 0 auto;
+  max-width: 980px;
+  font-size: var(--vida-p);
+  line-height: 1.7;
+  color: var(--vida-text-soft);
+  text-shadow: 0 2px 10px rgba(0,0,0,.40);
+}
+
+.vida-ideas__imagen-central{
+  margin-top: clamp(8px, 1.6vw, 14px);
+  display: grid;
+  place-items: center;
+}
+
+.vida-ideas__imagen-central img{
+  width: min(980px, 100%);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 40px rgba(0,0,0,.35));
+}
+
+/* =========================
+   BLOQUES (3) + LISTA DE TARJETAS
+========================= */
+.vida-ideas__bloque{
+  margin-top: clamp(16px, 3vw, 26px);
+}
+
+.vida-ideas__bloque-inner{
+  display: grid;
+  gap: clamp(14px, 2vw, 20px);
+}
+
+/* =========================
+   TARJETA SERVICIO
+   - NO marco en imagen
+   - marco SOLO en texto (contenido)
+========================= */
+.tarjeta-servicio{
+  display: grid;
+  grid-template-columns: 1fr 1.05fr; /* imagen + texto */
+  align-items: center;
+  gap: var(--vida-gap);
+}
+
+/* Imagen suelta */
+.tarjeta-servicio__media{
+  min-height: clamp(220px, 22vw, 340px);
+  display: grid;
+  place-items: center;
+}
+
+.tarjeta-servicio__media img{
+  width: 100%;
+  height: 100%;
+  max-height: 360px;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 16px 28px rgba(0,0,0,.30));
+}
+
+/* Caja de texto (glass) */
+.tarjeta-servicio__contenido{
+  background: var(--vida-textbox-bg);
+  border: 1px solid var(--vida-textbox-border);
+  border-radius: var(--vida-textbox-radius);
+
+  backdrop-filter: blur(var(--vida-textbox-blur));
+  -webkit-backdrop-filter: blur(var(--vida-textbox-blur));
+
+  box-shadow: var(--vida-shadow);
+
+  padding: var(--vida-card-pad);
+  display: grid;
+  gap: 12px;
+}
+
+/* Etiqueta del título (degradado tipo menú) */
+.tarjeta-servicio__titulo{
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  max-width: 100%;
+
+  padding: 10px 18px;
+  border-radius: 999px;
+
+  background: var(--vida-tag-grad);
+  color: var(--vida-tag-text);
+  font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: .2px;
+  font-size: clamp(18px, 2.2vw, 28px);
+
+  box-shadow: 0 12px 22px rgba(0,0,0,.18);
+  border: 1px solid rgba(0,0,0,.14);
+}
+
+/* Resaltado dentro del título (OFICINA/EVENTOS/etc.) */
+.tarjeta-servicio__titulo-resaltado{
+  margin-left: 8px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.18);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 10px 18px rgba(0,0,0,.12);
+}
+
+/* Texto */
+.tarjeta-servicio__texto{
+  margin: 0;
+  color: var(--vida-text);
+  font-size: clamp(14px, 1.15vw, 16px);
+  line-height: 1.65;
+  text-shadow: 0 2px 10px rgba(0,0,0,.30);
+}
+
+/* Alternancia imagen izq/der */
+.tarjeta-servicio--imagen-izq .tarjeta-servicio__media{ order: 0; }
+.tarjeta-servicio--imagen-izq .tarjeta-servicio__contenido{ order: 1; }
+
+.tarjeta-servicio--imagen-der .tarjeta-servicio__contenido{ order: 0; }
+.tarjeta-servicio--imagen-der .tarjeta-servicio__media{ order: 1; }
+
+/* =========================
+   CIERRE (ALIADO + IMG + FRASE + LOGO)
+   (Puedes dejarlo “glass” o quitarlo si lo quieres sin marco)
+========================= */
+.vida-ideas__cierre{
+  margin-top: clamp(26px, 4vw, 46px);
+  text-align: center;
+
+  padding: clamp(18px, 3vw, 30px);
+}
+
+.vida-ideas__aliado{
+  margin: 0 0 10px;
+  font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: .2px;
+  font-size: clamp(20px, 2.4vw, 34px);
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.55);
+}
+
+.vida-ideas__aliado-resaltado{
+  background: var(--vida-tag-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.vida-ideas__cierre-texto{
+  margin: 0 auto;
+  max-width: 900px;
+  font-size: var(--vida-p);
+  line-height: 1.7;
+  color: var(--vida-text-soft);
+  text-shadow: 0 2px 10px rgba(0,0,0,.40);
+}
+
+.vida-ideas__cierre-imagen{
+  margin-top: clamp(14px, 2vw, 20px);
+  display: grid;
+  place-items: center;
+}
+
+.vida-ideas__cierre-imagen img{
+  width: min(520px, 92%);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 36px rgba(0,0,0,.35));
+}
+
+.vida-ideas__frase-final{
+  margin: clamp(14px, 2vw, 18px) 0 0;
+  font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: .2px;
+  font-size: clamp(18px, 2.4vw, 34px);
+  text-shadow: 0 2px 12px rgba(0,0,0,.55);
+}
+
+.vida-ideas__frase-final--gradiente{
+  background: var(--vida-tag-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.vida-ideas__logo-final{
+  margin-top: clamp(10px, 1.6vw, 14px);
+  display: grid;
+  place-items: center;
+}
+
+.vida-ideas__logo-final img{
+  width: clamp(90px, 12vw, 150px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,.30));
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 980px){
+  .tarjeta-servicio{
+    grid-template-columns: 1fr;
+    gap: 12px; /* 👈 más pegado */
+  }
+
+  .tarjeta-servicio__media{
+    min-height: clamp(220px, 48vw, 320px);
+  }
+
+  /* En móvil: siempre imagen arriba + texto abajo */
+  .tarjeta-servicio--imagen-der .tarjeta-servicio__contenido{ order: 1; }
+  .tarjeta-servicio--imagen-der .tarjeta-servicio__media{ order: 0; }
+
+  .tarjeta-servicio__titulo{
+    justify-self: center; /* etiqueta centrada */
+    text-align: center;
+  }
+}
+
+@media (max-width: 520px){
+  .vida-ideas{
+    padding: clamp(18px, 7vw, 30px) 0;
+  }
+
+  .vida-ideas__header,
+  .vida-ideas__bloque-inner,
+  .vida-ideas__cierre{
+    width: min(var(--vida-max), calc(100% - 22px));
+  }
+
+  .tarjeta-servicio__contenido{
+    padding: 16px 16px 18px;
+    border-radius: 18px;
+  }
+
+  /* texto más cómodo */
+  .tarjeta-servicio__texto{
+    font-size: 4.1vw;
+    line-height: 1.65;
+  }
+}
+
+/* =========================================================
+   SECCIÓN FINAL: CONTACTO / COTIZA (ProINK)
+   - Estilo glass + brillo azul/amarillo
+   - Íconos con “rebote goma” (CSS) + realce al click
+   - Responsive
+========================================================= */
+
+/* Variables (si ya las tienes en :root, puedes omitir este bloque) */
+:root{
+  --contact-max: 1100px;
+  --contact-radius: 22px;
+  --contact-blur: 14px;
+
+  --contact-glass: rgba(255,255,255,.10);
+  --contact-border: rgba(255,255,255,.18);
+
+  --neon-a: rgba(11,207,241,.30);
+  --neon-b: rgba(250,255,18,.18);
+
+  --contact-shadow:
+    0 18px 40px rgba(0,0,0,.28),
+    0 0 26px var(--neon-a),
+    0 0 18px var(--neon-b);
+
+  --contact-text-shadow: 0 2px 10px rgba(0,0,0,.65);
+
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
+
+/* =========================
+   SECCIÓN CONTENEDOR
+========================= */
+.contacto-proink{
+  position: relative;
+  z-index: 1;
+  padding: clamp(36px, 5vw, 70px) 0 clamp(34px, 5vw, 64px);
+}
+
+.contacto-proink__inner{
+  width: min(var(--contact-max), calc(100% - 32px));
+  margin: 0 auto;
+
+  border-radius: var(--contact-radius);
+  background: rgba(0,0,0,.14);
+  border: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 14px 28px rgba(0,0,0,.22);
+
+  padding: clamp(18px, 2.8vw, 34px);
+  text-align: center;
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+.contacto-proink__title{
+  margin: 0 0 10px;
+  font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: 1.05;
+  text-shadow: var(--contact-text-shadow);
+}
+
+.contacto-proink__sub{
+  margin: 0 auto clamp(18px, 2.5vw, 26px);
+  max-width: 820px;
+  font-size: clamp(14px, 1.25vw, 16px);
+  line-height: 1.55;
+  opacity: .92;
+  text-shadow: var(--contact-text-shadow);
+}
+
+/* =========================
+   GRID ICONOS
+========================= */
+.contacto-proink__icons{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: clamp(12px, 2.2vw, 22px);
+  align-items: stretch;
+}
+
+/* =========================
+   BOTÓN ICONO (LINK)
+========================= */
+.contacto-proink__icon{
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+  color: #fff;
+
+  border-radius: 20px;
+  padding: clamp(14px, 2vw, 18px);
+
+  /* glass neon */
+  background: var(--contact-glass);
+  border: 1px solid var(--contact-border);
+  backdrop-filter: blur(var(--contact-blur));
+  -webkit-backdrop-filter: blur(var(--contact-blur));
+
+  box-shadow: var(--contact-shadow);
+
+  /* animaciones */
+  transform: translateZ(0) scale(1);
+  transition:
+    transform .34s var(--ease),
+    box-shadow .34s var(--ease),
+    filter .34s var(--ease);
+}
+
+/* brillo suave extra */
+.contacto-proink__icon::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: 20px;
+  pointer-events:none;
+  background: linear-gradient(
+    135deg,
+    rgba(11,207,241,.14),
+    rgba(250,255,18,.10)
+  );
+  opacity: .85;
+}
+
+/* imagen */
+.contacto-proink__icon img{
+  width: clamp(52px, 5.4vw, 78px);
+  height: clamp(52px, 5.4vw, 78px);
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 12px 18px rgba(0,0,0,.25));
+}
+
+/* label */
+.contacto-proink__label{
+  font-weight: 800;
+  letter-spacing: .2px;
+  text-shadow: var(--contact-text-shadow);
+  font-size: clamp(13px, 1.2vw, 15px);
+  opacity: .98;
+}
+
+/* =========================
+   HOVER “REBOTE GOMA” (CSS)
+   - más notorio + duración cómoda
+========================= */
+.contacto-proink__icon:hover{
+  animation: contactoGoma .62s var(--ease) both;
+  filter: brightness(1.06);
+  box-shadow:
+    0 22px 48px rgba(0,0,0,.32),
+    0 0 30px rgba(11,207,241,.36),
+    0 0 22px rgba(250,255,18,.22);
+}
+
+@keyframes contactoGoma{
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.06); }
+  65%  { transform: scale(.98); }
+  100% { transform: scale(1.02); }
+}
+
+/* =========================
+   CLICK / ACTIVE (realce)
+========================= */
+.contacto-proink__icon:active{
+  transform: scale(.98);
+  filter: brightness(1.10);
+}
+
+/* Para el realce por JS (clase temporal) */
+.contacto-proink__icon.is-pressed{
+  filter: brightness(1.12);
+  box-shadow:
+    0 26px 56px rgba(0,0,0,.36),
+    0 0 34px rgba(11,207,241,.46),
+    0 0 26px rgba(250,255,18,.26);
+  transform: scale(1.03);
+}
+
+/* =========================
+   FOOTER FINAL
+========================= */
+.site-footer{
+  position: relative;
+  z-index: 1;
+  padding: 26px 0 34px;
+}
+
+.site-footer__inner{
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  text-align: center;
+
+  border-radius: 18px;
+  background: rgba(0,0,0,.14);
+  border: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  padding: 16px 14px;
+  box-shadow: 0 14px 26px rgba(0,0,0,.20);
+}
+
+.site-footer__text{
+  margin: 0;
+  opacity: .95;
+  text-shadow: var(--contact-text-shadow);
+  font-weight: 600;
+}
+
+.site-footer__credit{
+  margin: 10px 0 0;
+  opacity: .92;
+  text-shadow: var(--contact-text-shadow);
+  font-weight: 500;
+}
+
+.site-footer__credit strong{
+  font-weight: 800;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px){
+  .contacto-proink__icons{
+    grid-template-columns: 1fr;
+  }
+
+  .contacto-proink__icon{
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .site-footer__inner{
+    padding: 16px 12px;
+  }
+}
+
+@media (max-width: 420px){
+  .contacto-proink__inner{
+    padding: 16px 14px;
+    border-radius: 18px;
+  }
+
+  .contacto-proink__icon{
+    border-radius: 18px;
+  }
+}
+
+
+/*DISEÑO PARA ULTIMA SECCION Y FOOTER
+
+/* ============================================================
+  SECCIÓN: CONTACTO PROINK + FOOTER SIMPLE
+  (pegar AL FINAL de tu styles.css)
+============================================================ */
+
+/* =========================
+  CONTACTO (sección)
+========================= */
+.contacto-proink{
+  position: relative;
+  z-index: 2; /* encima de splashes */
+  padding: clamp(44px, 5vw, 70px) 0 clamp(26px, 4vw, 46px);
+}
+
+.contacto-proink__inner{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contacto-proink__title{
+  margin: 0 0 10px;
+  font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: 1.05;
+
+  color: #fff;
+  text-shadow: var(--shadow-text);
+}
+
+.contacto-proink__sub{
+  margin: 0 auto 18px;
+  max-width: 880px;
+  font-size: clamp(14px, 1.35vw, 18px);
+  line-height: 1.6;
+  opacity: .95;
+}
+
+/* =========================
+  ICONOS (cards clicables)
+========================= */
+.contacto-proink__icons{
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 1.5vw, 18px);
+  align-items: stretch;
+}
+
+.contacto-proink__icon{
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 22px;
+  background: rgba(0,0,0,.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  padding: clamp(14px, 1.6vw, 18px);
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+  color: #fff;
+
+  box-shadow: 0 18px 30px rgba(0,0,0,.22);
+  transition:
+    transform .22s var(--ease),
+    box-shadow .22s var(--ease),
+    filter .22s var(--ease),
+    border-color .22s var(--ease);
+}
+
+/* Para que el <button> se vea igual que <a> */
+.contacto-proink__icon--email{
+  width: 100%;
+  font-family: inherit;
+}
+
+/* Imagen del icono */
+.contacto-proink__icon img{
+  width: clamp(54px, 5.8vw, 78px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.28));
+}
+
+/* Etiqueta */
+.contacto-proink__label{
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-size: clamp(13px, 1.2vw, 16px);
+  text-shadow: var(--shadow-text);
+}
+
+/* Hover (rebote suave + “aluzado”) */
+.contacto-proink__icon:hover{
+  transform: translateY(-6px) scale(1.02);
+  filter: brightness(1.06);
+  border-color: rgba(255,255,255,.28);
+  box-shadow:
+    0 22px 40px rgba(0,0,0,.28),
+    0 0 24px rgba(11, 207, 241, .20),
+    0 0 18px rgba(250, 255, 18, .12);
+}
+
+/* Click (remarca) */
+.contacto-proink__icon:active{
+  transform: translateY(-2px) scale(0.99);
+  filter: brightness(1.12);
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.22),
+    0 0 22px rgba(11, 207, 241, .26),
+    0 0 18px rgba(250, 255, 18, .18);
+}
+
+/* Accesibilidad: focus visible */
+.contacto-proink__icon:focus-visible{
+  outline: 3px solid rgba(250, 255, 18, .65);
+  outline-offset: 4px;
+}
+
+/* =========================
+  MINI MODAL EMAIL
+========================= */
+.email-mini{
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none; /* cerrado */
+}
+
+.email-mini.is-open{
+  display: block;
+}
+
+.email-mini__overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.email-mini__panel{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -52%);
+  width: min(520px, calc(100% - 36px));
+
+  border-radius: 20px;
+  padding: 18px 16px 16px;
+
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 26px 60px rgba(0,0,0,.38);
+  animation: emailPop .22s var(--ease) both;
+}
+
+@keyframes emailPop{
+  0%   { transform: translate(-50%, -50%) scale(.96); opacity: 0; }
+  100% { transform: translate(-50%, -52%) scale(1); opacity: 1; }
+}
+
+.email-mini__close{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(90deg, rgba(11,207,241,.85), rgba(250,255,18,.85));
+  color: #000;
+  font-weight: 900;
+
+  box-shadow: 0 12px 22px rgba(0,0,0,.28);
+  transition: transform .18s var(--ease), filter .18s var(--ease);
+}
+
+.email-mini__close:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.email-mini__title{
+  margin: 6px 0 10px;
+  text-align: center;
+  font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: #fff;
+  text-shadow: var(--shadow-text);
+}
+
+.email-mini__mail{
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: .3px;
+  font-size: clamp(15px, 2.8vw, 18px);
+  color: #fff;
+  text-shadow: var(--shadow-text);
+
+  padding: 12px 10px;
+  border-radius: 16px;
+
+  background: rgba(0,0,0,.14);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+/* =========================
+  RESPONSIVE
+========================= */
+@media (max-width: 900px){
+  .contacto-proink__icons{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .contacto-proink__icon{
+    border-radius: 18px;
+  }
+}
+
+/* =========================
+  FOOTER SIMPLE
+========================= */
+.footer-simple{
+  position: relative;
+  z-index: 2;
+  padding: 18px 0 22px;
+}
+
+.footer-simple__text{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+  text-align: center;
+
+  color: rgba(255,255,255,.92);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.footer-simple__text + .footer-simple__text{
+  margin-top: 6px;
+}
+
+.footer-simple__text strong{
+  font-weight: 800;
+  color: rgba(255,255,255,.98);
+}
+
+
+
+/* =========================
+  EMAIL COPIADO – FEEDBACK
+========================= */
+.contacto-proink__icon--email.is-copied{
+  transform: scale(1.08);
+  box-shadow:
+    0 0 18px rgba(11, 207, 241, .45),
+    0 0 26px rgba(250, 255, 18, .35);
+}
+
+.contacto-proink__icon--email.is-copied img{
+  filter: brightness(1.15);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
