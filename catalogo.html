@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Catálogo — PRONK Printed Designs</title>
+  <title>Catálogo — PROINK</title>
 
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +12,312 @@
 
   <!-- Base -->
   <link rel="stylesheet" href="styles-base.css" />
+
+  <style>
+    /* =========================================================
+      CATÁLOGO — UI (neón verdoso + glass)
+      ✅ Título centrado
+      ✅ Sin texto extra debajo del título
+      ✅ Imagen final pegada al footer (sin espacios)
+      ✅ Si sobra, la imagen puede quedar “por debajo” del footer
+      ✅ Footer incluido
+    ========================================================= */
+
+    main.catalogo{
+      position: relative;
+      z-index: 1;
+      /* quitamos padding-bottom para que no genere hueco antes del footer */
+      padding-bottom: 0;
+    }
+
+    .catalogo__wrap{
+      width: min(1200px, calc(100% - 32px));
+      margin: clamp(22px, 4vw, 48px) auto 0;
+    }
+
+    /* Burbuja/título superior */
+    .page-bubble{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: .35px;
+      color: #fff;
+
+      background: linear-gradient(
+        90deg,
+        rgba(11, 207, 241, .95) 0%,
+        rgba(35, 255, 120, .92) 55%,
+        rgba(250, 255, 18, .90) 100%
+      );
+
+      border: 1px solid rgba(255,255,255,.22);
+
+      text-shadow:
+        0 2px 10px rgba(0,0,0,.55),
+        0 0 12px rgba(11, 207, 241, .55),
+        0 0 18px rgba(35, 255, 120, .38),
+        0 0 28px rgba(250, 255, 18, .22);
+
+      box-shadow:
+        0 18px 30px rgba(0,0,0,.22),
+        0 0 18px rgba(11, 207, 241, .35),
+        0 0 26px rgba(35, 255, 120, .28),
+        0 0 20px rgba(250, 255, 18, .18),
+        inset 0 0 18px rgba(255,255,255,.10);
+
+      position: relative;
+      overflow: visible;
+
+      margin: 0 auto 16px; /* ✅ centrado */
+    }
+
+    .page-bubble::after{
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: inherit;
+      background: linear-gradient(
+        90deg,
+        rgba(11, 207, 241, .30) 0%,
+        rgba(35, 255, 120, .26) 55%,
+        rgba(250, 255, 18, .20) 100%
+      );
+      filter: blur(16px);
+      opacity: .85;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Card principal */
+    .catalogo__card{
+      border-radius: 26px;
+      padding: clamp(18px, 2.6vw, 28px);
+
+      background: rgba(0,0,0,.14);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      box-shadow: 0 18px 42px rgba(0,0,0,.30);
+    }
+
+    /* Título (centrado) */
+    .catalogo__title{
+      margin: 0 0 18px;
+      text-align: center; /* ✅ */
+      font-size: clamp(30px, 3.6vw, 48px);
+      font-weight: 900;
+      letter-spacing: .25px;
+      font-family: "League Spartan", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+      text-shadow:
+        0 2px 10px rgba(0,0,0,.65),
+        0 0 16px rgba(35, 255, 120, .18),
+        0 0 18px rgba(11, 207, 241, .14);
+    }
+
+    /* Iframe */
+    .catalogo__viewer{
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+
+      box-shadow:
+        0 18px 40px rgba(0,0,0,.35),
+        0 0 22px rgba(11, 207, 241, .18),
+        0 0 18px rgba(35, 255, 120, .14);
+    }
+
+    .catalogo__viewer iframe{
+      width: 100%;
+      height: min(80vh, 880px);
+      border: 0;
+      display: block;
+    }
+
+    /* Botonera */
+    .catalogo__actions{
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      padding: 14px 22px;
+      border-radius: 999px;
+
+      text-decoration: none;
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 900;
+      letter-spacing: .3px;
+
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.10);
+      color: #fff;
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      box-shadow: 0 14px 26px rgba(0,0,0,.25);
+      transform: translateZ(0);
+
+      transition:
+        transform .18s var(--ease),
+        filter .18s var(--ease),
+        box-shadow .18s var(--ease),
+        background .18s var(--ease);
+    }
+
+    .btn:hover{
+      transform: translateY(-3px);
+      filter: brightness(1.08);
+      box-shadow:
+        0 18px 30px rgba(0,0,0,.30),
+        0 0 18px rgba(11, 207, 241, .20);
+    }
+
+    .btn--primary{
+      color: #000;
+      border: 1px solid rgba(0,0,0,.12);
+      background: linear-gradient(
+        90deg,
+        rgba(11, 207, 241, .92) 0%,
+        rgba(35, 255, 120, .90) 55%,
+        rgba(250, 255, 18, .88) 100%
+      );
+      box-shadow:
+        0 18px 30px rgba(0,0,0,.22),
+        0 0 18px rgba(11, 207, 241, .20),
+        0 0 16px rgba(35, 255, 120, .14);
+    }
+
+    /* ✅ Imagen final pegada al footer */
+    .catalogo__hero{
+      /* mismo ancho que wrap, centrado */
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;               /* ✅ sin margen arriba/abajo */
+      padding: 0;                    /* ✅ sin padding */
+      position: relative;
+      z-index: 0;                    /* ✅ por debajo del footer si se cruza */
+      pointer-events: none;
+    }
+
+    .catalogo__hero img{
+      width: min(920px, 100%);
+      height: auto;
+      display: block;
+      margin: 0 auto;
+
+      object-fit: contain;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      filter: none;
+
+      /* ✅ “pegar” visualmente hacia el footer */
+      transform: translateY(8px);
+    }
+
+    /* Footer */
+    footer.site-footer{
+      position: relative;
+      z-index: 2; /* ✅ el footer va encima si la imagen se pasa */
+      margin-top: 0; /* ✅ sin espacio entre imagen y footer */
+      padding: 0;
+    }
+
+    .footer__inner{
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+
+      border-radius: 24px 24px 0 0;
+      background: rgba(255,255,255,.08);
+      border-top: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      box-shadow: 0 -18px 40px rgba(0,0,0,.25);
+      overflow: hidden;
+    }
+
+    .footer__grid{
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 16px;
+      padding: clamp(18px, 2.4vw, 26px);
+      align-items: start;
+    }
+
+    .footer__title{
+      margin: 0 0 10px;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 900;
+      letter-spacing: .2px;
+      text-shadow: 0 2px 10px rgba(0,0,0,.55);
+    }
+
+    .footer__p{
+      margin: 0;
+      opacity: .95;
+      line-height: 1.65;
+    }
+
+    .footer__links{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer__links a{
+      color: rgba(255,255,255,.92);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .2px;
+      transition: transform .18s var(--ease), filter .18s var(--ease);
+      display: inline-block;
+    }
+
+    .footer__links a:hover{
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .footer__bottom{
+      text-align: center;
+      padding: 14px 12px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      opacity: .95;
+      padding-bottom: calc(14px + 10px); /* ✅ extra 10px debajo del © */
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .footer__grid{ grid-template-columns: 1fr; }
+      .catalogo__viewer iframe{ height: 76vh; }
+    }
+
+    @media (max-width: 520px){
+      .catalogo__wrap{ width: min(1200px, calc(100% - 26px)); }
+      .catalogo__hero{ width: min(1200px, calc(100% - 26px)); }
+      .btn{ width: 100%; }
+      .catalogo__hero img{ width: 100%; transform: translateY(10px); }
+    }
+  </style>
 </head>
 
 <body class="inner">
@@ -27,7 +333,7 @@
     <div class="header-inner">
 
       <a class="brand brand--small" href="index.html" aria-label="Ir a Inicio">
-        <img class="brand__logo brand__logo--small" src="imgs/logo-proink.webp" alt="PRONK">
+        <img class="brand__logo brand__logo--small" src="imgs/logo-proink.webp" alt="PROINK">
       </a>
 
       <div class="top-slogan" id="topSlogan">
@@ -84,64 +390,83 @@
   </header>
 
   <!-- Contenido -->
-  <main style="position:relative; z-index:1;">
-    <section style="
-      width:min(1200px, calc(100% - 32px));
-      margin: clamp(28px, 4vw, 48px) auto 0;
-      padding: clamp(22px, 3vw, 32px);
-      border-radius: 24px;
-      background: rgba(0,0,0,.14);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 14px 34px rgba(0,0,0,.28);
-    ">
-      <h1 style="
-        margin:0 0 18px;
-        font-size: clamp(26px, 3vw, 40px);
-        font-weight: 800;
-      ">
-        Catálogo
-      </h1>
+  <main class="catalogo">
+    <section class="catalogo__wrap">
+      <!-- ✅ burbuja centrada -->
+      <div class="page-bubble">Catálogo</div>
 
-      <!-- Visor Google Drive -->
-      <iframe
-        src="https://drive.google.com/file/d/1XpLa8mQYtb1hjMJ-hNFBGv13WBNopS2-/preview"
-        style="
-          width:100%;
-          height:80vh;
-          border:0;
-          border-radius:18px;
-          box-shadow: 0 18px 40px rgba(0,0,0,.35);
-          background:#000;
-        "
-        loading="lazy"
-        allow="autoplay"
-        title="Catálogo PRONK Printed Designs"
-      ></iframe>
+      <div class="catalogo__card">
+        <!-- ✅ Título centrado (sin texto extra) -->
+        <h1 class="catalogo__title">Catálogo PROINK</h1>
 
-      <!-- Botón descarga -->
-      <div style="margin-top:20px; text-align:center;">
-        <a
-          href="https://drive.google.com/file/d/1XpLa8mQYtb1hjMJ-hNFBGv13WBNopS2-/view"
-          target="_blank"
-          rel="noopener"
-          style="
-            display:inline-block;
-            padding:14px 26px;
-            border-radius:999px;
-            font-weight:800;
-            font-family:'Montserrat', system-ui, sans-serif;
-            text-decoration:none;
-            color:#000;
-            background: linear-gradient(90deg, rgba(255,0,200,.95), rgba(255,153,0,.95));
-            box-shadow:0 14px 26px rgba(0,0,0,.28);
-          "
-        >
-          Descargar catálogo en PDF
-        </a>
+        <div class="catalogo__viewer" aria-label="Visor de catálogo">
+          <iframe
+            src="https://drive.google.com/file/d/1a2IIfOhqNfU-IiKRJjzwmEdx98lOy9HT/preview"
+            loading="lazy"
+            allow="autoplay"
+            title="Catálogo PRONK Printed Designs"
+          ></iframe>
+        </div>
+
+        <div class="catalogo__actions" aria-label="Acciones del catálogo">
+          <a
+            class="btn btn--primary"
+            href="https://drive.google.com/file/d/1a2IIfOhqNfU-IiKRJjzwmEdx98lOy9HT/view"
+            target="_blank"
+            rel="noopener"
+          >
+            Ver / Descargar
+          </a>
+
+          <a class="btn" href="productos.html">Ir a Productos</a>
+        </div>
       </div>
     </section>
+
+    <!-- ✅ Imagen final pegada al footer -->
+    <section class="catalogo__hero" aria-hidden="true">
+      <img src="imgs/chico-comprando.webp" alt="">
+    </section>
   </main>
+
+  <!-- Footer (encima si la imagen se pasa) -->
+  <footer class="site-footer">
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__title">PRONK Printed Designs</h3>
+          <p class="footer__p">
+            Imprimimos tu idea. La hacemos realidad.<br>
+            Impresión, materiales, diseño y soluciones para tu marca.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Navegación</h3>
+          <ul class="footer__links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="quienes-somos.html">¿Quiénes somos?</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="produccion-instalacion.html">Producción e instalación</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Contacto</h3>
+          <ul class="footer__links">
+            <li><a href="https://wa.me/5214461123494" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="ubicacion.html">Ubicación</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        © 2026 PRONK Printed Designs
+      </div>
+    </div>
+  </footer>
 
   <!-- WhatsApp -->
   <a

@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>¿Qué tipo de impresión es mejor para tu proyecto? — Blog PRONK</title>
+  <meta name="description" content="Guía práctica para elegir el tipo de impresión ideal según uso, duración, acabado y presupuesto: vinil, lona, rígidos, DTF y más." />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Base -->
+  <link rel="stylesheet" href="../styles-base.css" />
+  <!-- CSS de artículos (recomendado: crea este archivo para TODOS los posts) -->
+  <!-- Si aún no lo tienes, igual funciona con el <style> de abajo -->
+  <!-- <link rel="stylesheet" href="blog-articles.css" /> -->
+
+  <style>
+    /* =========================================================
+      BLOG / ARTÍCULO — PRONK (plantilla)
+      ✅ Misma vibra: cian/verde/amarillo + glass
+      ✅ Tipografía: League Spartan / Montserrat
+      ✅ Botones con glow + rebote suave
+      ✅ Table of contents (TOC) sticky en desktop
+      ✅ Caja de “Checklist” y “Recomendación rápida”
+    ========================================================= */
+
+    main.post{
+      position: relative;
+      z-index: 1;
+      padding: clamp(16px, 2.5vw, 28px) 0 clamp(50px, 6vw, 90px);
+    }
+
+    .post__wrap{
+      width: min(1100px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    /* HERO */
+    .postHero{
+      border-radius: 30px;
+      padding: clamp(20px, 3vw, 34px);
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.38);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .postHero::after{
+      content:"";
+      position:absolute;
+      inset:-30px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(11,207,241,.22), transparent 55%),
+        radial-gradient(circle at 80% 35%, rgba(35,255,120,.18), transparent 55%),
+        radial-gradient(circle at 60% 92%, rgba(250,255,18,.12), transparent 55%);
+      filter: blur(14px);
+      pointer-events:none;
+    }
+
+    .postHero__top{
+      position: relative;
+      z-index: 1;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .postBadge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 16px;
+      border-radius: 999px;
+
+      font-weight: 900;
+      letter-spacing: .45px;
+      font-size: 12px;
+      text-transform: uppercase;
+
+      color:#fff;
+      background: rgba(0,0,0,.26);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 12px 22px rgba(0,0,0,.24);
+      text-shadow: 0 2px 10px rgba(0,0,0,.55);
+    }
+
+    .postMeta{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+      opacity:.95;
+      font-weight: 800;
+    }
+
+    .postMeta__dot{
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(11,207,241,.95), rgba(35,255,120,.90), rgba(250,255,18,.88));
+      box-shadow: 0 0 12px rgba(11,207,241,.35);
+    }
+
+    .postHero__title{
+      position: relative;
+      z-index: 1;
+      margin: 12px 0 10px;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: clamp(28px, 3.1vw, 48px);
+      letter-spacing: .2px;
+      line-height: 1.05;
+      text-shadow: var(--shadow-text);
+    }
+
+    .postHero__subtitle{
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      line-height: 1.7;
+      max-width: 860px;
+      opacity: .96;
+      font-size: clamp(15px, 1.15vw, 18px);
+    }
+
+    .postHero__actions{
+      position: relative;
+      z-index: 1;
+      margin-top: 16px;
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+
+    .btnNeon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+
+      padding: 14px 18px;
+      border-radius: 999px;
+      text-decoration:none;
+
+      font-weight: 900;
+      letter-spacing: .35px;
+      color:#000;
+
+      background: linear-gradient(90deg, rgba(11,207,241,.92), rgba(35,255,120,.86), rgba(250,255,18,.86));
+      border: 1px solid rgba(0,0,0,.14);
+
+      box-shadow:
+        0 16px 28px rgba(0,0,0,.35),
+        0 0 16px rgba(11,207,241,.22);
+
+      transition: transform .18s var(--ease), filter .18s var(--ease), box-shadow .18s var(--ease);
+      will-change: transform;
+      cursor: pointer;
+    }
+
+    .btnNeon:hover{
+      transform: translateY(-3px) scale(1.01);
+      filter: brightness(1.06);
+      box-shadow:
+        0 18px 34px rgba(0,0,0,.42),
+        0 0 18px rgba(11,207,241,.36),
+        0 0 14px rgba(35,255,120,.22);
+      animation: btnBounce .42s ease;
+    }
+
+    .btnNeon:active{ transform: translateY(-1px) scale(.98); }
+
+    @keyframes btnBounce{
+      0%{ transform: translateY(0) scale(1); }
+      60%{ transform: translateY(-3px) scale(1.01); }
+      100%{ transform: translateY(-3px) scale(1.01); }
+    }
+
+    .btnGhost{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+
+      padding: 14px 18px;
+      border-radius: 999px;
+      text-decoration:none;
+
+      font-weight: 900;
+      letter-spacing: .35px;
+      color:#fff;
+
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 14px 24px rgba(0,0,0,.22);
+
+      transition: transform .18s var(--ease), filter .18s var(--ease);
+    }
+
+    .btnGhost:hover{
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    /* COVER IMAGE */
+    .postCover{
+      margin-top: 18px;
+      border-radius: 26px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.10);
+      box-shadow: 0 18px 44px rgba(0,0,0,.34);
+      position: relative;
+      z-index: 1;
+    }
+
+    .postCover img{
+      width: 100%;
+      height: auto;
+      display:block;
+      object-fit: cover;
+    }
+
+    /* LAYOUT */
+    .postLayout{
+      margin-top: clamp(16px, 2.2vw, 22px);
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap: clamp(16px, 2.2vw, 26px);
+      align-items:start;
+    }
+
+    /* ARTICLE CARD */
+    .postCard{
+      border-radius: 30px;
+      padding: clamp(18px, 2.5vw, 26px);
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.36);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .postCard::after{
+      content:"";
+      position:absolute;
+      inset:-30px;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(11,207,241,.16), transparent 55%),
+        radial-gradient(circle at 86% 40%, rgba(35,255,120,.14), transparent 55%),
+        radial-gradient(circle at 55% 92%, rgba(250,255,18,.10), transparent 55%);
+      filter: blur(14px);
+      pointer-events:none;
+    }
+
+    .postContent{
+      position: relative;
+      z-index: 1;
+    }
+
+    .postContent h2{
+      margin: 20px 0 10px;
+      font-family:"League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: clamp(22px, 2vw, 30px);
+      letter-spacing: .2px;
+      text-shadow: var(--shadow-text);
+    }
+
+    .postContent h3{
+      margin: 16px 0 8px;
+      font-family:"League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: clamp(18px, 1.6vw, 22px);
+      text-shadow: var(--shadow-text);
+      opacity: .98;
+    }
+
+    .postContent p{
+      margin: 0 0 12px;
+      line-height: 1.75;
+      opacity: .96;
+      font-weight: 600;
+    }
+
+    .postContent ul{
+      margin: 8px 0 14px;
+      padding-left: 18px;
+      line-height: 1.7;
+      opacity: .96;
+      font-weight: 600;
+    }
+
+    .postContent li{ margin: 6px 0; }
+
+    .inlineGlow{
+      font-weight: 900;
+      color: #fff;
+      text-shadow:
+        0 2px 10px rgba(0,0,0,.55),
+        0 0 10px rgba(11,207,241,.35);
+    }
+
+    /* CALLOUTS */
+    .callout{
+      margin: 14px 0;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 14px 26px rgba(0,0,0,.22);
+    }
+
+    .callout--neon{
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.18);
+      position: relative;
+      overflow: visible;
+    }
+
+    .callout--neon::after{
+      content:"";
+      position:absolute;
+      inset:-10px;
+      border-radius: inherit;
+      background: linear-gradient(90deg,
+        rgba(11,207,241,.30),
+        rgba(35,255,120,.24),
+        rgba(250,255,18,.18)
+      );
+      filter: blur(16px);
+      opacity: .75;
+      z-index: -1;
+      pointer-events:none;
+    }
+
+    .callout__title{
+      margin: 0 0 8px;
+      font-family:"League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      text-shadow: var(--shadow-text);
+    }
+
+    .checklist{
+      display:grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .checklist .tick{
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      flex: 0 0 22px;
+      background: linear-gradient(90deg, rgba(11,207,241,.92), rgba(35,255,120,.86), rgba(250,255,18,.86));
+      box-shadow: 0 0 16px rgba(11,207,241,.30);
+      display:grid;
+      place-items:center;
+      color:#000;
+      font-weight: 1000;
+      line-height: 1;
+      margin-top: 1px;
+    }
+
+    /* SIDEBAR TOC */
+    .toc{
+      position: sticky;
+      top: 110px;
+      border-radius: 26px;
+      padding: 18px 18px 16px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.30);
+      overflow:hidden;
+    }
+
+    .toc__title{
+      margin: 0 0 10px;
+      font-family:"League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      text-shadow: var(--shadow-text);
+    }
+
+    .toc__list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap: 10px;
+    }
+
+    .toc__link{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      text-decoration:none;
+      color:#fff;
+      font-weight: 900;
+      opacity: .95;
+      transition: transform .18s var(--ease), filter .18s var(--ease), opacity .18s var(--ease);
+    }
+
+    .toc__link:hover{
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+      opacity: 1;
+    }
+
+    .toc__chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 12px 22px rgba(0,0,0,.22);
+      min-width: 36px;
+    }
+
+    .toc__mini{
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      opacity: .95;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    /* NAV POST (prev/next) */
+    .postNav{
+      margin-top: 18px;
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
+      justify-content: space-between;
+    }
+
+    .postNav__group{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .postLayout{ grid-template-columns: 1fr; }
+      .toc{ position: relative; top: auto; }
+    }
+
+    @media (max-width: 520px){
+      .post__wrap{ width: min(1100px, calc(100% - 26px)); }
+      .postHero__top{ justify-content:center; }
+    }
+
+    /* FOOTER (mismo que ya vienes usando) */
+    .site-footer{
+      position: relative;
+      z-index: 1;
+      margin-top: clamp(30px, 5vw, 60px);
+    }
+
+    .footer__wrap{
+      width: min(1250px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .footer__card{
+      border-radius: 28px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.38);
+      overflow: hidden;
+      position: relative;
+      padding: clamp(20px, 3vw, 30px);
+    }
+
+    .footer__card::after{
+      content:"";
+      position:absolute;
+      inset:-30px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(11,207,241,.20), transparent 55%),
+        radial-gradient(circle at 82% 45%, rgba(35,255,120,.16), transparent 55%),
+        radial-gradient(circle at 60% 92%, rgba(250,255,18,.12), transparent 55%);
+      filter: blur(14px);
+      pointer-events:none;
+    }
+
+    .footer__grid{
+      position: relative;
+      z-index: 1;
+      display:grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: clamp(16px, 2vw, 24px);
+      align-items: start;
+    }
+
+    .footer__brand{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .footer__logo{
+      width: min(220px, 70%);
+      height: auto;
+      display:block;
+      filter: none;
+    }
+
+    .footer__desc{
+      margin: 0;
+      opacity: .95;
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
+    .footer__title{
+      margin: 0 0 10px;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: .2px;
+      text-shadow: var(--shadow-text);
+    }
+
+    .footer__list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap: 10px;
+    }
+
+    .footer__link{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      text-decoration:none;
+      font-weight: 900;
+      color:#fff;
+      opacity: .95;
+      transition: transform .18s var(--ease), filter .18s var(--ease), opacity .18s var(--ease);
+    }
+
+    .footer__link:hover{
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+      opacity: 1;
+    }
+
+    .footer__chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 12px 22px rgba(0,0,0,.25);
+    }
+
+    .footer__cta{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+
+    .footer__btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 14px 18px;
+      border-radius: 999px;
+      text-decoration:none;
+
+      font-weight: 900;
+      letter-spacing: .35px;
+      color:#000;
+
+      background: linear-gradient(90deg, rgba(11,207,241,.92), rgba(35,255,120,.86), rgba(250,255,18,.86));
+      border: 1px solid rgba(0,0,0,.14);
+      box-shadow:
+        0 16px 28px rgba(0,0,0,.35),
+        0 0 16px rgba(11,207,241,.22);
+
+      transition: transform .18s var(--ease), filter .18s var(--ease), box-shadow .18s var(--ease);
+    }
+
+    .footer__btn:hover{
+      transform: translateY(-3px) scale(1.01);
+      filter: brightness(1.06);
+      box-shadow:
+        0 18px 34px rgba(0,0,0,.42),
+        0 0 18px rgba(11,207,241,.36);
+    }
+
+    .footer__bottom{
+      position: relative;
+      z-index: 1;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-bottom: 10px; /* ✅ extra abajo */
+    }
+
+    .footer__copy,
+    .footer__mini{
+      margin:0;
+      opacity:.92;
+      font-weight:800;
+    }
+
+    @media (max-width: 980px){
+      .footer__grid{ grid-template-columns: 1fr; }
+      .footer__logo{ width: min(220px, 60%); }
+    }
+  </style>
+</head>
+
+<body class="inner">
+
+  <!-- Manchas -->
+  <div class="bg-splashes" aria-hidden="true">
+    <img class="splash splash-top-right" src="../imgs/manchader.webp" alt="">
+    <img class="splash splash-bottom-left" src="../imgs/manchaizq.webp" alt="">
+  </div>
+
+  <!-- Header (mismo que blog.html, pero con rutas ../) -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+
+      <a class="brand brand--small" href="../index.html" aria-label="Ir a Inicio">
+        <img class="brand__logo brand__logo--small" src="../imgs/logo-proink.webp" alt="PRONK">
+      </a>
+
+      <div class="top-slogan" id="topSlogan">
+        <p class="slogan">
+          Hay más <span class="word-yellow">creatividad</span> en un litro de
+          <span class="word-blue">tinta</span> que en un lienzo vacío
+        </p>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list" id="mainNav">
+          <li class="main-nav__item"><a class="main-nav__link" href="../index.html">INICIO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-controls="mobileNav"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </nav>
+
+    </div>
+
+    <!-- Menú móvil -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
+
+      <div class="mobile-nav__panel" role="dialog" aria-label="Menú móvil">
+        <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Cerrar menú">✕</button>
+
+        <ul class="mobile-nav__list">
+          <li><a class="mobile-nav__link" href="../index.html">INICIO</a></li>
+          <li><a class="mobile-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li><a class="mobile-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li><a class="mobile-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li><a class="mobile-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li><a class="mobile-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li><a class="mobile-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="post">
+    <div class="post__wrap">
+
+      <!-- HERO -->
+      <section class="postHero" aria-label="Encabezado del artículo">
+        <div class="postHero__top">
+          <span class="postBadge">Impresión & Materiales</span>
+
+          <div class="postMeta" aria-label="Metadatos del artículo">
+            <span>Lectura: 6–8 min</span>
+            <span class="postMeta__dot" aria-hidden="true"></span>
+            <span>Guía práctica</span>
+          </div>
+        </div>
+
+        <h1 class="postHero__title">¿Qué tipo de impresión es mejor para tu proyecto?</h1>
+
+        <p class="postHero__subtitle">
+          Elegir impresión no es “solo imprimir”: cambia el acabado, la durabilidad, el impacto visual y el costo final.
+          Aquí te dejo una guía clara para decidir rápido según <span class="inlineGlow">dónde</span> se usará,
+          <span class="inlineGlow">cuánto</span> debe durar y <span class="inlineGlow">cómo</span> quieres que se vea.
+        </p>
+
+        <div class="postHero__actions">
+          <a class="btnNeon" href="../blog.html">← Volver al blog</a>
+          <a class="btnGhost" href="https://wa.me/5214461123494" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+        </div>
+
+        <!-- Cover -->
+        <figure class="postCover" aria-label="Imagen del artículo">
+          <img src="../imgs/blog/blog-01.webp" alt="Materiales y tipos de impresión para proyectos de publicidad impresa">
+        </figure>
+      </section>
+
+      <!-- LAYOUT -->
+      <section class="postLayout" aria-label="Contenido del artículo">
+
+        <!-- ARTÍCULO -->
+        <article class="postCard">
+          <div class="postContent">
+
+            <div class="callout callout--neon" role="note" aria-label="Recomendación rápida">
+              <p class="callout__title">Recomendación rápida (para decidir en 10 segundos)</p>
+              <ul class="checklist" aria-label="Resumen rápido">
+                <li><span class="tick">✓</span> <div><strong>Exterior (sol/lluvia):</strong> vinil o lona de buena calidad + laminado si necesita durar más.</div></li>
+                <li><span class="tick">✓</span> <div><strong>Interior y “premium”:</strong> vinil mate o rígidos (PVC/acrílico) para un look más limpio.</div></li>
+                <li><span class="tick">✓</span> <div><strong>Ventanas:</strong> microperforado (se ve por dentro) o vinil esmerilado (privacidad).</div></li>
+                <li><span class="tick">✓</span> <div><strong>Textil:</strong> DTF (detalles finos) o serigrafía (muchas piezas).</div></li>
+              </ul>
+            </div>
+
+            <h2 id="paso1">1) Antes de elegir: responde estas 4 preguntas</h2>
+            <p>
+              Para que no compres “a ciegas”, define esto primero:
+            </p>
+            <ul>
+              <li><strong>¿Dónde va?</strong> interior, exterior, ventana, vehículo, evento, etc.</li>
+              <li><strong>¿Cuánto debe durar?</strong> 1 semana, 3 meses, 1 año…</li>
+              <li><strong>¿Qué acabado quieres?</strong> brillante (más llamativo) o mate (más elegante, menos reflejos).</li>
+              <li><strong>¿Qué tan importante es el costo vs. el impacto?</strong> a veces lo “barato” se ve barato.</li>
+            </ul>
+
+            <h2 id="vinil">2) Vinil (cuando quieres versatilidad)</h2>
+            <p>
+              El vinil es de los materiales más usados porque se adapta a muchísimas aplicaciones: paredes, mostradores,
+              señalética, etiquetas, campañas temporales, etc.
+            </p>
+
+            <h3>¿Cuándo conviene vinil?</h3>
+            <ul>
+              <li>Si necesitas <strong>limpieza visual</strong> y detalles nítidos.</li>
+              <li>Si va en <strong>interior</strong> o exterior con duración media.</li>
+              <li>Si quieres opciones de acabado: <strong>brillante, mate, transparente, esmerilado</strong>.</li>
+            </ul>
+
+            <div class="callout" role="note">
+              <p class="callout__title">Tip PRO</p>
+              <p>
+                Si tu vinil va a estar en exterior o tendrá mucha fricción (limpieza, roce, sol directo),
+                pide <span class="inlineGlow">laminado</span>. Protege color y alarga la vida.
+              </p>
+            </div>
+
+            <h2 id="lona">3) Lona (cuando necesitas tamaño y aguante)</h2>
+            <p>
+              La lona es ideal para anuncios grandes, eventos, fachadas o promociones. Es resistente, rendidora y muy usada
+              cuando quieres <strong>mucha visibilidad</strong> a buen costo.
+            </p>
+
+            <h3>Tipos comunes</h3>
+            <ul>
+              <li><strong>Lona brillante:</strong> colores más vivos, llama más la atención (ojo con reflejos).</li>
+              <li><strong>Blackout:</strong> bloquea luz (excelente para stands o interiores con iluminación detrás).</li>
+              <li><strong>Mesh:</strong> perforada para viento (fachadas o lugares muy expuestos).</li>
+            </ul>
+
+            <h2 id="rigidos">4) Rígidos (para un look más “pro”)</h2>
+            <p>
+              Si quieres que tu marca se vea más “premium”, los rígidos (como PVC, acrílico, estireno o coroplast) ayudan
+              muchísimo: mantienen forma, se ven más sólidos y dan presencia.
+            </p>
+
+            <h3>¿Qué rígido elegir?</h3>
+            <ul>
+              <li><strong>PVC espumado:</strong> señalética interior/exterior, muy usado por costo/beneficio.</li>
+              <li><strong>Acrílico:</strong> apariencia premium (recepciones, letreros, placas).</li>
+              <li><strong>Coroplast:</strong> ligero y rendidor (señales temporales, campañas cortas).</li>
+              <li><strong>Estireno:</strong> interior, displays, señalética liviana.</li>
+            </ul>
+
+            <h2 id="ventanas">5) Ventanas: microperforado y esmerilado</h2>
+            <p>
+              Aquí manda la función: <strong>visibilidad</strong> vs. <strong>privacidad</strong>.
+            </p>
+            <ul>
+              <li><strong>Microperforado:</strong> desde afuera se ve el diseño y desde adentro sigues viendo hacia afuera.</li>
+              <li><strong>Esmerilado:</strong> privacidad elegante (oficinas, consultorios), se ve muy limpio.</li>
+            </ul>
+
+            <h2 id="textil">6) Textil: DTF, serigrafía o sublimación</h2>
+            <p>
+              Si el proyecto es playeras, uniformes o bolsas, el método cambia según cantidad, tipo de tela y diseño.
+            </p>
+            <ul>
+              <li><strong>DTF:</strong> detalles finos + colores vivos + buena durabilidad. Ideal para diseños completos.</li>
+              <li><strong>Serigrafía:</strong> excelente para muchas piezas con pocos colores (sale mejor por volumen).</li>
+              <li><strong>Sublimación:</strong> para telas específicas (poliéster), colores integrados a la fibra.</li>
+            </ul>
+
+            <h2 id="tabla">7) Mini tabla para elegir rápido</h2>
+            <div class="callout" role="note">
+              <ul class="checklist" aria-label="Comparativa rápida">
+                <li><span class="tick">✓</span> <div><strong>Campaña temporal (promo):</strong> vinil / lona</div></li>
+                <li><span class="tick">✓</span> <div><strong>Señalética interior “pro”:</strong> PVC / acrílico</div></li>
+                <li><span class="tick">✓</span> <div><strong>Ventanas:</strong> microperforado / esmerilado</div></li>
+                <li><span class="tick">✓</span> <div><strong>Exterior con viento:</strong> mesh</div></li>
+                <li><span class="tick">✓</span> <div><strong>Uniformes / playeras:</strong> DTF / serigrafía</div></li>
+              </ul>
+            </div>
+
+            <h2 id="cierre">8) Cierre: si quieres que te recomiende EXACTO, dime esto</h2>
+            <p>
+              Para recomendarte el material perfecto (sin adivinar), mándame por WhatsApp:
+            </p>
+            <ul>
+              <li>Medida aproximada</li>
+              <li>Dónde se coloca (interior/exterior/ventana/vehículo)</li>
+              <li>Tiempo estimado de uso</li>
+              <li>Si lo quieres brillante o mate</li>
+              <li>Foto del lugar (si se puede)</li>
+            </ul>
+
+            <div class="postNav" aria-label="Navegación del artículo">
+              <div class="postNav__group">
+                <a class="btnGhost" href="../blog.html">← Volver al blog</a>
+                <a class="btnNeon" href="https://wa.me/5214461123494" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+              </div>
+
+              <div class="postNav__group">
+                <!-- “Siguiente” (02) -->
+                <a class="btnGhost" href="02-vinil-brillante-mate-microperforado.html">Siguiente artículo →</a>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- TOC -->
+        <aside class="toc" aria-label="Tabla de contenidos">
+          <h3 class="toc__title">En este artículo</h3>
+          <ul class="toc__list">
+            <li><a class="toc__link" href="#paso1"><span class="toc__chip">1</span> Preguntas clave</a></li>
+            <li><a class="toc__link" href="#vinil"><span class="toc__chip">2</span> Vinil</a></li>
+            <li><a class="toc__link" href="#lona"><span class="toc__chip">3</span> Lona</a></li>
+            <li><a class="toc__link" href="#rigidos"><span class="toc__chip">4</span> Rígidos</a></li>
+            <li><a class="toc__link" href="#ventanas"><span class="toc__chip">5</span> Ventanas</a></li>
+            <li><a class="toc__link" href="#textil"><span class="toc__chip">6</span> Textil</a></li>
+            <li><a class="toc__link" href="#tabla"><span class="toc__chip">7</span> Elegir rápido</a></li>
+            <li><a class="toc__link" href="#cierre"><span class="toc__chip">8</span> Qué enviarme</a></li>
+          </ul>
+
+          <p class="toc__mini">
+            ¿Quieres que te lo recomiende exacto? Envíame medida + foto del lugar + tiempo de uso.
+          </p>
+        </aside>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" aria-label="Pie de página">
+    <div class="footer__wrap">
+      <div class="footer__card">
+
+        <div class="footer__grid">
+
+          <div class="footer__brand">
+            <img class="footer__logo" src="../imgs/logo-proink.webp" alt="PRONK Printed Designs">
+            <p class="footer__desc">
+              Imprenta y publicidad impresa en Querétaro. Hacemos que tu marca se vea profesional con materiales de calidad,
+              acabados premium y diseño que impacta.
+            </p>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__title">Navegación</h3>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="../index.html"><span class="footer__chip">Inicio</span></a></li>
+              <li><a class="footer__link" href="../productos.html"><span class="footer__chip">Productos</span></a></li>
+              <li><a class="footer__link" href="../produccion-instalacion.html"><span class="footer__chip">Producción e instalación</span></a></li>
+              <li><a class="footer__link" href="../catalogo.html"><span class="footer__chip">Catálogo</span></a></li>
+              <li><a class="footer__link" href="../ubicacion.html"><span class="footer__chip">Ubicación</span></a></li>
+              <li><a class="footer__link" href="../blog.html"><span class="footer__chip">Blog</span></a></li>
+            </ul>
+          </div>
+
+          <div class="footer__cta">
+            <h3 class="footer__title">Contacto</h3>
+            <ul class="footer__list">
+              <li>
+                <a class="footer__link" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                  <span class="footer__chip">WhatsApp: 446 112 3494</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer__link" href="../ubicacion.html">
+                  <span class="footer__chip">Paseo Las Plazas #3, Querétaro</span>
+                </a>
+              </li>
+            </ul>
+
+            <a class="footer__btn" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">© 2026 PRONK Printed Designs</p>
+          <p class="footer__mini">Imprimimos tu idea. La hacemos realidad.</p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante (usa styles-base.css) -->
+  <a
+    href="https://wa.me/5214461123494"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img src="../imgs/icono-whatsapp.png" alt="WhatsApp" class="whatsapp-float__icon" />
+  </a>
+
+  <!-- JS base -->
+  <script src="../js-principal.js"></script>
+</body>
+</html>

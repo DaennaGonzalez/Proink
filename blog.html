@@ -10,15 +10,633 @@
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles-base.css" />
+  <link rel="stylesheet" href="blog.css" />
+
+  <style>
+    /* =========================================================
+      BLOG — PRONK (OPCIÓN A: blog.html + /blog/*.html)
+      ✅ Neón verdoso/cian (match con page-bubble)
+      ✅ Tabs categorías + buscador + cards
+      ✅ Botón “Leer” con rebote suave
+      ✅ Footer completo + padding extra abajo del ©
+    ========================================================= */
+
+    main.blog{
+      position: relative;
+      z-index: 1;
+      padding-bottom: clamp(50px, 6vw, 90px);
+    }
+
+    .blog__wrap{
+      width: min(1250px, calc(100% - 36px));
+      margin: clamp(18px, 3vw, 36px) auto 0;
+    }
+
+    /* HERO */
+    .blog__hero{
+      border-radius: 30px;
+      padding: clamp(22px, 3vw, 34px);
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.38);
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+    }
+
+    .blog__hero::after{
+      content:"";
+      position:absolute;
+      inset:-30px;
+      background:
+        radial-gradient(circle at 22% 10%, rgba(11,207,241,.24), transparent 55%),
+        radial-gradient(circle at 80% 35%, rgba(35,255,120,.20), transparent 55%),
+        radial-gradient(circle at 62% 92%, rgba(250,255,18,.14), transparent 55%);
+      filter: blur(14px);
+      pointer-events:none;
+    }
+
+    .blog__heroTop{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 14px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .blog__bubble{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 22px;
+      border-radius: 999px;
+
+      font-weight: 900;
+      letter-spacing: .35px;
+      color: #fff;
+
+      background: linear-gradient(90deg,
+        rgba(11, 207, 241, .95) 0%,
+        rgba(35, 255, 120, .92) 55%,
+        rgba(250, 255, 18, .90) 100%
+      );
+
+      border: 1px solid rgba(255,255,255,.22);
+
+      text-shadow:
+        0 2px 10px rgba(0,0,0,.55),
+        0 0 12px rgba(11, 207, 241, .50),
+        0 0 18px rgba(35, 255, 120, .32);
+
+      box-shadow:
+        0 18px 30px rgba(0,0,0,.22),
+        0 0 18px rgba(11,207,241,.30),
+        0 0 22px rgba(35,255,120,.22);
+
+      position: relative;
+      overflow: visible;
+    }
+
+    .blog__bubble::after{
+      content:"";
+      position:absolute;
+      inset:-10px;
+      border-radius: inherit;
+      background: linear-gradient(90deg,
+        rgba(11,207,241,.35),
+        rgba(35,255,120,.28),
+        rgba(250,255,18,.20)
+      );
+      filter: blur(16px);
+      opacity:.8;
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    .blog__title{
+      margin: 14px 0 8px;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: clamp(30px, 3.1vw, 48px);
+      letter-spacing: .2px;
+      text-shadow: var(--shadow-text);
+      position: relative;
+      z-index: 1;
+    }
+
+    .blog__intro{
+      margin: 0 auto;
+      max-width: 920px;
+      line-height: 1.7;
+      opacity: .96;
+      position: relative;
+      z-index: 1;
+      font-size: clamp(15px, 1.15vw, 18px);
+    }
+
+    /* BUSCADOR */
+    .blogSearch{
+      margin: 16px auto 0;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      width: min(620px, 100%);
+
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 14px 26px rgba(0,0,0,.22);
+      position: relative;
+      z-index: 1;
+    }
+
+    .blogSearch input{
+      width:100%;
+      border:0;
+      outline:none;
+      background:transparent;
+      color:#fff;
+      font-family:"Montserrat", system-ui, sans-serif;
+      font-weight:800;
+      font-size: 14px;
+    }
+
+    .blogSearch input::placeholder{
+      color: rgba(255,255,255,.80);
+      font-weight:700;
+    }
+
+    .blogSearch .icon{
+      width: 22px;
+      height: 22px;
+      opacity: .95;
+      filter: drop-shadow(0 10px 16px rgba(0,0,0,.30));
+    }
+
+    /* CATEGORÍAS */
+    .blog__cats{
+      margin: 16px auto 0;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .catPill{
+      border:0;
+      cursor:pointer;
+      padding: 12px 18px;
+      border-radius: 999px;
+
+      font-weight: 900;
+      letter-spacing: .5px;
+      font-size: clamp(13px, 1vw, 15px);
+
+      color:#000;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 12px 22px rgba(0,0,0,.25);
+
+      transition: transform .18s var(--ease), filter .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease);
+      will-change: transform;
+    }
+
+    .catPill:hover{
+      transform: translateY(-3px);
+      filter: brightness(1.08);
+      box-shadow:
+        0 16px 26px rgba(0,0,0,.32),
+        0 0 16px rgba(11,207,241,.18);
+    }
+
+    .catPill.is-active{
+      background: linear-gradient(90deg, rgba(11,207,241,.92), rgba(35,255,120,.86), rgba(250,255,18,.86));
+      border: 1px solid rgba(0,0,0,.14);
+      box-shadow:
+        0 16px 28px rgba(0,0,0,.35),
+        0 0 18px rgba(11,207,241,.35),
+        0 0 18px rgba(35,255,120,.25);
+    }
+
+    /* GRID */
+    .blog__grid{
+      margin-top: 22px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(18px, 2.2vw, 26px);
+      align-items: stretch;
+    }
+
+    /* CARD */
+    .postCard{
+      border-radius: 28px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 18px 44px rgba(0,0,0,.32);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height: 100%;
+      transition: transform .2s var(--ease), filter .2s var(--ease);
+    }
+
+    .postCard:hover{
+      transform: translateY(-6px);
+      filter: brightness(1.04);
+    }
+
+    .postCard__media{
+      aspect-ratio: 16 / 9;
+      width:100%;
+      overflow:hidden;
+      background: rgba(0,0,0,.10);
+    }
+
+    .postCard__media img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      filter: none;
+    }
+
+    .postCard__body{
+      padding: 18px 18px 20px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .postCard__meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .postTag{
+      display:inline-flex;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: .45px;
+      font-size: 12px;
+
+      color:#fff;
+      background: rgba(0,0,0,.26);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 10px 18px rgba(0,0,0,.22);
+      text-shadow: 0 2px 10px rgba(0,0,0,.55);
+    }
+
+    .postTitle{
+      margin: 0;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: clamp(21px, 1.6vw, 28px);
+      letter-spacing: .2px;
+      line-height: 1.12;
+      text-shadow: var(--shadow-text);
+    }
+
+    .postExcerpt{
+      margin: 0;
+      line-height: 1.65;
+      opacity: .94;
+      font-size: 15px;
+    }
+
+    /* Botón leer (NEÓN VERDE/CIAN) */
+    .postBtn{
+      margin-top:auto;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      text-decoration:none;
+
+      font-weight: 900;
+      letter-spacing: .4px;
+      color:#000;
+
+      background: linear-gradient(90deg, rgba(11,207,241,.92), rgba(35,255,120,.86), rgba(250,255,18,.86));
+      border: 1px solid rgba(0,0,0,.14);
+
+      box-shadow:
+        0 16px 28px rgba(0,0,0,.35),
+        0 0 16px rgba(11,207,241,.22);
+
+      transition: transform .18s var(--ease), box-shadow .18s var(--ease), filter .18s var(--ease);
+      will-change: transform;
+    }
+
+    .postBtn:hover{
+      filter: brightness(1.06);
+      transform: translateY(-3px) scale(1.01);
+      box-shadow:
+        0 18px 32px rgba(0,0,0,.40),
+        0 0 18px rgba(11,207,241,.36),
+        0 0 14px rgba(35,255,120,.22);
+      animation: btnBounce .42s ease;
+    }
+
+    .postBtn:active{ transform: translateY(-1px) scale(.98); }
+
+    @keyframes btnBounce{
+      0%{ transform: translateY(0) scale(1); }
+      60%{ transform: translateY(-3px) scale(1.01); }
+      100%{ transform: translateY(-3px) scale(1.01); }
+    }
+
+    /* “Sin resultados” */
+    .blog__empty{
+      margin-top: 18px;
+      display:none;
+      text-align:center;
+      padding: 22px 16px;
+      border-radius: 22px;
+      background: rgba(0,0,0,.14);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+
+    .blog__emptyTitle{
+      margin: 0 0 8px;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: clamp(20px, 2vw, 28px);
+      text-shadow: var(--shadow-text);
+    }
+
+    .blog__emptyText{ margin:0; opacity:.95; line-height:1.65; }
+
+    /* RESPONSIVE GRID */
+    @media (max-width: 1050px){
+      .blog__grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px){
+      .blog__wrap{ width: min(1250px, calc(100% - 26px)); }
+      .blog__grid{ grid-template-columns: 1fr; }
+    }
+
+    /* =========================
+      FOOTER — PRONK (base interna)
+    ========================= */
+    .site-footer{
+      position: relative;
+      z-index: 1;
+      margin-top: clamp(30px, 5vw, 60px);
+    }
+
+    .footer__wrap{
+      width: min(1250px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .footer__card{
+      border-radius: 28px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.38);
+      overflow: hidden;
+      position: relative;
+      padding: clamp(20px, 3vw, 30px);
+    }
+
+    .footer__card::after{
+      content:"";
+      position:absolute;
+      inset:-30px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(11,207,241,.20), transparent 55%),
+        radial-gradient(circle at 82% 45%, rgba(35,255,120,.16), transparent 55%),
+        radial-gradient(circle at 60% 92%, rgba(250,255,18,.12), transparent 55%);
+      filter: blur(14px);
+      pointer-events:none;
+    }
+
+    .footer__grid{
+      position: relative;
+      z-index: 1;
+      display:grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: clamp(16px, 2vw, 24px);
+      align-items: start;
+    }
+
+    .footer__brand{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .footer__logo{
+      width: min(220px, 70%);
+      height: auto;
+      display:block;
+      filter: none;
+    }
+
+    .footer__desc{
+      margin: 0;
+      opacity: .95;
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
+    .footer__title{
+      margin: 0 0 10px;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: .2px;
+      text-shadow: var(--shadow-text);
+    }
+
+    .footer__list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap: 10px;
+    }
+
+    .footer__link{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      text-decoration:none;
+      font-weight: 900;
+      color:#fff;
+      opacity: .95;
+      transition: transform .18s var(--ease), filter .18s var(--ease), opacity .18s var(--ease);
+    }
+
+    .footer__link:hover{
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+      opacity: 1;
+    }
+
+    .footer__chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 12px 22px rgba(0,0,0,.25);
+    }
+
+    .footer__cta{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+
+    .footer__btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 14px 18px;
+      border-radius: 999px;
+      text-decoration:none;
+
+      font-weight: 900;
+      letter-spacing: .35px;
+      color:#000;
+
+      background: linear-gradient(90deg, rgba(11,207,241,.92), rgba(35,255,120,.86), rgba(250,255,18,.86));
+      border: 1px solid rgba(0,0,0,.14);
+      box-shadow:
+        0 16px 28px rgba(0,0,0,.35),
+        0 0 16px rgba(11,207,241,.22);
+
+      transition: transform .18s var(--ease), filter .18s var(--ease), box-shadow .18s var(--ease);
+    }
+
+    .footer__btn:hover{
+      transform: translateY(-3px) scale(1.01);
+      filter: brightness(1.06);
+      box-shadow:
+        0 18px 34px rgba(0,0,0,.42),
+        0 0 18px rgba(11,207,241,.36);
+    }
+
+    .footer__bottom{
+      position: relative;
+      z-index: 1;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+
+      /* ✅ los 10px extra abajo del © */
+      padding-bottom: 10px;
+    }
+
+    .footer__copy{
+      margin:0;
+      opacity:.92;
+      font-weight:800;
+    }
+
+    .footer__mini{
+      margin:0;
+      opacity:.92;
+      font-weight:800;
+    }
+
+    @media (max-width: 980px){
+      .footer__grid{ grid-template-columns: 1fr; }
+      .footer__logo{ width: min(220px, 60%); }
+    }
+
+    /* =========================
+  BOTÓN VER MÁS (NEÓN AZUL)
+========================= */
+.blogMoreWrap{
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.blogMoreBtn{
+  border: 0;
+  cursor: pointer;
+  padding: 14px 22px;
+  border-radius: 999px;
+
+  font-weight: 900;
+  letter-spacing: .4px;
+  color: #fff;
+
+  background: linear-gradient(90deg,
+    rgba(0, 140, 255, .95),
+    rgba(11, 207, 241, .92),
+    rgba(35, 255, 120, .55)
+  );
+  border: 1px solid rgba(255,255,255,.18);
+
+  box-shadow:
+    0 16px 28px rgba(0,0,0,.35),
+    0 0 18px rgba(0,140,255,.28),
+    0 0 18px rgba(11,207,241,.22);
+
+  transition: transform .18s var(--ease), filter .18s var(--ease), box-shadow .18s var(--ease);
+  will-change: transform;
+}
+
+.blogMoreBtn:hover{
+  transform: translateY(-3px) scale(1.01);
+  filter: brightness(1.08);
+  box-shadow:
+    0 18px 34px rgba(0,0,0,.42),
+    0 0 22px rgba(0,140,255,.35),
+    0 0 18px rgba(11,207,241,.30);
+}
+
+.blogMoreBtn:active{
+  transform: translateY(-1px) scale(.98);
+}
+
+
+  </style>
 </head>
 
 <body class="inner">
 
+  <!-- ✅ Manchas -->
   <div class="bg-splashes" aria-hidden="true">
     <img class="splash splash-top-right" src="imgs/manchader.webp" alt="">
     <img class="splash splash-bottom-left" src="imgs/manchaizq.webp" alt="">
   </div>
 
+  <!-- ✅ Header (tu header tal cual) -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
 
@@ -60,6 +678,7 @@
 
     </div>
 
+    <!-- ✅ Menú móvil -->
     <div class="mobile-nav" id="mobileNav" aria-hidden="true">
       <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
 
@@ -79,30 +698,403 @@
     </div>
   </header>
 
-  <main style="position:relative; z-index:1;">
-    <section style="
-      width:min(1200px, calc(100% - 32px));
-      margin: 36px auto 0;
-      padding: 26px 24px;
-      border-radius: 22px;
-      background: rgba(0,0,0,.14);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
-    ">
-      <h1 style="margin:0 0 10px; font-size: clamp(26px, 3vw, 40px); font-weight:800;">
-        Blog
-      </h1>
+  <!-- ✅ Contenido -->
+  <main class="blog">
+    <section class="blog__wrap">
 
-      <p style="margin:0; line-height:1.65; opacity:.95;">
-        Contenido en construcción. Aquí irá la lista de artículos y categorías.
-      </p>
+      <section class="blog__hero" aria-label="Encabezado del blog">
+        <div class="blog__heroTop">
+          <div class="blog__bubble">Blog PROINK</div>
+        </div>
 
-      <div style="height: 900px;"></div>
-      <p style="margin:0; opacity:.9;">Scroll de prueba.</p>
+        <h1 class="blog__title">Tips, materiales y diseño para imprimir con impacto</h1>
+
+        <p class="blog__intro">
+          Encuentra guías rápidas y consejos prácticos sobre impresión, viniles, lona, rígidos, branding, señalética y promocionales.
+          Todo explicado claro para que tu proyecto se vea profesional.
+        </p>
+
+        <label class="blogSearch" aria-label="Buscar artículos">
+          <img class="icon" src="imgs/icono-buscador.webp" alt="" aria-hidden="true">
+          <input id="blogSearch" type="search" placeholder="Buscar en el blog..." autocomplete="off">
+        </label>
+
+        <div class="blog__cats" role="tablist" aria-label="Categorías del blog">
+          <button class="catPill is-active" data-cat="all" type="button">Todo</button>
+          <button class="catPill" data-cat="impresion" type="button">Impresión & Materiales</button>
+          <button class="catPill" data-cat="diseno" type="button">Diseño & Branding</button>
+          <button class="catPill" data-cat="senalitica" type="button">Oficinas & Señalética</button>
+          <button class="catPill" data-cat="textiles" type="button">Textiles & Promocionales</button>
+          <button class="catPill" data-cat="papeleria" type="button">Papelería & Eventos</button>
+          <button class="catPill" data-cat="bonus" type="button">Bonus SEO</button>
+        </div>
+      </section>
+
+      <!-- ✅ Grid -->
+      <section class="blog__grid" id="blogGrid" aria-label="Lista de artículos">
+
+        
+        <!-- 🖨️ IMPRESIÓN & MATERIALES -->
+        <article class="postCard" data-cat="impresion" data-title="Qué tipo de impresión es mejor para tu proyecto">
+          <div class="postCard__media"><img src="imgs/blog/blog-01.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Impresión & Materiales</span></div>
+            <h2 class="postTitle">¿Qué tipo de impresión es mejor para tu proyecto?</h2>
+            <p class="postExcerpt">Cómo elegir según uso, duración, acabado y presupuesto: vinil, lona, rígidos, DTF y más.</p>
+            <a class="postBtn" href="blog/01-impresion-mejor-proyecto.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="impresion" data-title="Diferencias entre vinil brillante mate y microperforado">
+          <div class="postCard__media"><img src="imgs/blog/blog-02.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Impresión & Materiales</span></div>
+            <h2 class="postTitle">Vinil brillante, mate y microperforado: ¿cuál elegir?</h2>
+            <p class="postExcerpt">Te decimos para qué sirve cada uno, dónde se coloca y cuál se ve mejor según la luz.</p>
+            <a class="postBtn" href="blog/02-vinil-brillante-mate-microperforado.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="impresion" data-title="Qué es la impresión DTF y cuándo conviene usarla">
+          <div class="postCard__media"><img src="imgs/blog/blog-03.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Impresión & Materiales</span></div>
+            <h2 class="postTitle">¿Qué es la impresión DTF y cuándo conviene usarla?</h2>
+            <p class="postExcerpt">Ideal para textiles: colores vivos, buena durabilidad y detalles finos. Aquí te explicamos.</p>
+            <a class="postBtn" href="blog/03-que-es-impresion-dtf.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="impresion" data-title="Lona brillante blackout o mesh cuál elegir">
+          <div class="postCard__media"><img src="imgs/blog/blog-04.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Impresión & Materiales</span></div>
+            <h2 class="postTitle">Lona brillante, blackout o mesh: ¿cuál elegir?</h2>
+            <p class="postExcerpt">Te contamos cuál aguanta exterior, cuál bloquea luz y cuál es mejor para viento.</p>
+            <a class="postBtn" href="blog/04-lona-brillante-blackout-mesh.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="impresion" data-title="Impresión en rígidos acrílico pvc estireno coroplast">
+          <div class="postCard__media"><img src="imgs/blog/blog-05.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Impresión & Materiales</span></div>
+            <h2 class="postTitle">Impresión en rígidos: acrílico, PVC, estireno y coroplast</h2>
+            <p class="postExcerpt">Comparativa rápida: apariencia, resistencia, usos comunes y consejos de instalación.</p>
+            <a class="postBtn" href="blog/05-impresion-en-rigidos.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="impresion" data-title="Errores comunes al mandar imprimir un diseño y cómo evitarlos">
+          <div class="postCard__media"><img src="imgs/blog/blog-06.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Impresión & Materiales</span></div>
+            <h2 class="postTitle">Errores comunes al mandar imprimir (y cómo evitarlos)</h2>
+            <p class="postExcerpt">Resolución, sangrías, tipografías, perfiles… lo que más falla y cómo dejarlo perfecto.</p>
+            <a class="postBtn" href="blog/06-errores-comunes-al-imprimir.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <!-- 🎨 DISEÑO & BRANDING -->
+        <article class="postCard" data-cat="diseno" data-title="La importancia del diseño gráfico en la imagen de tu marca">
+          <div class="postCard__media"><img src="imgs/blog/blog-07.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Diseño & Branding</span></div>
+            <h2 class="postTitle">La importancia del diseño gráfico en la imagen de tu marca</h2>
+            <p class="postExcerpt">Por qué un buen diseño vende más, genera confianza y hace que te recuerden.</p>
+            <a class="postBtn" href="blog/07-importancia-diseno-grafico-marca.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="diseno" data-title="Colores corporativos cómo influyen en la percepción del cliente">
+          <div class="postCard__media"><img src="imgs/blog/blog-08.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Diseño & Branding</span></div>
+            <h2 class="postTitle">Colores corporativos: cómo influyen en tu cliente</h2>
+            <p class="postExcerpt">Qué comunica cada color y cómo elegir una paleta que funcione en impresión.</p>
+            <a class="postBtn" href="blog/08-colores-corporativos-percepcion.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="diseno" data-title="Tipografías que funcionan mejor en impresión">
+          <div class="postCard__media"><img src="imgs/blog/blog-09.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Diseño & Branding</span></div>
+            <h2 class="postTitle">Tipografías que se ven mejor en impresión</h2>
+            <p class="postExcerpt">Legibilidad, tamaños mínimos, contrastes y errores típicos al imprimir texto.</p>
+            <a class="postBtn" href="blog/09-tipografias-para-impresion.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="diseno" data-title="Branding visual más allá del logo">
+          <div class="postCard__media"><img src="imgs/blog/blog-10.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Diseño & Branding</span></div>
+            <h2 class="postTitle">Branding visual: más allá del logo</h2>
+            <p class="postExcerpt">Elementos que construyen marca: estilo gráfico, tono, consistencia y aplicaciones impresas.</p>
+            <a class="postBtn" href="blog/10-branding-visual-mas-alla-del-logo.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="diseno" data-title="Cómo preparar archivos correctamente para impresión profesional">
+          <div class="postCard__media"><img src="imgs/blog/blog-11.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Diseño & Branding</span></div>
+            <h2 class="postTitle">Cómo preparar archivos para impresión profesional</h2>
+            <p class="postExcerpt">Checklist rápido: PDF, medidas, sangrías, tipografías, colores y resolución.</p>
+            <a class="postBtn" href="blog/11-preparar-archivos-impresion.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <!-- 🏢 OFICINAS, LOCALES Y SEÑALÉTICA -->
+        <article class="postCard" data-cat="senalitica" data-title="Señalética empresarial por qué es clave para tu negocio">
+          <div class="postCard__media"><img src="imgs/blog/blog-12.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Oficinas & Señalética</span></div>
+            <h2 class="postTitle">Señalética empresarial: por qué es clave</h2>
+            <p class="postExcerpt">Orden, seguridad y experiencia del cliente: lo que tu señalética debe comunicar.</p>
+            <a class="postBtn" href="blog/12-senaletica-empresarial-clave.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="senalitica" data-title="Vinil decorativo en oficinas transforma espacios sin remodelar">
+          <div class="postCard__media"><img src="imgs/blog/blog-13.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Oficinas & Señalética</span></div>
+            <h2 class="postTitle">Vinil decorativo en oficinas: transforma sin remodelar</h2>
+            <p class="postExcerpt">Ideas, zonas ideales, acabados y tips para que se vea premium.</p>
+            <a class="postBtn" href="blog/13-vinil-decorativo-oficinas.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="senalitica" data-title="Letreros 3D impacto visual que sí vende">
+          <div class="postCard__media"><img src="imgs/blog/blog-14.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Oficinas & Señalética</span></div>
+            <h2 class="postTitle">Letreros 3D: impacto visual que sí vende</h2>
+            <p class="postExcerpt">Materiales, iluminación, ubicación y cómo elegir el estilo correcto para tu marca.</p>
+            <a class="postBtn" href="blog/14-letreros-3d-impacto-visual.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="senalitica" data-title="Balizado empresarial imagen y seguridad en un solo paso">
+          <div class="postCard__media"><img src="imgs/blog/blog-15.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Oficinas & Señalética</span></div>
+            <h2 class="postTitle">Balizado empresarial: imagen y seguridad en un paso</h2>
+            <p class="postExcerpt">Qué incluye, cómo se diseña y por qué mejora la seguridad y la marca.</p>
+            <a class="postBtn" href="blog/15-balizado-empresarial.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="senalitica" data-title="Rotulación vehicular publicidad que se mueve contigo">
+          <div class="postCard__media"><img src="imgs/blog/blog-16.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Oficinas & Señalética</span></div>
+            <h2 class="postTitle">Rotulación vehicular: publicidad que se mueve contigo</h2>
+            <p class="postExcerpt">Tipos de vinil, durabilidad, mantenimiento y tips para un diseño que sí se lea.</p>
+            <a class="postBtn" href="blog/16-rotulacion-vehicular-publicidad.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <!-- 👕 TEXTILES & PROMOCIONALES -->
+        <article class="postCard" data-cat="textiles" data-title="Bordado serigrafía o sublimación cuál es mejor para tu uniforme">
+          <div class="postCard__media"><img src="imgs/blog/blog-17.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Textiles & Promocionales</span></div>
+            <h2 class="postTitle">Bordado, serigrafía o sublimación: ¿cuál conviene?</h2>
+            <p class="postExcerpt">Comparativa por durabilidad, costo, cantidades y tipo de tela.</p>
+            <a class="postBtn" href="blog/17-bordado-serigrafia-sublimacion.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="textiles" data-title="Playeras promocionales cómo hacer que sí se usen">
+          <div class="postCard__media"><img src="imgs/blog/blog-18.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Textiles & Promocionales</span></div>
+            <h2 class="postTitle">Playeras promocionales: cómo hacer que sí se usen</h2>
+            <p class="postExcerpt">El secreto está en el diseño, la tela y el fit. Te decimos cómo lograrlo.</p>
+            <a class="postBtn" href="blog/18-playeras-promocionales-que-si-usan.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="textiles" data-title="Promocionales que realmente funcionan para tu marca">
+          <div class="postCard__media"><img src="imgs/blog/blog-19.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Textiles & Promocionales</span></div>
+            <h2 class="postTitle">Promocionales que realmente funcionan</h2>
+            <p class="postExcerpt">Ideas útiles, memorables y con buena impresión: lo que sí genera recordación.</p>
+            <a class="postBtn" href="blog/19-promocionales-que-funcionan.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="textiles" data-title="Errores comunes al elegir artículos promocionales">
+          <div class="postCard__media"><img src="imgs/blog/blog-20.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Textiles & Promocionales</span></div>
+            <h2 class="postTitle">Errores comunes al elegir promocionales</h2>
+            <p class="postExcerpt">Lo barato sale caro: materiales, diseño, utilidad y calidad de impresión.</p>
+            <a class="postBtn" href="blog/20-errores-al-elegir-promocionales.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="textiles" data-title="DTF textil la nueva tendencia en personalización">
+          <div class="postCard__media"><img src="imgs/blog/blog-21.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Textiles & Promocionales</span></div>
+            <h2 class="postTitle">DTF textil: la tendencia en personalización</h2>
+            <p class="postExcerpt">Por qué está creciendo tanto, qué ventajas tiene y cuándo conviene frente a otras técnicas.</p>
+            <a class="postBtn" href="blog/21-dtf-textil-tendencia.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <!-- 📦 PAPELERÍA & EVENTOS -->
+        <article class="postCard" data-cat="papeleria" data-title="Papelería corporativa qué no puede faltar en tu empresa">
+          <div class="postCard__media"><img src="imgs/blog/blog-22.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Papelería & Eventos</span></div>
+            <h2 class="postTitle">Papelería corporativa: qué no puede faltar</h2>
+            <p class="postExcerpt">Lo básico para verte profesional: tarjetas, hojas membretadas, sobres, stickers y más.</p>
+            <a class="postBtn" href="blog/22-papeleria-corporativa-imprescindible.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="papeleria" data-title="Menús personalizados diseño que influye en las ventas">
+          <div class="postCard__media"><img src="imgs/blog/blog-23.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Papelería & Eventos</span></div>
+            <h2 class="postTitle">Menús personalizados: diseño que influye en ventas</h2>
+            <p class="postExcerpt">Materiales, acabados y estructura visual para que el cliente elija mejor (y más).</p>
+            <a class="postBtn" href="blog/23-menus-personalizados-diseno-ventas.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="papeleria" data-title="Papelería creativa para eventos detalles que marcan la diferencia">
+          <div class="postCard__media"><img src="imgs/blog/blog-24.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Papelería & Eventos</span></div>
+            <h2 class="postTitle">Papelería creativa para eventos: detalles que marcan</h2>
+            <p class="postExcerpt">Invitaciones, recordatorios, etiquetas y señalética: todo alineado a tu temática.</p>
+            <a class="postBtn" href="blog/24-papeleria-creativa-eventos.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="papeleria" data-title="Cómo elegir materiales impresos según el tipo de evento">
+          <div class="postCard__media"><img src="imgs/blog/blog-25.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Papelería & Eventos</span></div>
+            <h2 class="postTitle">Cómo elegir materiales impresos según tu evento</h2>
+            <p class="postExcerpt">Bodas, corporativos, ferias, inauguraciones: qué conviene y qué aguanta más.</p>
+            <a class="postBtn" href="blog/25-materiales-impresos-por-evento.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <!-- 🔥 BONUS SEO -->
+        <article class="postCard" data-cat="bonus" data-title="Cada cuánto renovar la imagen visual de tu negocio">
+          <div class="postCard__media"><img src="imgs/blog/blog-26.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Bonus SEO</span></div>
+            <h2 class="postTitle">¿Cada cuánto renovar la imagen visual de tu negocio?</h2>
+            <p class="postExcerpt">Señales claras de que tu branding necesita actualización (sin perder tu esencia).</p>
+            <a class="postBtn" href="blog/26-cada-cuanto-renovar-imagen-visual.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="bonus" data-title="Tendencias en impresión y diseño para este año">
+          <div class="postCard__media"><img src="imgs/blog/blog-27.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Bonus SEO</span></div>
+            <h2 class="postTitle">Tendencias en impresión y diseño para este año</h2>
+            <p class="postExcerpt">Acabados, estilos, colores y formatos que están dominando el mercado.</p>
+            <a class="postBtn" href="blog/27-tendencias-impresion-diseno-este-ano.html">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="postCard" data-cat="bonus" data-title="Cómo un buen diseño impreso aumenta la confianza del cliente">
+          <div class="postCard__media"><img src="imgs/blog/blog-28.webp" alt=""></div>
+          <div class="postCard__body">
+            <div class="postCard__meta"><span class="postTag">Bonus SEO</span></div>
+            <h2 class="postTitle">Cómo el diseño impreso aumenta la confianza del cliente</h2>
+            <p class="postExcerpt">Primera impresión real: por qué lo físico sigue siendo clave para vender y fidelizar.</p>
+            <a class="postBtn" href="blog/28-diseno-impreso-aumenta-confianza.html">Leer artículo</a>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- ✅ Empty state -->
+      <div class="blog__empty" id="blogEmpty" aria-live="polite">
+        <h3 class="blog__emptyTitle">No encontramos resultados</h3>
+        <p class="blog__emptyText">Prueba con otra palabra o selecciona la pestaña <strong>Todo</strong>.</p>
+      </div>
+
     </section>
+
+    <!-- ✅ Botón Ver más -->
+<div class="blogMoreWrap" id="blogMoreWrap">
+  <button class="blogMoreBtn" id="blogMoreBtn" type="button">Ver más</button>
+</div>
+
   </main>
 
+  <!-- ✅ Footer completo -->
+  <footer class="site-footer" aria-label="Pie de página">
+    <div class="footer__wrap">
+      <div class="footer__card">
+
+        <div class="footer__grid">
+
+          <div class="footer__brand">
+            <img class="footer__logo" src="imgs/logo-proink.webp" alt="PRONK Printed Designs">
+            <p class="footer__desc">
+              Imprenta y publicidad impresa en Querétaro. Hacemos que tu marca se vea profesional con materiales de calidad,
+              acabados premium y diseño que impacta.
+            </p>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__title">Navegación</h3>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="index.html"><span class="footer__chip">Inicio</span></a></li>
+              <li><a class="footer__link" href="productos.html"><span class="footer__chip">Productos</span></a></li>
+              <li><a class="footer__link" href="produccion-instalacion.html"><span class="footer__chip">Producción e instalación</span></a></li>
+              <li><a class="footer__link" href="catalogo.html"><span class="footer__chip">Catálogo</span></a></li>
+              <li><a class="footer__link" href="ubicacion.html"><span class="footer__chip">Ubicación</span></a></li>
+            </ul>
+          </div>
+
+          <div class="footer__cta">
+            <h3 class="footer__title">Contacto</h3>
+            <ul class="footer__list">
+              <li>
+                <a class="footer__link" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                  <span class="footer__chip">WhatsApp: 446 112 3494</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer__link" href="ubicacion.html">
+                  <span class="footer__chip">Paseo Las Plazas #3, Querétaro</span>
+                </a>
+              </li>
+            </ul>
+
+            <a class="footer__btn" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">© 2026 PRONK Printed Designs</p>
+          <p class="footer__mini">Imprimimos tu idea. La hacemos realidad.</p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ WhatsApp flotante (ya lo tienes en styles-base.css) -->
   <a
     href="https://wa.me/5214461123494"
     class="whatsapp-float"
@@ -113,6 +1105,91 @@
     <img src="imgs/icono-whatsapp.png" alt="WhatsApp" class="whatsapp-float__icon" />
   </a>
 
+  <!-- ✅ JS base -->
   <script src="js-principal.js"></script>
+
+  <!-- ✅ JS blog (filtro + buscador) -->
+ <script>
+  const pills = document.querySelectorAll(".catPill");
+  const search = document.getElementById("blogSearch");
+  const empty = document.getElementById("blogEmpty");
+
+  const moreWrap = document.getElementById("blogMoreWrap");
+  const moreBtn = document.getElementById("blogMoreBtn");
+
+  const PAGE_SIZE = 5; // ✅ aquí ajustas si quieres 6, 8, etc.
+  let activeCat = "all";
+  let currentLimit = PAGE_SIZE;
+
+  function allCards(){
+    return Array.from(document.querySelectorAll(".postCard"));
+  }
+
+  function getFilteredCards(){
+    const q = (search?.value || "").trim().toLowerCase();
+
+    return allCards().filter(card => {
+      const cat = card.getAttribute("data-cat");
+      const title = (card.getAttribute("data-title") || "").toLowerCase();
+
+      const matchCat = (activeCat === "all") || (cat === activeCat);
+      const matchText = !q || title.includes(q);
+
+      return matchCat && matchText;
+    });
+  }
+
+  function render(){
+    const filtered = getFilteredCards();
+
+    // Oculta todas
+    allCards().forEach(card => card.style.display = "none");
+
+    // Muestra solo hasta el límite
+    filtered.slice(0, currentLimit).forEach(card => {
+      card.style.display = "";
+    });
+
+    // Empty state
+    empty.style.display = filtered.length ? "none" : "block";
+
+    // Botón Ver más
+    const hasMore = filtered.length > currentLimit;
+    if(moreWrap){
+      moreWrap.style.display = (filtered.length && hasMore) ? "flex" : "none";
+    }
+  }
+
+  // Click en categorías
+  pills.forEach(p => {
+    p.addEventListener("click", () => {
+      pills.forEach(x => x.classList.remove("is-active"));
+      p.classList.add("is-active");
+      activeCat = p.dataset.cat || "all";
+
+      // ✅ Cada que cambias filtro, regresa a los primeros 5
+      currentLimit = PAGE_SIZE;
+      render();
+    });
+  });
+
+  // Buscar
+  search?.addEventListener("input", () => {
+    // ✅ Cada que buscas, regresa a los primeros 5
+    currentLimit = PAGE_SIZE;
+    render();
+  });
+
+  // Ver más
+  moreBtn?.addEventListener("click", () => {
+    currentLimit += PAGE_SIZE;
+    render();
+  });
+
+  // Inicial
+  render();
+</script>
+
+
 </body>
 </html>
