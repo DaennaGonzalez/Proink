@@ -11,280 +11,373 @@
 
   <link rel="stylesheet" href="styles-base.css" />
 
-  <style>
-    /* =========================================================
-      PRODUCCIÓN E INSTALACIÓN — UI (IGUAL QUE PRODUCTOS)
-      ✅ Buscador Montserrat
-      ✅ Secciones con marco glass + cards
-      ✅ Cards con imagen (solo secciones indicadas)
-      ✅ Listado dentro del card (para items)
-      ✅ Efecto gelatina en hover/click
-    ========================================================= */
+  
+<style>
+/* =========================================================
+  PRODUCCIÓN E INSTALACIÓN — DISEÑO CENTRADO + TEXTO GRANDE
+  ✅ Desktop: imagen IZQ + items DERECHA (centrado)
+  ✅ Móvil: vertical (imagen arriba, items abajo)
+  ✅ Sin marcos/sombras en imagen
+  ✅ Marco solo en apartado + items
+  ✅ Items grandes + NEÓN + rebote individual al hover/click
+========================================================= */
 
-    main.prodinst{
-      position: relative;
-      z-index: 1;
-      padding-bottom: clamp(40px, 5vw, 70px);
-    }
+main.prodinst{
+  position: relative;
+  z-index: 1;
+  padding-bottom: clamp(50px, 6vw, 80px);
+}
 
-    .prodinst__wrap{
-      width: min(1200px, calc(100% - 36px));
-      margin: clamp(18px, 3vw, 36px) auto 0;
-    }
+.prodinst__wrap{
+  width: min(1250px, calc(100% - 40px));
+  margin: clamp(24px, 4vw, 44px) auto 0;
+}
 
-    /* Burbuja principal */
-    .page-bubble{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-weight: 900;
-      letter-spacing: .25px;
-      color: #000;
+/* =========================
+  TOPBAR (si lo usas aquí)
+========================= */
+.page-bubble{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: .25px;
+  color: #000;
 
-      background: linear-gradient(90deg, rgba(255,0,200,.95), rgba(255,153,0,.95));
-      box-shadow:
-        0 18px 30px rgba(0,0,0,.22),
-        0 0 22px rgba(255,0,200,.25);
+  background: linear-gradient(90deg, rgba(255,0,200,.95), rgba(255,153,0,.95));
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.22),
+    0 0 22px rgba(255,0,200,.25);
 
-      margin-bottom: 16px;
-    }
+  margin-bottom: 16px;
+}
 
-    /* Topbar + buscador */
-    .prodinst__topbar{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: clamp(16px, 2.5vw, 22px);
-    }
+.prodinst__topbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(16px, 2.5vw, 22px);
+}
 
-    .search{
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 999px;
+.search{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
 
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.18);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 14px 26px rgba(0,0,0,.22);
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 14px 26px rgba(0,0,0,.22);
 
-      width: min(520px, 100%);
-    }
+  width: min(520px, 100%);
+}
 
-    .search input{
-      width: 100%;
-      border: 0;
-      outline: none;
-      background: transparent;
+.search input{
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
 
-      color: #fff;
-      font-family: "Montserrat", system-ui, sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-    }
+.search input::placeholder{
+  color: rgba(255,255,255,.8);
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 600;
+}
 
-    .search input::placeholder{
-      color: rgba(255,255,255,.8);
-      font-family: "Montserrat", system-ui, sans-serif;
-      font-weight: 600;
-    }
+.search .icon{
+  width: 22px;
+  height: 22px;
+  opacity: .9;
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.3));
+}
 
-    .search .icon{
-      width: 22px;
-      height: 22px;
-      opacity: .9;
-      filter: drop-shadow(0 8px 14px rgba(0,0,0,.3));
-    }
+/* =========================
+  SECCIÓN
+========================= */
 
-    /* Sección */
-    .sec{
-      margin: 20px 0 32px;
-    }
+.sec{
+  margin: 30px 0 54px;
+}
 
-    .sec__title{
-      display: grid;
-      place-items: center;
-      margin-bottom: 16px;
-    }
+.sec__title{
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+}
 
-    .sec__pill{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 20px;
-      border-radius: 999px;
+/* PILL NEÓN ROSA/NARANJA */
+.sec__pill{
+  padding: 14px 28px;
+  border-radius: 999px;
 
-      font-weight: 900;
-      letter-spacing: .3px;
-      text-transform: uppercase;
-      color: #000;
+  font-size: clamp(18px, 1.7vw, 24px);
+  font-weight: 900;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  text-align: center;
 
-      background: linear-gradient(90deg, rgba(11,207,241,.95), rgba(250,255,18,.95));
-      box-shadow:
-        0 18px 30px rgba(0,0,0,.22),
-        0 0 22px rgba(11,207,241,.25);
-      text-align: center;
-    }
+  color: #fff;
+  text-shadow:
+    0 2px 10px rgba(0,0,0,.55),
+    0 0 10px rgba(255, 0, 200, .55),
+    0 0 18px rgba(255, 153, 0, .45),
+    0 0 28px rgba(255, 0, 200, .30);
 
-    /* Marco glass */
-    .sec__frame{
-      position: relative;
-      border-radius: 28px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,0,200,.98) 0%,
+    rgba(255,85,185,.94) 38%,
+    rgba(255,153,0,.96) 100%
+  );
 
-      padding:
-        clamp(26px, 3vw, 32px)
-        clamp(16px, 2.4vw, 22px)
-        clamp(18px, 2vw, 22px);
+  border: 1px solid rgba(255,255,255,.25);
 
-      background: rgba(0,0,0,.14);
-      border: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 18px 40px rgba(0,0,0,.32);
+  box-shadow:
+    0 20px 34px rgba(0,0,0,.35),
+    0 0 18px rgba(255,0,200,.35),
+    0 0 24px rgba(255,153,0,.22);
 
-      overflow: visible;
-    }
+  position: relative;
+  overflow: visible;
+}
 
-    /* Grid cards */
-    .grid{
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: clamp(18px, 2.6vw, 30px);
-      padding: clamp(8px, 1.6vw, 18px);
-    }
+.sec__pill::after{
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    rgba(255,0,200,.32),
+    rgba(255,153,0,.28)
+  );
+  filter: blur(16px);
+  opacity: .9;
+  z-index: -1;
+  pointer-events: none;
+}
 
-    /* Card */
-    .p-card{
-      position: relative;
-      border-radius: 30px;
+/* Marco del apartado (SE QUEDA) */
+.sec__frame{
+  border-radius: 30px;
+  padding: clamp(30px, 4vw, 42px);
 
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.16);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 18px 42px rgba(0,0,0,.30);
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.12);
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
-      padding: clamp(14px, 2vw, 18px);
-      min-height: clamp(310px, 38vw, 390px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.40);
+}
 
-      overflow: hidden;
-      cursor: default;
+/* Grid: una card por sección */
+.grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
 
-      transition: transform .2s var(--ease), filter .2s var(--ease);
-      transform: translateZ(0);
-      will-change: transform;
-    }
+/* =========================================================
+  CARD: Desktop horizontal, bien centrado
+========================================================= */
+.p-card{
+  width: 100%;
+  max-width: 1120px;
 
-    .p-card:hover{
-      transform: translateY(-6px) scale(1.025);
-      filter: brightness(1.05);
-    }
+  display: grid;
+  grid-template-columns: clamp(300px, 34%, 420px) 1fr;
+  gap: clamp(26px, 3.2vw, 54px);
 
-    /* Imagen (solo cards que la traen) */
-    .p-card__media{
-      position: relative;
-      height: clamp(170px, 22vw, 250px);
-      width: 100%;
-      display: grid;
-      place-items: center;
-      pointer-events: none;
-    }
+  align-items: center;
+  justify-content: center;
 
-    .p-card__media img{
-      max-width: 95%;
-      max-height: clamp(190px, 26vw, 280px);
-      object-fit: contain;
-      transform: translateY(clamp(-26px, -3vw, -42px));
-      filter: drop-shadow(0 20px 26px rgba(0,0,0,.38));
-    }
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
 
-    /* ✅ Ajuste (desktop) como tú lo manejas */
-    @media (min-width: 1100px){
-      .p-card__media img{
-        transform: translateY(1vw);
-      }
-    }
+/* =========================================================
+  IMAGEN (SIN MARCOS NI SOMBRA)
+========================================================= */
+.p-card__media{
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 1:1 */
+  overflow: hidden;
 
-    /* Título dentro del card */
-    .p-card__tag{
-      margin-top: clamp(6px, 1.2vw, 10px);
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-weight: 900;
-      letter-spacing: .25px;
-      color: #000;
-      text-align: center;
-      width: min(300px, 92%);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
 
-      background: linear-gradient(90deg, rgba(255,0,200,.95), rgba(255,153,0,.95));
-      box-shadow: 0 16px 26px rgba(0,0,0,.22);
-      border: 1px solid rgba(0,0,0,.12);
-      user-select: none;
-    }
+  display: grid;
+  place-items: center;
+}
 
-    /* Lista de items */
-    .p-card__list{
-      width: 100%;
-      margin: 14px 0 0;
-      padding: 0;
+.p-card__media img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* mantiene proporción */
+  object-position: center;
 
-      display: grid;
-      gap: 10px;
-      list-style: none;
-    }
+  filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  display: block;
+}
 
-    .p-card__item{
-      padding: 10px 12px;
-      border-radius: 16px;
+/* =========================================================
+  LISTA DERECHA: centrada y grande
+========================================================= */
+.p-card__list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  /* 🔥 centrado */
+  align-items: center;
+  align-content: center;
 
-      background: rgba(0,0,0,.14);
-      border: 1px solid rgba(255,255,255,.12);
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-      font-weight: 800;
-      letter-spacing: .15px;
-      line-height: 1.2;
-      text-align: center;
+/* =========================================================
+  ITEMS: GRANDES + NEÓN + REBOTE INDIVIDUAL
+========================================================= */
+.p-card__item{
+  padding: 16px 26px;
+  border-radius: 999px;
 
-      box-shadow: 0 12px 20px rgba(0,0,0,.18);
-    }
+  font-size: clamp(18px, 1.35vw, 24px); /* 🔥 más grande */
+  font-weight: 900;
+  letter-spacing: .45px;
 
-    /* Responsive fino */
-    @media (max-width: 520px){
-      .prodinst__wrap{
-        width: min(1200px, calc(100% - 26px));
-      }
+  color: #fff;
+  background: rgba(0,0,0,.22);
+  border: 1px solid rgba(255,255,255,.22);
 
-      .grid{
-        grid-template-columns: 1fr;
-        gap: 18px;
-        padding: 8px;
-      }
+  box-shadow:
+    0 16px 28px rgba(0,0,0,.35),
+    0 0 10px rgba(255,0,200,.22);
 
-      .p-card{
-        min-height: 330px;
-      }
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
 
-      .p-card__media{
-        height: 200px;
-      }
+  transition:
+    transform .22s cubic-bezier(.25,1.7,.45,1),
+    box-shadow .22s ease,
+    background .22s ease,
+    text-shadow .22s ease,
+    border-color .22s ease;
 
-      .p-card__media img{
-        max-height: 260px;
-        transform: translateY(-34px);
-      }
-    }
-  </style>
+  will-change: transform;
+}
+
+/* Hover = neón */
+.p-card__item:hover{
+  background: linear-gradient(
+    90deg,
+    rgba(255,0,200,.96),
+    rgba(255,153,0,.96)
+  );
+
+  border-color: rgba(255,255,255,.35);
+
+  box-shadow:
+    0 22px 44px rgba(0,0,0,.45),
+    0 0 16px rgba(255,0,200,.70),
+    0 0 28px rgba(255,153,0,.55);
+
+  text-shadow:
+    0 0 8px rgba(255,255,255,.95),
+    0 0 18px rgba(255,0,200,.85),
+    0 0 26px rgba(255,153,0,.70);
+
+  transform: translateY(-6px) scale(1.08);
+  animation: bounceNeo .6s ease;
+}
+
+/* Click */
+.p-card__item:active{
+  transform: translateY(0) scale(.95);
+}
+
+/* Rebote tipo gelatina */
+@keyframes bounceNeo{
+  0%   { transform: translateY(0) scale(1); }
+  25%  { transform: translateY(-6px) scale(1.15,.92); }
+  50%  { transform: translateY(-3px) scale(.96,1.10); }
+  75%  { transform: translateY(-5px) scale(1.06,.98); }
+  100% { transform: translateY(-6px) scale(1.08); }
+}
+
+/* =========================================================
+  RESPONSIVE
+========================================================= */
+@media (max-width: 1100px){
+  .p-card{
+    grid-template-columns: clamp(260px, 38%, 360px) 1fr;
+    gap: 26px;
+  }
+
+  .p-card__list{
+    gap: 14px;
+  }
+}
+
+@media (max-width: 900px){
+  .p-card{
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .p-card__media{
+    width: min(520px, 100%);
+    margin: 0 auto;
+  }
+
+  .p-card__list{
+    justify-content: center;
+  }
+}
+
+/* Móvil: vertical y items en columna */
+@media (max-width: 520px){
+  .prodinst__wrap{
+    width: min(1200px, calc(100% - 26px));
+  }
+
+  .p-card__list{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .p-card__item{
+    border-radius: 18px;
+    font-size: 18px;
+  }
+}
+</style>
+
+
+
 </head>
 
 <body class="inner">
@@ -392,48 +485,53 @@
     const SECTIONS = [
       {
         title: "CORTES Y MATERIALES",
-        image: "imgs/cortecnc.webp", // ✅ sin imagen
+        image: "imgs/cortecnc.webp",
         items: ["Corte CNC","Corte láser","Alucobond","Graboplac","Acrílico","MDF","Estireno","PVC"]
       },
       {
         title: "GRABADO Y ACABADOS",
-        image: "imgs/grabadoyacabados.webp",
+        image: "imgs/grabadoyacabado.webp",
         items: ["Grabado láser"]
       },
       {
-        title: "BALIZADO Y ROTULACIÓN",
+        title: "BALIZADO Y ROTULACIÓN EMPRESARIAL",
         image: "imgs/balizado.webp",
-        items: ["Balizado empresarial","Rotulación vehicular"]
+        items: []
       },
       {
-        title: "TECNOLOGÍAS DE IMPRESIÓN",
+        title: "IMPRESIÓN DTF",
         image: "imgs/tecnologiasimpresion.webp",
-        items: ["DTF UV","DTF Textil"]
+        items: ["UV","Textil"]
       },
       {
-        title: "IMPRESIÓN EN VINIL (ALTA RESOLUCIÓN)",
+        title: "IMPRESIÓN VINIL ALTA RESOLUCIÓN",
         image: "imgs/impresionvinil.webp",
-        items: ["Vinil brillante","Vinil mate","Vinil textil","Vinil electrostático","Vinil microperforado"]
+        items: ["Textil","Electrostático","Mate","Brillante","Transparente","Microperforado"]
       },
       {
-        title: "IMPRESIÓN EN LONA",
+        title: "IMPRESIÓN LONA ALTA RESOLUCIÓN",
         image: "imgs/impresionlona.webp",
-        items: ["Lona brillante","Lona blackout","Lona mesh"]
+        items: ["Blackout","Mesh","Blanca"]
       },
       {
         title: "IMPRESIONES ESPECIALES",
         image: "imgs/impresionespecial.webp",
-        items: ["Impresión poliéster","Impresión canva"]
+        items: ["Poliéster","Impresión Canva"]
       },
       {
         title: "IMPRESIÓN EN RÍGIDOS",
         image: "imgs/impresionrigido.webp",
-        items: ["Coroplast","Estireno (rígido)","PVC rígido"]
+        items: ["Coroplast","Estireno","Imán","PVC"]
       },
       {
         title: "IMPRESIÓN DIGITAL",
         image: "imgs/impresiondigital.webp",
-        items: ["Impresión digital couche","Impresión digital opalina"]
+        items: ["Couche","Opalina","Adhesivos"]
+      },
+      {
+        title: "CORTE VINIL",
+        image: "imgs/cortevinil.webp",
+        items: []
       },
       {
         title: "TÉCNICAS TEXTILES",
@@ -445,19 +543,44 @@
     const mount = document.getElementById("procMount");
     const search = document.getElementById("procSearch");
 
+    function gelatina(el, duration = 750) {
+      if (!el) return;
+      el.getAnimations?.().forEach(a => a.cancel());
+
+      el.animate(
+        [
+          { transform: "translateY(0) scale(1)" },
+          { transform: "translateY(-6px) scale(1.08, 0.92)" },
+          { transform: "translateY(0) scale(0.96, 1.08)" },
+          { transform: "translateY(-2px) scale(1.04, 0.98)" },
+          { transform: "translateY(0) scale(1)" }
+        ],
+        { duration, easing: "cubic-bezier(.25,1.7,.45,1)", fill: "both" }
+      );
+    }
+
+    function bindGelatina() {
+      document.querySelectorAll(".p-card").forEach(card => {
+        card.addEventListener("mouseenter", () => gelatina(card, 780));
+        card.addEventListener("click", () => gelatina(card, 950));
+        card.addEventListener("focusin", () => gelatina(card, 780));
+        card.addEventListener("touchstart", () => gelatina(card, 820), { passive: true });
+      });
+    }
+
     function render(filterText = "") {
       const q = filterText.trim().toLowerCase();
       mount.innerHTML = "";
 
       SECTIONS.forEach(sec => {
         const inTitle = sec.title.toLowerCase().includes(q);
-        const filteredItems = sec.items.filter(it => it.toLowerCase().includes(q));
+        const itemsToShow = (q ? sec.items.filter(it => it.toLowerCase().includes(q)) : sec.items);
 
-        if (!q) {
-          // sin filtro: render normal
-        } else if (!inTitle && !filteredItems.length) {
-          return; // no coincide
-        }
+        /* ✅ Quitar secciones vacías SIEMPRE (evita el espacio de items: []) */
+        if (!itemsToShow.length) return;
+
+        /* ✅ Con filtro: si no coincide título y no hay items filtrados, no renderiza */
+        if (q && !inTitle && !itemsToShow.length) return;
 
         const section = document.createElement("section");
         section.className = "sec";
@@ -472,18 +595,12 @@
               <article class="p-card" tabindex="0" aria-label="${sec.title}">
                 ${sec.image ? `
                   <div class="p-card__media" aria-hidden="true">
-                    <img src="${sec.image}" alt="" onerror="this.style.display='none'">
+                    <img src="${sec.image}" alt="" onerror="this.closest('.p-card__media').style.display='none'">
                   </div>
-                ` : `
-                  <div style="height:12px;"></div>
-                `}
-
-               
+                ` : ``}
 
                 <ul class="p-card__list">
-                  ${(q ? filteredItems : sec.items).map(it => `
-                    <li class="p-card__item">${it}</li>
-                  `).join("")}
+                  ${itemsToShow.map(it => `<li class="p-card__item">${it}</li>`).join("")}
                 </ul>
               </article>
             </div>
@@ -494,17 +611,6 @@
       });
 
       bindGelatina();
-    }
-
-   
-
-    function bindGelatina() {
-      document.querySelectorAll(".p-card").forEach(card => {
-        card.addEventListener("mouseenter", () => gelatina(card, 780));
-        card.addEventListener("click", () => gelatina(card, 950));
-        card.addEventListener("focusin", () => gelatina(card, 780));
-        card.addEventListener("touchstart", () => gelatina(card, 820), { passive: true });
-      });
     }
 
     render();
