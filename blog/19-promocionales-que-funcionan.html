@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Promocionales que funcionan: qué regalar (y qué evitar) — Blog PROINK</title>
+  <meta name="description" content="Guía PROINK de promocionales que sí funcionan: qué regalar según objetivo, presupuesto y público. Ideas útiles, errores comunes, checklist para cotizar y tips de impresión." />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Base -->
+  <link rel="stylesheet" href="../styles-base.css" />
+  <link rel="stylesheet" href="../blog.css" />
+
+  <style>
+    /* Color de fondo de esta tanda (ajústalo si lo cambias por artículo) */
+    body.inner{ background-color:#1a2a6c; }
+
+    /* ===== Footer FIX anti-bug (sin diseño) ===== */
+    .site-footer{ position: relative; z-index: 1; margin-top: clamp(30px, 5vw, 60px); }
+    .footer__wrap{ width: min(1250px, calc(100% - 36px)); margin: 0 auto; }
+    .footer__card{
+      border-radius: 28px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.38);
+      overflow: hidden;
+      position: relative;
+      padding: clamp(20px, 3vw, 30px);
+    }
+    .footer__grid{
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: clamp(16px, 2vw, 24px);
+      align-items: start;
+    }
+    .footer__brand{ display:flex; flex-direction:column; gap:10px; min-width:0; }
+    .footer__logo{ width: min(220px, 70%); height:auto; display:block; filter:none; }
+    .footer__desc{ margin:0; opacity:.95; line-height:1.65; font-weight:700; }
+    .footer__title{
+      margin:0 0 10px;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: .2px;
+      text-shadow: var(--shadow-text);
+    }
+    .footer__list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+    .footer__link{
+      display:inline-flex; align-items:center; gap:10px;
+      text-decoration:none; font-weight:900; color:#fff; opacity:.95;
+      transition: transform .18s var(--ease), filter .18s var(--ease), opacity .18s var(--ease);
+    }
+    .footer__link:hover{ transform: translateY(-2px); filter: brightness(1.06); opacity: 1; }
+    .footer__chip{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 12px 22px rgba(0,0,0,.25);
+    }
+    .footer__cta{ display:flex; flex-direction:column; gap:12px; }
+    .footer__btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:14px 18px; border-radius:999px; text-decoration:none;
+      font-weight:900; letter-spacing:.35px; color:#000;
+      background: linear-gradient(90deg, rgba(11,207,241,.92), rgba(35,255,120,.86), rgba(250,255,18,.86));
+      border:1px solid rgba(0,0,0,.14);
+      box-shadow: 0 16px 28px rgba(0,0,0,.35), 0 0 16px rgba(11,207,241,.22);
+      transition: transform .18s var(--ease), filter .18s var(--ease), box-shadow .18s var(--ease);
+    }
+    .footer__btn:hover{
+      transform: translateY(-3px) scale(1.01);
+      filter: brightness(1.06);
+      box-shadow: 0 18px 34px rgba(0,0,0,.42), 0 0 18px rgba(11,207,241,.36);
+    }
+    .footer__bottom{
+      position:relative; z-index:1;
+      margin-top:18px; padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.14);
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      padding-bottom:10px;
+    }
+    .footer__copy, .footer__mini{ margin:0; opacity:.92; font-weight:800; }
+    @media (max-width: 980px){
+      .footer__grid{ grid-template-columns:1fr; }
+      .footer__logo{ width: min(220px, 60%); }
+    }
+
+    /* Tablas */
+    .tableWrap{ overflow:auto; border-radius: 18px; }
+    .blogTable{ width:100%; border-collapse: collapse; min-width: 760px; }
+    .blogTable th, .blogTable td{
+      padding: 12px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+      text-align: left;
+      vertical-align: top;
+      font-weight: 700;
+      opacity: .96;
+    }
+    .blogTable thead th{
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      letter-spacing: .2px;
+      text-shadow: var(--shadow-text);
+    }
+    .badgeMini{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 8px 12px; border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 12px 22px rgba(0,0,0,.22);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body class="inner">
+
+  <!-- Manchas -->
+  <div class="bg-splashes" aria-hidden="true">
+    <img class="splash splash-top-right" src="../imgs/manchader.webp" alt="">
+    <img class="splash splash-bottom-left" src="../imgs/manchaizq.webp" alt="">
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+
+      <a class="brand brand--small" href="../index.html" aria-label="Ir a Inicio">
+        <img class="brand__logo brand__logo--small" src="../imgs/logo-proink.webp" alt="PROINK">
+      </a>
+
+      <div class="top-slogan" id="topSlogan">
+        <p class="slogan">
+          Hay más <span class="word-yellow">creatividad</span> en un litro de
+          <span class="word-blue">tinta</span> que en un lienzo vacío
+        </p>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list" id="mainNav">
+          <li class="main-nav__item"><a class="main-nav__link" href="../index.html">INICIO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-controls="mobileNav"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </nav>
+
+    </div>
+
+    <!-- Menú móvil -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
+
+      <div class="mobile-nav__panel" role="dialog" aria-label="Menú móvil">
+        <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Cerrar menú">✕</button>
+
+        <ul class="mobile-nav__list">
+          <li><a class="mobile-nav__link" href="../index.html">INICIO</a></li>
+          <li><a class="mobile-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li><a class="mobile-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li><a class="mobile-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li><a class="mobile-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li><a class="mobile-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li><a class="mobile-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="article">
+    <div class="article__wrap">
+
+      <!-- HERO -->
+      <section class="articleHero" aria-label="Encabezado del artículo">
+        <div class="articleHero__top">
+          <span class="articlePill">Promocionales</span>
+
+          <div class="articleMeta" aria-label="Metadatos del artículo">
+            <span>Lectura: 7–9 min</span>
+            <span>Marketing</span>
+          </div>
+        </div>
+
+        <h1 class="articleTitle">Promocionales que funcionan: qué regalar (y qué evitar)</h1>
+
+        <p class="articleIntro">
+          Un promocional bueno no es el más caro: es el que la gente <strong>usa</strong>.
+          Si se queda en el cajón, tu marca no gana nada. Aquí te dejo una guía práctica para elegir
+          promocionales que sí funcionan según tu objetivo, tu público y tu presupuesto (y de paso evitar
+          los típicos errores que hacen que se tiren).
+        </p>
+
+        <figure class="articleCover" aria-label="Imagen del artículo">
+          <img src="../imgs/blog/blog-19.webp" alt="Promocionales útiles con impresión profesional para marcas">
+        </figure>
+      </section>
+
+      <!-- LAYOUT -->
+      <section class="article__layout" aria-label="Contenido del artículo">
+
+        <!-- ARTÍCULO -->
+        <article class="articleBody">
+          <div class="prose">
+
+            <div class="note note--tip">
+              <p class="note__title">Regla de oro</p>
+              <p>
+                Si el objeto es <strong>útil</strong> y se ve <strong>bonito</strong>, se usa.
+                Si es “barato” y se ve “genérico”, se olvida.
+              </p>
+            </div>
+
+            <h2 id="objetivo">1) Primero define el objetivo (si no, eliges a ciegas)</h2>
+            <p>
+              Antes de pensar “¿qué regalo?”, piensa “¿qué quiero lograr?”.
+              Cada objetivo pide un tipo de promocional distinto:
+            </p>
+            <ul>
+              <li><strong>Alcance (que te vean mucho):</strong> cosas de uso diario.</li>
+              <li><strong>Recordación:</strong> objetos que se quedan en escritorio / casa.</li>
+              <li><strong>Ventas:</strong> algo que empuje a acción (cupón + QR + regalo útil).</li>
+              <li><strong>Fidelidad:</strong> algo que se sienta premium (calidad > cantidad).</li>
+              <li><strong>Eventos:</strong> productos “portables” y de impacto rápido.</li>
+            </ul>
+
+            <hr class="hrGlow" />
+
+            <h2 id="que-si">2) Qué promocionales sí funcionan (por categoría)</h2>
+
+            <h3 id="diario">A) Uso diario (lo que más se usa = lo que más te ven)</h3>
+            <ul>
+              <li><strong>Termos / cilindros</strong> (top si son bonitos y de buen material)</li>
+              <li><strong>Libretas</strong> (si tienen buena pasta y hojas decentes)</li>
+              <li><strong>Plumas</strong> (cuando escriben bien; si no, se tiran)</li>
+              <li><strong>Tote bags</strong> o bolsas (si aguantan peso)</li>
+              <li><strong>Playeras</strong> (cuando se sienten como prenda real)</li>
+            </ul>
+
+            <h3 id="escritorio">B) Escritorio/oficina (recordación + exposición constante)</h3>
+            <ul>
+              <li><strong>Mousepad</strong> (muy visible si el diseño está bien)</li>
+              <li><strong>Portagafetes</strong> y <strong>lanyards</strong> (especialmente en corporativo)</li>
+              <li><strong>Calendarios</strong> (si el diseño se ve pro, duran todo el año)</li>
+              <li><strong>Stickers troquelados</strong> (si son bonitos, la gente los pega)</li>
+            </ul>
+
+            <h3 id="eventos">C) Eventos (impacto rápido + fácil de llevar)</h3>
+            <ul>
+              <li><strong>Gorras</strong> (si el bordado o impresión se ve pro)</li>
+              <li><strong>Botellas</strong> / termos compactos</li>
+              <li><strong>Kits</strong> (bolsa + libreta + pluma + sticker, por ejemplo)</li>
+              <li><strong>Llaveros</strong> (si se sienten sólidos, no “de juguete”)</li>
+            </ul>
+
+            <div class="note note--check">
+              <p class="note__title">Tip de combos que funcionan</p>
+              <ul class="checklist">
+                <li>✔ Evento: <strong>lanyard + sticker + libreta</strong></li>
+                <li>✔ Venta/activación: <strong>sticker + QR + cupón</strong></li>
+                <li>✔ Staff: <strong>playera + gorra</strong></li>
+                <li>✔ Clientes premium: <strong>termo + libreta</strong> (calidad alta)</li>
+              </ul>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="errores">3) Qué evitar (porque se va al cajón o a la basura)</h2>
+            <ul>
+              <li><strong>Objetos inútiles:</strong> si no sirve para nada, no se conserva.</li>
+              <li><strong>Muy frágil:</strong> si se rompe rápido, tu marca se asocia con “mala calidad”.</li>
+              <li><strong>Diseño saturado:</strong> logo enorme + textos + redes + slogan… se ve como volante.</li>
+              <li><strong>Mala impresión:</strong> colores apagados, bordes feos, estampado que se cuartea.</li>
+              <li><strong>Sin contexto:</strong> regalar algo que tu público no usa (ej. termo caro para evento express).</li>
+            </ul>
+
+            <div class="note note--warn">
+              <p class="note__title">Ojo</p>
+              <p>
+                Un promocional “barato” puede salir caro si nadie lo usa.
+                Mejor menos piezas, pero que se vean y se sientan bien.
+              </p>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="tabla">4) Guía rápida para elegir según objetivo y presupuesto</h2>
+            <div class="tableWrap" aria-label="Tabla de recomendación por objetivo">
+              <table class="blogTable">
+                <thead>
+                  <tr>
+                    <th>Objetivo</th>
+                    <th>Qué conviene</th>
+                    <th>Evita</th>
+                    <th>Tip de diseño</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="badgeMini">Alcance</span></td>
+                    <td>Playeras, bolsas, stickers, plumas buenas</td>
+                    <td>Objetos raros o frágiles</td>
+                    <td>Logo discreto + diseño bonito</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badgeMini">Recordación</span></td>
+                    <td>Libretas, calendarios, mousepad</td>
+                    <td>Impresión apagada</td>
+                    <td>Colores de marca + legibilidad</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badgeMini">Ventas</span></td>
+                    <td>Stickers + QR/cupón, kits simples</td>
+                    <td>Solo “logo y ya”</td>
+                    <td>CTA claro: “escanea y gana”</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badgeMini">Premium</span></td>
+                    <td>Termos buenos, libretas premium, gorras bordadas</td>
+                    <td>Materiales económicos</td>
+                    <td>Acabado limpio y minimal</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="impresion">5) Impresión: el detalle que cambia TODO</h2>
+            <p>
+              El mismo promocional puede verse “pro” o “barato” según la impresión.
+              En general:
+            </p>
+            <ul>
+              <li><strong>Bordado:</strong> se ve premium en gorras y textiles.</li>
+              <li><strong>Serigrafía:</strong> ideal por volumen y diseños simples.</li>
+              <li><strong>DTF:</strong> detalles finos y colores vivos en textiles.</li>
+              <li><strong>Sublimación:</strong> full color (mejor en poliéster claro).</li>
+              <li><strong>Vinil / UV / láser</strong>: depende del material del promocional (plástico, metal, etc.).</li>
+            </ul>
+
+            <hr class="hrGlow" />
+
+            <h2 id="checklist">6) Checklist para cotizar rápido (sin ir y venir)</h2>
+            <div class="note note--check">
+              <p class="note__title">Checklist PROINK</p>
+              <ul class="checklist">
+                <li>✔ Objetivo (evento / alcance / ventas / premium)</li>
+                <li>✔ Cantidad aproximada</li>
+                <li>✔ Presupuesto por pieza (si tienes un rango)</li>
+                <li>✔ Público (jóvenes, corporativo, clientes, staff)</li>
+                <li>✔ Fecha de entrega</li>
+                <li>✔ Tu logo (archivo o imagen) + colores</li>
+                <li>✔ ¿Quieres algo discreto o más llamativo?</li>
+              </ul>
+            </div>
+
+            <h2 id="cierre">Conclusión</h2>
+            <p>
+              Un promocional que funciona tiene 3 cosas: <strong>utilidad</strong>, <strong>calidad</strong> y
+              <strong>un diseño ponible/usable</strong>. Si quieres, dime tu objetivo y tu presupuesto por pieza
+              y te recomiendo 2–3 opciones que sí se usan (y que se ven bien).
+            </p>
+
+            <div class="articleCTA">
+              <h3 class="articleCTA__title">¿Quieres que armemos tus promocionales ideales?</h3>
+              <p class="articleCTA__text">
+                En PROINK te proponemos opciones según tu público y objetivo para que tu inversión sí se note.
+                Mándanos cantidad + idea + fecha y te cotizamos.
+              </p>
+              <a class="btnNeon" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                Cotizar por WhatsApp
+              </a>
+            </div>
+
+            <div class="articleNav">
+              <a href="18-playeras-promocionales-que-si-usan.html">← Anterior</a>
+              <a href="20-errores-al-elegir-promocionales.html">Siguiente →</a>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- TOC -->
+        <aside class="articleSide" aria-label="Tabla de contenidos">
+          <div class="toc">
+            <h3 class="toc__title">Contenido</h3>
+            <ul class="toc__list">
+              <li><a href="#objetivo"><span class="tocDot"></span> Objetivo</a></li>
+              <li><a href="#que-si"><span class="tocDot"></span> Qué sí funciona</a></li>
+              <li><a href="#errores"><span class="tocDot"></span> Qué evitar</a></li>
+              <li><a href="#tabla"><span class="tocDot"></span> Guía rápida</a></li>
+              <li><a href="#impresion"><span class="tocDot"></span> Impresión</a></li>
+              <li><a href="#checklist"><span class="tocDot"></span> Checklist</a></li>
+              <li><a href="#cierre"><span class="tocDot"></span> Cierre</a></li>
+            </ul>
+
+            <p class="toc__mini">
+              Tip rápido: utilidad + calidad + diseño limpio = promocional que sí se usa.
+            </p>
+          </div>
+        </aside>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" aria-label="Pie de página">
+    <div class="footer__wrap">
+      <div class="footer__card">
+
+        <div class="footer__grid">
+
+          <div class="footer__brand">
+            <img class="footer__logo" src="../imgs/logo-proink.webp" alt="PROINK Printed Designs">
+            <p class="footer__desc">
+              Impresión y personalización en Querétaro. Hacemos que tu marca se vea profesional con materiales de calidad,
+              acabados premium y diseño que impacta.
+            </p>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__title">Navegación</h3>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="../index.html"><span class="footer__chip">Inicio</span></a></li>
+              <li><a class="footer__link" href="../productos.html"><span class="footer__chip">Productos</span></a></li>
+              <li><a class="footer__link" href="../produccion-instalacion.html"><span class="footer__chip">Producción e instalación</span></a></li>
+              <li><a class="footer__link" href="../catalogo.html"><span class="footer__chip">Catálogo</span></a></li>
+              <li><a class="footer__link" href="../ubicacion.html"><span class="footer__chip">Ubicación</span></a></li>
+              <li><a class="footer__link" href="../blog.html"><span class="footer__chip">Blog</span></a></li>
+            </ul>
+          </div>
+
+          <div class="footer__cta">
+            <h3 class="footer__title">Contacto</h3>
+            <ul class="footer__list">
+              <li>
+                <a class="footer__link" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                  <span class="footer__chip">WhatsApp: 446 112 3494</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer__link" href="../ubicacion.html">
+                  <span class="footer__chip">Paseo Las Plazas #3, Querétaro</span>
+                </a>
+              </li>
+            </ul>
+
+            <a class="footer__btn" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">© 2026 PROINK Printed Designs</p>
+          <p class="footer__mini">Tú imagina, nosotros lo imprimimos.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a
+    href="https://wa.me/5214461123494"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img src="../imgs/icono-whatsapp.png" alt="WhatsApp" class="whatsapp-float__icon" />
+  </a>
+
+  <!-- JS base -->
+  <script src="../js-principal.js"></script>
+</body>
+</html>

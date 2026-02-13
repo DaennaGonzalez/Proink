@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Errores comunes al imprimir y cómo evitarlos — Blog PROINK</title>
+  <meta name="description" content="Evita los errores más comunes al imprimir: archivos mal preparados, baja resolución, colores distintos, tipografías, sangrados, materiales incorrectos e instalaciones que fallan. Checklist PROINK incluida." />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Base -->
+  <link rel="stylesheet" href="../styles-base.css" />
+  <link rel="stylesheet" href="../blog.css" />
+</head>
+
+<body class="inner">
+
+  <!-- Manchas -->
+  <div class="bg-splashes" aria-hidden="true">
+    <img class="splash splash-top-right" src="../imgs/manchader.webp" alt="">
+    <img class="splash splash-bottom-left" src="../imgs/manchaizq.webp" alt="">
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+
+      <a class="brand brand--small" href="../index.html" aria-label="Ir a Inicio">
+        <img class="brand__logo brand__logo--small" src="../imgs/logo-proink.webp" alt="PROINK">
+      </a>
+
+      <div class="top-slogan">
+        <p class="slogan">
+          Hay más <span class="word-yellow">creatividad</span> en un litro de
+          <span class="word-blue">tinta</span> que en un lienzo vacío
+        </p>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list">
+          <li class="main-nav__item"><a class="main-nav__link" href="../index.html">INICIO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" type="button"
+          aria-label="Abrir menú" aria-controls="mobileNav" aria-expanded="false">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Menú móvil -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
+      <div class="mobile-nav__panel" role="dialog" aria-label="Menú móvil">
+        <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Cerrar menú">✕</button>
+        <ul class="mobile-nav__list">
+          <li><a class="mobile-nav__link" href="../index.html">INICIO</a></li>
+          <li><a class="mobile-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li><a class="mobile-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li><a class="mobile-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li><a class="mobile-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li><a class="mobile-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li><a class="mobile-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="article">
+    <div class="article__wrap">
+
+      <!-- HERO -->
+      <section class="articleHero" aria-label="Encabezado del artículo">
+        <div class="articleHero__top">
+          <span class="articlePill">Impresión & Materiales</span>
+
+          <div class="articleMeta" aria-label="Metadatos del artículo">
+            <span>Lectura: 6–9 min</span>
+            <span>Checklist PROINK</span>
+          </div>
+        </div>
+
+        <h1 class="articleTitle">Errores comunes al imprimir y cómo evitarlos</h1>
+
+        <p class="articleIntro">
+          La mayoría de “malas impresiones” no pasan por la máquina… pasan antes: archivos mal preparados,
+          medidas incorrectas, materiales equivocados o instalación sin considerar el uso real.
+          Aquí te dejo los errores más comunes y cómo evitarlos para que tu proyecto se vea <strong>pro</strong> desde el primer intento.
+        </p>
+
+        <figure class="articleCover" aria-label="Imagen del artículo">
+          <img src="../imgs/blog/blog-06.webp" alt="Errores comunes al imprimir: resolución, color, medidas y materiales">
+        </figure>
+      </section>
+
+      <!-- LAYOUT -->
+      <section class="article__layout" aria-label="Contenido del artículo">
+
+        <!-- ARTÍCULO -->
+        <article class="articleBody">
+          <div class="prose">
+
+            <div class="note note--check" role="note" aria-label="Checklist rápida">
+              <p class="note__title">Checklist rápida (antes de mandar a imprimir)</p>
+              <ul class="checklist" aria-label="Puntos clave">
+                <li><strong>Medida correcta</strong> (ancho x alto) y orientación (horizontal/vertical).</li>
+                <li><strong>Alta resolución</strong> (evita capturas de pantalla y fotos “chiquitas”).</li>
+                <li><strong>Texto legible</strong> (tamaño suficiente para la distancia real de lectura).</li>
+                <li><strong>Sangrado y margen</strong> si habrá corte.</li>
+                <li><strong>Material correcto</strong> según uso (interior/exterior/ventana/viento).</li>
+                <li><strong>Acabado</strong> (brillante/mate/laminado) según luz y fricción.</li>
+              </ul>
+            </div>
+
+            <h2 id="medidas">1) Error: mandar medidas “aproximadas” o incompletas</h2>
+            <p>
+              “Más o menos de 1 metro” es la forma más rápida de terminar con un impreso que no cabe, se ve chico o tapa lo que no debía.
+              La impresión es literal: si la medida está mal, el resultado también.
+            </p>
+
+            <div class="note note--tip" role="note">
+              <p class="note__title">Cómo evitarlo</p>
+              <ul class="checklist">
+                <li><strong>Confirma</strong> ancho x alto en centímetros.</li>
+                <li>Indica si lleva <strong>ojillos</strong>, bastón, base, cinta, imán o adhesivo.</li>
+                <li>Si es instalación (pared/vidrio), manda <strong>foto del lugar</strong>.</li>
+              </ul>
+            </div>
+
+            <h2 id="resolucion">2) Error: baja resolución (se ve “pixelado”)</h2>
+            <p>
+              El error #1: mandar logos bajados de Google, capturas de pantalla o fotos comprimidas de WhatsApp.
+              Eso en grande se nota: bordes feos, texto borroso y colores raros.
+            </p>
+
+            <div class="note note--warn" role="note">
+              <p class="note__title">Señales de alerta</p>
+              <ul class="checklist">
+                <li>Tu logo se ve bien en celular, pero al acercarte se ve “cuadriculado”.</li>
+                <li>El archivo pesa muy poco para un tamaño grande.</li>
+                <li>Te mandaron el logo como imagen pequeña o pegada en Word.</li>
+              </ul>
+            </div>
+
+            <h3>Cómo evitarlo</h3>
+            <ul>
+              <li>Para logotipos: pide formato <strong>vector</strong> (AI, PDF, EPS, SVG).</li>
+              <li>Para imágenes: usa archivos en alta calidad (ideal si son originales).</li>
+              <li>Si no tienes el archivo, en PROINK te ayudamos a <strong>revisarlo</strong> antes de imprimir.</li>
+            </ul>
+
+            <h2 id="color">3) Error: esperar que el color salga idéntico al de tu pantalla</h2>
+            <p>
+              Pantalla ≠ impresión. El celular “ilumina” el color, y la impresión lo refleja. Además cambia por material
+              (vinil, lona, papel, rígido) y por acabado (mate/brillante/laminado).
+            </p>
+
+            <div class="note note--tip" role="note">
+              <p class="note__title">Cómo evitarlo</p>
+              <ul class="checklist">
+                <li>Define si quieres acabado <strong>brillante</strong> (más vivo) o <strong>mate</strong> (más elegante y estable).</li>
+                <li>Si es un color corporativo “muy exacto”, pide una <strong>prueba</strong> o muestra.</li>
+                <li>Evita fondos muy oscuros si lo vas a leer de lejos (el texto pierde legibilidad).</li>
+              </ul>
+            </div>
+
+            <h2 id="tipos">4) Error: tipografías que cambian o se rompen</h2>
+            <p>
+              Pasa cuando el archivo se abre en otra computadora y esa fuente no existe: cambia la letra, se desacomoda el diseño
+              o se va el “estilo” de tu marca.
+            </p>
+
+            <h3>Cómo evitarlo</h3>
+            <ul>
+              <li>Envía PDF con texto <strong>convertido a curvas</strong> (o “contorneado”).</li>
+              <li>Si mandas editable, adjunta las <strong>fuentes</strong> usadas.</li>
+              <li>Evita mandar artes finales solo en Word/PowerPoint si es algo de precisión.</li>
+            </ul>
+
+            <h2 id="sangrado">5) Error: sin sangrado o con texto pegado al borde</h2>
+            <p>
+              Cuando algo va a corte, se necesita margen. Si no, se corta texto, queda “chueco” o aparece una orilla blanca.
+            </p>
+
+            <div class="note note--warn" role="note">
+              <p class="note__title">Regla rápida</p>
+              <p>
+                Deja un <strong>margen de seguridad</strong> para texto y agrega <strong>sangrado</strong> en fondos que llegan al borde.
+                (Si no lo manejas, dinos y lo preparamos nosotros).
+              </p>
+            </div>
+
+            <h2 id="material">6) Error: elegir el material equivocado para el uso real</h2>
+            <p>
+              Este es el error que más cuesta: imprimir “bonito” pero en el material incorrecto.
+              Luego se despega, se deforma, se mancha o se rompe.
+            </p>
+
+            <h3>Ejemplos típicos</h3>
+            <ul>
+              <li>Usar vinil interior en exterior con sol directo (se degrada antes).</li>
+              <li>Usar lona normal en zona con viento fuerte (se daña o se rompe).</li>
+              <li>Usar microperforado en superficies que no son vidrio.</li>
+              <li>Elegir rígido ligero para un letrero que debe durar mucho afuera.</li>
+            </ul>
+
+            <div class="note note--tip" role="note">
+              <p class="note__title">Cómo evitarlo</p>
+              <ul class="checklist">
+                <li><strong>¿Interior o exterior?</strong> (sol/lluvia cambia todo).</li>
+                <li><strong>¿Hay viento?</strong> (mesh puede ser necesario).</li>
+                <li><strong>¿Habrá fricción/limpieza?</strong> (laminado ayuda).</li>
+                <li><strong>¿Qué tanto debe durar?</strong> (1 evento vs 1 año).</li>
+              </ul>
+            </div>
+
+            <h2 id="instalacion">7) Error: instalación sin plan (o sin considerar superficie)</h2>
+            <p>
+              A veces el impreso está perfecto… pero se instala mal: burbujas, mala alineación, adhesivo que no pega, o base inestable.
+              La superficie manda: no es lo mismo vidrio limpio que pared con textura o humedad.
+            </p>
+
+            <h3>Cómo evitarlo</h3>
+            <ul>
+              <li>Manda <strong>foto del lugar</strong> y dinos la superficie (vidrio, pared lisa, pared rugosa, metal, etc.).</li>
+              <li>Evita instalar vinil en superficies <strong>sucias, húmedas o con polvo</strong>.</li>
+              <li>Si es grande o delicado, conviene instalación profesional para que quede alineado y sin burbujas.</li>
+            </ul>
+
+            <h2 id="archivo">8) ¿Qué archivo mandarme para que salga perfecto?</h2>
+            <p>
+              Si quieres que tu proyecto salga bien desde la primera, envíanos esto:
+            </p>
+
+            <ol class="steps" aria-label="Checklist de envío">
+              <li><div><strong>Medida exacta</strong> (ancho x alto) y dónde se colocará.</div></li>
+              <li><div><strong>Archivo en PDF</strong> (ideal) o vector (AI/SVG) si es logo.</div></li>
+              <li><div><strong>Foto del lugar</strong> (si es instalación) y distancia de lectura aproximada.</div></li>
+              <li><div><strong>Tiempo de uso</strong> (evento / campaña / permanente) y condiciones (sol/viento/limpieza).</div></li>
+            </ol>
+
+            <div class="articleCTA" aria-label="CTA WhatsApp">
+              <h3 class="articleCTA__title">¿Quieres que revisemos tu archivo antes de imprimir?</h3>
+              <p class="articleCTA__text">
+                En PROINK te decimos si tu archivo está listo (resolución, medidas, legibilidad y material ideal).
+                Mándanos medida + foto del lugar + tu diseño y te orientamos.
+              </p>
+              <a class="btnNeon" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                Cotizar por WhatsApp
+              </a>
+            </div>
+
+            <div class="articleNav" aria-label="Navegación del artículo">
+              <a href="05-impresion-en-rigidos.html">← Anterior</a>
+              <a href="../blog.html">Volver al blog →</a>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- TOC -->
+        <aside class="articleSide" aria-label="Tabla de contenidos">
+          <div class="toc">
+            <h3 class="toc__title">En este artículo</h3>
+            <ul class="toc__list">
+              <li><a href="#medidas"><span class="tocDot"></span> Medidas</a></li>
+              <li><a href="#resolucion"><span class="tocDot"></span> Resolución</a></li>
+              <li><a href="#color"><span class="tocDot"></span> Color</a></li>
+              <li><a href="#tipos"><span class="tocDot"></span> Tipografías</a></li>
+              <li><a href="#sangrado"><span class="tocDot"></span> Sangrado</a></li>
+              <li><a href="#material"><span class="tocDot"></span> Material</a></li>
+              <li><a href="#instalacion"><span class="tocDot"></span> Instalación</a></li>
+              <li><a href="#archivo"><span class="tocDot"></span> Qué enviarnos</a></li>
+            </ul>
+
+            <p class="toc__mini">
+              Si algo sale mal, casi siempre fue por <strong>medida</strong>, <strong>archivo</strong> o <strong>material</strong>.
+              Envíanos foto + medida y te decimos qué conviene.
+            </p>
+          </div>
+        </aside>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- WhatsApp flotante -->
+  <a
+    href="https://wa.me/5214461123494"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img src="../imgs/icono-whatsapp.png" alt="WhatsApp" class="whatsapp-float__icon" />
+  </a>
+
+  <!-- JS base -->
+  <script src="../js-principal.js"></script>
+</body>
+</html>

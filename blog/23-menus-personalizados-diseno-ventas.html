@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Menús personalizados: cómo el diseño aumenta tus ventas — Blog PROINK</title>
+  <meta name="description" content="Aprende cómo un menú bien diseñado aumenta ventas: jerarquía visual, fotos, tamaños, materiales, tipos de impresión y checklist PROINK para menús que venden." />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Base -->
+  <link rel="stylesheet" href="../styles-base.css" />
+  <link rel="stylesheet" href="../blog.css" />
+
+  <style>
+    /* Fondo de esta tanda */
+    body.inner{ background-color:#1a2a6c; }
+
+    /* ===== Footer FIX anti-bug (para que NO salga sin diseño) ===== */
+    .site-footer{ position: relative; z-index: 1; margin-top: clamp(30px, 5vw, 60px); }
+    .footer__wrap{ width: min(1250px, calc(100% - 36px)); margin: 0 auto; }
+    .footer__card{
+      border-radius: 28px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.38);
+      overflow: hidden;
+      position: relative;
+      padding: clamp(20px, 3vw, 30px);
+    }
+    .footer__grid{
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: clamp(16px, 2vw, 24px);
+      align-items: start;
+    }
+    .footer__brand{ display:flex; flex-direction:column; gap:10px; min-width:0; }
+    .footer__logo{ width: min(220px, 70%); height:auto; display:block; filter:none; }
+    .footer__desc{ margin:0; opacity:.95; line-height:1.65; font-weight:700; }
+    .footer__title{
+      margin:0 0 10px;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: .2px;
+      text-shadow: var(--shadow-text);
+    }
+    .footer__list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+    .footer__link{
+      display:inline-flex; align-items:center; gap:10px;
+      text-decoration:none; font-weight:900; color:#fff; opacity:.95;
+      transition: transform .18s var(--ease), filter .18s var(--ease), opacity .18s var(--ease);
+    }
+    .footer__link:hover{ transform: translateY(-2px); filter: brightness(1.06); opacity: 1; }
+    .footer__chip{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 12px 22px rgba(0,0,0,.25);
+    }
+    .footer__cta{ display:flex; flex-direction:column; gap:12px; }
+    .footer__btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:14px 18px; border-radius:999px; text-decoration:none;
+      font-weight:900; letter-spacing:.35px; color:#000;
+      background: linear-gradient(90deg, rgba(11,207,241,.92), rgba(35,255,120,.86), rgba(250,255,18,.86));
+      border:1px solid rgba(0,0,0,.14);
+      box-shadow: 0 16px 28px rgba(0,0,0,.35), 0 0 16px rgba(11,207,241,.22);
+      transition: transform .18s var(--ease), filter .18s var(--ease), box-shadow .18s var(--ease);
+    }
+    .footer__btn:hover{
+      transform: translateY(-3px) scale(1.01);
+      filter: brightness(1.06);
+      box-shadow: 0 18px 34px rgba(0,0,0,.42), 0 0 18px rgba(11,207,241,.36);
+    }
+    .footer__bottom{
+      position:relative; z-index:1;
+      margin-top:18px; padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.14);
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      padding-bottom:10px;
+    }
+    .footer__copy, .footer__mini{ margin:0; opacity:.92; font-weight:800; }
+    @media (max-width: 980px){
+      .footer__grid{ grid-template-columns:1fr; }
+      .footer__logo{ width: min(220px, 60%); }
+    }
+
+    /* Extras */
+    .tableWrap{ overflow:auto; border-radius: 18px; }
+    .blogTable{ width:100%; border-collapse: collapse; min-width: 980px; }
+    .blogTable th, .blogTable td{
+      padding: 12px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+      text-align: left;
+      vertical-align: top;
+      font-weight: 700;
+      opacity: .96;
+    }
+    .blogTable thead th{
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      letter-spacing: .2px;
+      text-shadow: var(--shadow-text);
+    }
+    .pillMini{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 8px 12px; border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 12px 22px rgba(0,0,0,.22);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body class="inner">
+
+  <!-- Manchas -->
+  <div class="bg-splashes" aria-hidden="true">
+    <img class="splash splash-top-right" src="../imgs/manchader.webp" alt="">
+    <img class="splash splash-bottom-left" src="../imgs/manchaizq.webp" alt="">
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+
+      <a class="brand brand--small" href="../index.html" aria-label="Ir a Inicio">
+        <img class="brand__logo brand__logo--small" src="../imgs/logo-proink.webp" alt="PROINK">
+      </a>
+
+      <div class="top-slogan" id="topSlogan">
+        <p class="slogan">
+          Hay más <span class="word-yellow">creatividad</span> en un litro de
+          <span class="word-blue">tinta</span> que en un lienzo vacío
+        </p>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list" id="mainNav">
+          <li class="main-nav__item"><a class="main-nav__link" href="../index.html">INICIO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-controls="mobileNav"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </nav>
+
+    </div>
+
+    <!-- Menú móvil -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
+
+      <div class="mobile-nav__panel" role="dialog" aria-label="Menú móvil">
+        <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Cerrar menú">✕</button>
+
+        <ul class="mobile-nav__list">
+          <li><a class="mobile-nav__link" href="../index.html">INICIO</a></li>
+          <li><a class="mobile-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li><a class="mobile-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li><a class="mobile-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li><a class="mobile-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li><a class="mobile-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li><a class="mobile-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="article">
+    <div class="article__wrap">
+
+      <!-- HERO -->
+      <section class="articleHero" aria-label="Encabezado del artículo">
+        <div class="articleHero__top">
+          <span class="articlePill">Menús</span>
+
+          <div class="articleMeta" aria-label="Metadatos del artículo">
+            <span>Lectura: 7–9 min</span>
+            <span>Diseño que vende</span>
+          </div>
+        </div>
+
+        <h1 class="articleTitle">Menús personalizados: cómo el diseño aumenta tus ventas</h1>
+
+        <p class="articleIntro">
+          Un menú es tu <strong>vendedor silencioso</strong>. Si está confuso, saturado o mal impreso, el cliente tarda,
+          se estresa… y termina pidiendo lo mismo de siempre (o lo más barato).
+          Pero cuando el menú está diseñado con intención, guía la decisión, mejora la experiencia y sube el ticket.
+          Aquí va la guía PROINK para que tu menú venda.
+        </p>
+
+        <figure class="articleCover" aria-label="Imagen del artículo">
+          <img src="../imgs/blog/blog-23.webp" alt="Menús personalizados: diseño, impresión y materiales que venden más">
+        </figure>
+      </section>
+
+      <!-- LAYOUT -->
+      <section class="article__layout" aria-label="Contenido del artículo">
+
+        <!-- ARTÍCULO -->
+        <article class="articleBody">
+          <div class="prose">
+
+            <div class="note note--tip">
+              <p class="note__title">Idea clave</p>
+              <p>
+                La gente no “lee” un menú: lo <strong>escanea</strong>. El diseño correcto hace que vean primero lo que tú quieres vender.
+              </p>
+            </div>
+
+            <h2 id="por-que">1) ¿Por qué un menú bien diseñado aumenta ventas?</h2>
+            <p>
+              Porque reduce fricción. Si el cliente entiende rápido qué pedir, se siente seguro y decide más fácil.
+              Además, el menú puede empujar (sin presionar) hacia productos más rentables.
+            </p>
+            <ul>
+              <li><strong>Decisión más rápida:</strong> menos duda = más pedidos.</li>
+              <li><strong>Mayor ticket promedio:</strong> resaltas combos, especiales, extras.</li>
+              <li><strong>Mejor percepción:</strong> “si cuidan el menú, cuidan la comida”.</li>
+              <li><strong>Menos errores:</strong> descripciones claras y categorías ordenadas.</li>
+            </ul>
+
+            <hr class="hrGlow" />
+
+            <h2 id="estructura">2) Estructura que funciona (sin saturar)</h2>
+            <p>
+              Un menú que vende no es el que tiene “todo”, es el que está acomodado con lógica.
+            </p>
+            <div class="note note--check">
+              <p class="note__title">Orden recomendado</p>
+              <ul class="checklist">
+                <li>✔ Lo más pedido (o lo más rentable) arriba</li>
+                <li>✔ Categorías claras (máximo 6–8 por página)</li>
+                <li>✔ 3–6 productos “estrella” resaltados</li>
+                <li>✔ Extras visibles (papas, bebida, toppings, etc.)</li>
+                <li>✔ Postres y bebidas con presencia (suben ticket)</li>
+              </ul>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="jerarquia">3) Jerarquía visual: lo que el ojo ve primero</h2>
+            <p>
+              La jerarquía es el orden de lectura. Si todo está del mismo tamaño y peso, el menú se vuelve ruido.
+              El truco es hacer que el ojo caiga en lo importante:
+            </p>
+            <ul>
+              <li><strong>Títulos grandes</strong> para categorías.</li>
+              <li><strong>Producto + precio</strong> fáciles de ubicar.</li>
+              <li><strong>Descripción corta</strong> (una línea) para antojo.</li>
+              <li><strong>Resaltados</strong> (píldoras, recuadros, íconos) solo en “estrellas”.</li>
+            </ul>
+
+            <div class="note note--warn">
+              <p class="note__title">Error común</p>
+              <p>
+                Poner <strong>todas</strong> las opciones como “recomendación”. Si todo destaca, nada destaca.
+              </p>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="precios">4) Cómo mostrar precios sin “asustar”</h2>
+            <p>
+              No se trata de esconder el precio: se trata de presentarlo con claridad.
+            </p>
+            <ul>
+              <li><strong>Evita columnas gigantes de $</strong> (parece lista de costos).</li>
+              <li><strong>Usa el mismo formato</strong> (ej. $129 / $149 / $99).</li>
+              <li><strong>Combos y upgrades</strong> cerca del producto base.</li>
+              <li><strong>Si tienes opción grande/chica</strong>, usa dos precios juntos y claro.</li>
+            </ul>
+
+            <hr class="hrGlow" />
+
+            <h2 id="fotos">5) Fotos: cuándo sí convienen y cuándo no</h2>
+            <p>
+              Las fotos venden, pero solo si son buenas. Una foto oscura o borrosa baja la percepción.
+            </p>
+            <div class="tableWrap" aria-label="Tabla de fotos en menús">
+              <table class="blogTable">
+                <thead>
+                  <tr>
+                    <th>Situación</th>
+                    <th>¿Fotos?</th>
+                    <th>Recomendación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="pillMini">Comida visual (hamburguesas, postres, bebidas)</span></td>
+                    <td>Sí</td>
+                    <td>1 foto por categoría o solo “estrellas”</td>
+                  </tr>
+                  <tr>
+                    <td><span class="pillMini">Menú extenso (muchos platillos)</span></td>
+                    <td>Con cuidado</td>
+                    <td>Mejor íconos y resaltados; fotos solo top 3–6</td>
+                  </tr>
+                  <tr>
+                    <td><span class="pillMini">Restaurante premium</span></td>
+                    <td>A veces no</td>
+                    <td>Diseño limpio + descripciones y papel/acabados pro</td>
+                  </tr>
+                  <tr>
+                    <td><span class="pillMini">Fotos de baja calidad</span></td>
+                    <td>No</td>
+                    <td>Mejor sin foto que con foto mala</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="materiales">6) Materiales e impresión: lo que más te conviene</h2>
+            <p>
+              El material depende de cuánto lo usas, si hay comida/grasita, y si lo quieres elegante o práctico.
+            </p>
+            <ul>
+              <li><strong>Couche / cartulina:</strong> económico (ideal si lo cambias seguido).</li>
+              <li><strong>Laminado mate o brillante:</strong> protege, se limpia mejor y dura más.</li>
+              <li><strong>Menú rígido (PVC, etc.):</strong> se ve premium y aguanta uso rudo.</li>
+              <li><strong>Menú tipo “tabla”:</strong> excelente para barras/mesas (súper durable).</li>
+              <li><strong>QR + carta digital:</strong> buena opción para cambios frecuentes (pero cuida el diseño digital).</li>
+            </ul>
+
+            <div class="note note--tip">
+              <p class="note__title">Tip PROINK</p>
+              <p>
+                Si tu menú se ensucia fácil, el <strong>laminado</strong> te salva: dura más, se limpia rápido y no se maltrata.
+              </p>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="checklist">7) Checklist: para que tu menú venda (y se vea pro)</h2>
+            <div class="note note--check">
+              <p class="note__title">Checklist PROINK</p>
+              <ul class="checklist">
+                <li>✔ Categorías claras y pocas</li>
+                <li>✔ 3–6 productos “estrella” resaltados</li>
+                <li>✔ Descripciones cortas (antojo)</li>
+                <li>✔ Precios consistentes y legibles</li>
+                <li>✔ Material adecuado (con laminado si hay uso rudo)</li>
+                <li>✔ Logo y estilo coherente con tu marca</li>
+                <li>✔ Datos/horarios/redes o QR (si aplica)</li>
+              </ul>
+            </div>
+
+            <h2 id="cierre">Conclusión</h2>
+            <p>
+              Un menú bonito no es el objetivo: el objetivo es que el cliente entienda, se antoje y elija más fácil.
+              Si quieres, en PROINK te ayudamos a diseñar e imprimir menús que se ven increíbles y están pensados para vender.
+            </p>
+
+            <div class="articleCTA">
+              <h3 class="articleCTA__title">¿Quieres tu menú con diseño + impresión PRO?</h3>
+              <p class="articleCTA__text">
+                Te recomendamos formato, material y acabado ideal según tu negocio (uso diario, cambios de precios, tipo de comida y estilo).
+              </p>
+              <a class="btnNeon" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                Cotizar por WhatsApp
+              </a>
+            </div>
+
+            <div class="articleNav">
+              <a href="22-papeleria-corporativa-imprescindible.html">← Anterior</a>
+              <a href="24-papeleria-creativa-eventos.html">Siguiente →</a>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- TOC -->
+        <aside class="articleSide" aria-label="Tabla de contenidos">
+          <div class="toc">
+            <h3 class="toc__title">Contenido</h3>
+            <ul class="toc__list">
+              <li><a href="#por-que"><span class="tocDot"></span> Por qué vende</a></li>
+              <li><a href="#estructura"><span class="tocDot"></span> Estructura</a></li>
+              <li><a href="#jerarquia"><span class="tocDot"></span> Jerarquía</a></li>
+              <li><a href="#precios"><span class="tocDot"></span> Precios</a></li>
+              <li><a href="#fotos"><span class="tocDot"></span> Fotos</a></li>
+              <li><a href="#materiales"><span class="tocDot"></span> Materiales</a></li>
+              <li><a href="#checklist"><span class="tocDot"></span> Checklist</a></li>
+              <li><a href="#cierre"><span class="tocDot"></span> Cierre</a></li>
+            </ul>
+
+            <p class="toc__mini">
+              Tip rápido: destaca solo 3–6 “estrellas” y tu menú se vuelve más fácil de comprar.
+            </p>
+          </div>
+        </aside>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" aria-label="Pie de página">
+    <div class="footer__wrap">
+      <div class="footer__card">
+
+        <div class="footer__grid">
+
+          <div class="footer__brand">
+            <img class="footer__logo" src="../imgs/logo-proink.webp" alt="PROINK Printed Designs">
+            <p class="footer__desc">
+              Impresión y personalización en Querétaro. Hacemos que tu marca se vea profesional con materiales de calidad,
+              acabados premium y diseño que impacta.
+            </p>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__title">Navegación</h3>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="../index.html"><span class="footer__chip">Inicio</span></a></li>
+              <li><a class="footer__link" href="../productos.html"><span class="footer__chip">Productos</span></a></li>
+              <li><a class="footer__link" href="../produccion-instalacion.html"><span class="footer__chip">Producción e instalación</span></a></li>
+              <li><a class="footer__link" href="../catalogo.html"><span class="footer__chip">Catálogo</span></a></li>
+              <li><a class="footer__link" href="../ubicacion.html"><span class="footer__chip">Ubicación</span></a></li>
+              <li><a class="footer__link" href="../blog.html"><span class="footer__chip">Blog</span></a></li>
+            </ul>
+          </div>
+
+          <div class="footer__cta">
+            <h3 class="footer__title">Contacto</h3>
+            <ul class="footer__list">
+              <li>
+                <a class="footer__link" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                  <span class="footer__chip">WhatsApp: 446 112 3494</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer__link" href="../ubicacion.html">
+                  <span class="footer__chip">Paseo Las Plazas #3, Querétaro</span>
+                </a>
+              </li>
+            </ul>
+
+            <a class="footer__btn" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">© 2026 PROINK Printed Designs</p>
+          <p class="footer__mini">Tú imagina, nosotros lo imprimimos.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a
+    href="https://wa.me/5214461123494"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img src="../imgs/icono-whatsapp.png" alt="WhatsApp" class="whatsapp-float__icon" />
+  </a>
+
+  <!-- JS base -->
+  <script src="../js-principal.js"></script>
+</body>
+</html>

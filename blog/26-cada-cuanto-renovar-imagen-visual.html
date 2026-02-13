@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>¿Cada cuánto renovar tu imagen visual? Señales claras y checklist — Blog PROINK</title>
+  <meta name="description" content="Descubre cada cuánto conviene renovar tu imagen visual (logo, colores, materiales, señalética y promos). Señales de alerta, qué actualizar primero y checklist PROINK para decidir sin gastar de más." />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Base -->
+  <link rel="stylesheet" href="../styles-base.css" />
+  <link rel="stylesheet" href="../blog.css" />
+
+  <style>
+    /* Fondo de esta tanda */
+    body.inner{ background-color:#1a2a6c; }
+
+    /* ===== Footer FIX anti-bug ===== */
+    .site-footer{ position: relative; z-index: 1; margin-top: clamp(30px, 5vw, 60px); }
+    .footer__wrap{ width: min(1250px, calc(100% - 36px)); margin: 0 auto; }
+    .footer__card{
+      border-radius: 28px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.38);
+      overflow: hidden;
+      position: relative;
+      padding: clamp(20px, 3vw, 30px);
+    }
+    .footer__grid{
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: clamp(16px, 2vw, 24px);
+      align-items: start;
+    }
+    .footer__brand{ display:flex; flex-direction:column; gap:10px; min-width:0; }
+    .footer__logo{ width: min(220px, 70%); height:auto; display:block; filter:none; }
+    .footer__desc{ margin:0; opacity:.95; line-height:1.65; font-weight:700; }
+    .footer__title{
+      margin:0 0 10px;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: .2px;
+      text-shadow: var(--shadow-text);
+    }
+    .footer__list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+    .footer__link{
+      display:inline-flex; align-items:center; gap:10px;
+      text-decoration:none; font-weight:900; color:#fff; opacity:.95;
+      transition: transform .18s var(--ease), filter .18s var(--ease), opacity .18s var(--ease);
+    }
+    .footer__link:hover{ transform: translateY(-2px); filter: brightness(1.06); opacity: 1; }
+    .footer__chip{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 12px 22px rgba(0,0,0,.25);
+    }
+    .footer__cta{ display:flex; flex-direction:column; gap:12px; }
+    .footer__btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:14px 18px; border-radius:999px; text-decoration:none;
+      font-weight:900; letter-spacing:.35px; color:#000;
+      background: linear-gradient(90deg, rgba(11,207,241,.92), rgba(35,255,120,.86), rgba(250,255,18,.86));
+      border:1px solid rgba(0,0,0,.14);
+      box-shadow: 0 16px 28px rgba(0,0,0,.35), 0 0 16px rgba(11,207,241,.22);
+      transition: transform .18s var(--ease), filter .18s var(--ease), box-shadow .18s var(--ease);
+    }
+    .footer__btn:hover{
+      transform: translateY(-3px) scale(1.01);
+      filter: brightness(1.06);
+      box-shadow: 0 18px 34px rgba(0,0,0,.42), 0 0 18px rgba(11,207,241,.36);
+    }
+    .footer__bottom{
+      position:relative; z-index:1;
+      margin-top:18px; padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.14);
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      padding-bottom:10px;
+    }
+    .footer__copy, .footer__mini{ margin:0; opacity:.92; font-weight:800; }
+    @media (max-width: 980px){
+      .footer__grid{ grid-template-columns:1fr; }
+      .footer__logo{ width: min(220px, 60%); }
+    }
+
+    /* Mini “cards” */
+    .miniGrid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 12px 0 6px;
+    }
+    .miniCard{
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 14px 26px rgba(0,0,0,.22);
+      padding: 12px 14px;
+    }
+    .miniCard__t{
+      margin:0 0 6px;
+      font-family:"League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      text-shadow: var(--shadow-text);
+    }
+    .miniCard p{ margin:0; opacity:.96; font-weight:700; line-height:1.6; }
+    @media (max-width: 980px){
+      .miniGrid{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body class="inner">
+
+  <!-- Manchas -->
+  <div class="bg-splashes" aria-hidden="true">
+    <img class="splash splash-top-right" src="../imgs/manchader.webp" alt="">
+    <img class="splash splash-bottom-left" src="../imgs/manchaizq.webp" alt="">
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+
+      <a class="brand brand--small" href="../index.html" aria-label="Ir a Inicio">
+        <img class="brand__logo brand__logo--small" src="../imgs/logo-proink.webp" alt="PROINK">
+      </a>
+
+      <div class="top-slogan" id="topSlogan">
+        <p class="slogan">
+          Hay más <span class="word-yellow">creatividad</span> en un litro de
+          <span class="word-blue">tinta</span> que en un lienzo vacío
+        </p>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list" id="mainNav">
+          <li class="main-nav__item"><a class="main-nav__link" href="../index.html">INICIO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-controls="mobileNav"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </nav>
+
+    </div>
+
+    <!-- Menú móvil -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
+
+      <div class="mobile-nav__panel" role="dialog" aria-label="Menú móvil">
+        <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Cerrar menú">✕</button>
+
+        <ul class="mobile-nav__list">
+          <li><a class="mobile-nav__link" href="../index.html">INICIO</a></li>
+          <li><a class="mobile-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li><a class="mobile-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li><a class="mobile-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li><a class="mobile-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li><a class="mobile-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li><a class="mobile-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="article">
+    <div class="article__wrap">
+
+      <!-- HERO -->
+      <section class="articleHero" aria-label="Encabezado del artículo">
+        <div class="articleHero__top">
+          <span class="articlePill">Branding</span>
+
+          <div class="articleMeta" aria-label="Metadatos del artículo">
+            <span>Lectura: 7–10 min</span>
+            <span>Renovación visual</span>
+          </div>
+        </div>
+
+        <h1 class="articleTitle">¿Cada cuánto renovar tu imagen visual? Señales claras y checklist</h1>
+
+        <p class="articleIntro">
+          Renovar tu imagen visual no siempre significa “cambiar el logo”.
+          Muchas veces basta con ajustar <strong>colores</strong>, mejorar <strong>tipografías</strong>,
+          actualizar <strong>materiales impresos</strong> y ordenar la <strong>señalética</strong>.
+          Aquí te dejo una guía práctica para saber <strong>cuándo</strong> conviene renovar y <strong>qué</strong> cambiar primero.
+        </p>
+
+        <figure class="articleCover" aria-label="Imagen del artículo">
+          <img src="../imgs/blog/blog-26.webp" alt="Renovar imagen visual: señalética, colores, tipografía y piezas impresas">
+        </figure>
+      </section>
+
+      <!-- LAYOUT -->
+      <section class="article__layout" aria-label="Contenido del artículo">
+
+        <!-- ARTÍCULO -->
+        <article class="articleBody">
+          <div class="prose">
+
+            <div class="note note--tip">
+              <p class="note__title">Regla rápida</p>
+              <p>
+                Si tu marca se ve “pasada”, “desordenada” o “inconsistente”, la gente lo nota…
+                y eso baja la confianza. Renovar a tiempo suele costar <strong>menos</strong> que perder ventas.
+              </p>
+            </div>
+
+            <h2 id="cada-cuanto">1) Entonces… ¿cada cuánto conviene?</h2>
+            <p>
+              No hay una fecha universal, pero estas referencias funcionan muy bien para la mayoría de negocios:
+            </p>
+
+            <div class="miniGrid" aria-label="Frecuencias recomendadas">
+              <div class="miniCard">
+                <h3 class="miniCard__t">Cada 6–12 meses</h3>
+                <p>Revisar promos, flyers, banners, posts, menús temporales y piezas de temporada.</p>
+              </div>
+              <div class="miniCard">
+                <h3 class="miniCard__t">Cada 1–2 años</h3>
+                <p>Actualizar estilos (paleta, tipografías, plantillas) y materiales que ya se ven gastados.</p>
+              </div>
+              <div class="miniCard">
+                <h3 class="miniCard__t">Cada 3–5 años</h3>
+                <p>Evaluar refresh de marca (logo/estilo). No siempre es cambio total: puede ser “modernizar”.</p>
+              </div>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="senales">2) Señales claras de que ya toca renovar</h2>
+            <ul>
+              <li><strong>Tu logo se ve “viejo”</strong> o no se entiende bien en tamaño chico (WhatsApp/IG).</li>
+              <li><strong>Usas mil versiones</strong>: cada publicación se ve diferente, sin coherencia.</li>
+              <li><strong>Tu señalética está desgastada</strong>: viniles levantados, colores deslavados, lona manchada.</li>
+              <li><strong>Tu competencia se ve más pro</strong> (aunque venda lo mismo).</li>
+              <li><strong>Cambiaste de público</strong> o ya no representas lo que vendes (creciste, subiste precios, etc.).</li>
+              <li><strong>Tu impresión ya no luce</strong>: tipografías chiquitas, poco contraste, materiales “baratos”.</li>
+            </ul>
+
+            <div class="note note--warn">
+              <p class="note__title">Ojo</p>
+              <p>
+                Si tú sientes que “algo no se ve bien”, normalmente el cliente ya lo notó antes…
+                solo que no te lo dice: se va con otro.
+              </p>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="que-primero">3) ¿Qué se renueva primero para que se note (sin gastar de más)?</h2>
+            <p>Si quieres impacto rápido, este orden suele dar mejores resultados:</p>
+            <ol>
+              <li><strong>Señalética visible:</strong> fachada, horarios, flechas, interiores clave.</li>
+              <li><strong>Piezas de venta:</strong> menús, listas de precios, promos, flyers, tarjetas.</li>
+              <li><strong>Redes/plantillas:</strong> portadas, highlights, estilo de posts.</li>
+              <li><strong>Uniformes/promos:</strong> playeras, stickers, empaques, etiquetas.</li>
+              <li><strong>Logo (si aplica):</strong> solo si ya está muy desactualizado o no funciona.</li>
+            </ol>
+
+            <hr class="hrGlow" />
+
+            <h2 id="tipos">4) Tipos de renovación (elige la que te conviene)</h2>
+
+            <h3>a) “Refresh” ligero (lo más común)</h3>
+            <ul>
+              <li>Mejorar tipografía + ajustar paleta + ordenar elementos.</li>
+              <li>Actualizar plantillas y piezas impresas.</li>
+              <li>Ideal si tu marca “funciona” pero se ve vieja.</li>
+            </ul>
+
+            <h3>b) Renovación media</h3>
+            <ul>
+              <li>Nuevo sistema visual (logo retocado, variantes, iconos, estilo completo).</li>
+              <li>Rehacer señalética principal y promos clave.</li>
+              <li>Ideal si creciste o cambiaste el enfoque del negocio.</li>
+            </ul>
+
+            <h3>c) Rebrand completo</h3>
+            <ul>
+              <li>Cambio total de identidad (nombre/estilo/logo).</li>
+              <li>Implica estrategia y un despliegue ordenado.</li>
+              <li>Ideal si la marca ya no representa lo que eres.</li>
+            </ul>
+
+            <hr class="hrGlow" />
+
+            <h2 id="checklist">5) Checklist PROINK para decidir (sí/no)</h2>
+            <div class="note note--check">
+              <p class="note__title">Responde rápido</p>
+              <ul class="checklist">
+                <li>✔ ¿Tu logo se ve bien en tamaño pequeño (perfil de WhatsApp/IG)?</li>
+                <li>✔ ¿Tus colores y tipografías se repiten igual en redes y en impresión?</li>
+                <li>✔ ¿Tu señalética está limpia, derecha y sin desgaste visible?</li>
+                <li>✔ ¿Tu menú / precios se leen fácil y se ven “pro”?</li>
+                <li>✔ ¿Tu material impreso refleja el nivel de precio/calidad que vendes?</li>
+                <li>✔ ¿Tu marca se ve igual en vinil, lona y papel (sin “variantes raras”)?</li>
+                <li>✔ ¿Tu competencia no se ve claramente más moderna que tú?</li>
+              </ul>
+              <p style="margin:10px 0 0; opacity:.95; font-weight:800;">
+                Si marcaste <strong>3 o más</strong> con “no”, ya conviene una renovación (aunque sea ligera).
+              </p>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="cierre">Conclusión</h2>
+            <p>
+              Renovar tu imagen visual es una inversión para que tu negocio se vea actual, confiable y coherente.
+              No se trata de cambiar por cambiar: se trata de que la gente entienda tu marca en segundos
+              y que lo que imprimas se vea al nivel de lo que vendes.
+            </p>
+
+            <div class="articleCTA">
+              <h3 class="articleCTA__title">¿Te digo qué renovar primero?</h3>
+              <p class="articleCTA__text">
+                Mándanos una foto de tu fachada/señalética + tu logo actual + tu Instagram.
+                Te decimos qué cambios te darían el mayor impacto (sin gastar de más) y lo armamos en impresión.
+              </p>
+              <a class="btnNeon" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                Cotizar por WhatsApp
+              </a>
+            </div>
+
+            <div class="articleNav">
+              <a href="25-materiales-impresos-por-evento.html">← Anterior</a>
+              <a href="27-tendencias-impresion-diseno-este-ano.html">Siguiente →</a>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- TOC -->
+        <aside class="articleSide" aria-label="Tabla de contenidos">
+          <div class="toc">
+            <h3 class="toc__title">Contenido</h3>
+            <ul class="toc__list">
+              <li><a href="#cada-cuanto"><span class="tocDot"></span> Cada cuánto</a></li>
+              <li><a href="#senales"><span class="tocDot"></span> Señales</a></li>
+              <li><a href="#que-primero"><span class="tocDot"></span> Qué primero</a></li>
+              <li><a href="#tipos"><span class="tocDot"></span> Tipos</a></li>
+              <li><a href="#checklist"><span class="tocDot"></span> Checklist</a></li>
+              <li><a href="#cierre"><span class="tocDot"></span> Cierre</a></li>
+            </ul>
+
+            <p class="toc__mini">
+              Tip: refresh ligero (tipografías + paleta + piezas impresas) suele dar el mayor impacto rápido.
+            </p>
+          </div>
+        </aside>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" aria-label="Pie de página">
+    <div class="footer__wrap">
+      <div class="footer__card">
+
+        <div class="footer__grid">
+
+          <div class="footer__brand">
+            <img class="footer__logo" src="../imgs/logo-proink.webp" alt="PROINK Printed Designs">
+            <p class="footer__desc">
+              Impresión y personalización en Querétaro. Hacemos que tu marca se vea profesional con materiales de calidad,
+              acabados premium y diseño que impacta.
+            </p>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__title">Navegación</h3>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="../index.html"><span class="footer__chip">Inicio</span></a></li>
+              <li><a class="footer__link" href="../productos.html"><span class="footer__chip">Productos</span></a></li>
+              <li><a class="footer__link" href="../produccion-instalacion.html"><span class="footer__chip">Producción e instalación</span></a></li>
+              <li><a class="footer__link" href="../catalogo.html"><span class="footer__chip">Catálogo</span></a></li>
+              <li><a class="footer__link" href="../ubicacion.html"><span class="footer__chip">Ubicación</span></a></li>
+              <li><a class="footer__link" href="../blog.html"><span class="footer__chip">Blog</span></a></li>
+            </ul>
+          </div>
+
+          <div class="footer__cta">
+            <h3 class="footer__title">Contacto</h3>
+            <ul class="footer__list">
+              <li>
+                <a class="footer__link" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                  <span class="footer__chip">WhatsApp: 446 112 3494</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer__link" href="../ubicacion.html">
+                  <span class="footer__chip">Paseo Las Plazas #3, Querétaro</span>
+                </a>
+              </li>
+            </ul>
+
+            <a class="footer__btn" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">© 2026 PROINK Printed Designs</p>
+          <p class="footer__mini">Tú imagina, nosotros lo imprimimos.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a
+    href="https://wa.me/5214461123494"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img src="../imgs/icono-whatsapp.png" alt="WhatsApp" class="whatsapp-float__icon" />
+  </a>
+
+  <!-- JS base -->
+  <script src="../js-principal.js"></script>
+</body>
+</html>

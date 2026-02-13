@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Papelería corporativa imprescindible: lo básico para verte PRO — Blog PROINK</title>
+  <meta name="description" content="Lista práctica de papelería corporativa imprescindible para negocios: tarjetas, hojas membretadas, stickers, carpetas, sellos y más. Qué conviene primero, errores comunes y checklist PROINK." />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Base -->
+  <link rel="stylesheet" href="../styles-base.css" />
+  <link rel="stylesheet" href="../blog.css" />
+
+  <style>
+    /* Fondo de esta tanda */
+    body.inner{ background-color:#1a2a6c; }
+
+    /* ===== Footer FIX anti-bug (para que NO salga sin diseño) ===== */
+    .site-footer{ position: relative; z-index: 1; margin-top: clamp(30px, 5vw, 60px); }
+    .footer__wrap{ width: min(1250px, calc(100% - 36px)); margin: 0 auto; }
+    .footer__card{
+      border-radius: 28px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.38);
+      overflow: hidden;
+      position: relative;
+      padding: clamp(20px, 3vw, 30px);
+    }
+    .footer__grid{
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: clamp(16px, 2vw, 24px);
+      align-items: start;
+    }
+    .footer__brand{ display:flex; flex-direction:column; gap:10px; min-width:0; }
+    .footer__logo{ width: min(220px, 70%); height:auto; display:block; filter:none; }
+    .footer__desc{ margin:0; opacity:.95; line-height:1.65; font-weight:700; }
+    .footer__title{
+      margin:0 0 10px;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: .2px;
+      text-shadow: var(--shadow-text);
+    }
+    .footer__list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+    .footer__link{
+      display:inline-flex; align-items:center; gap:10px;
+      text-decoration:none; font-weight:900; color:#fff; opacity:.95;
+      transition: transform .18s var(--ease), filter .18s var(--ease), opacity .18s var(--ease);
+    }
+    .footer__link:hover{ transform: translateY(-2px); filter: brightness(1.06); opacity: 1; }
+    .footer__chip{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 12px 22px rgba(0,0,0,.25);
+    }
+    .footer__cta{ display:flex; flex-direction:column; gap:12px; }
+    .footer__btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:14px 18px; border-radius:999px; text-decoration:none;
+      font-weight:900; letter-spacing:.35px; color:#000;
+      background: linear-gradient(90deg, rgba(11,207,241,.92), rgba(35,255,120,.86), rgba(250,255,18,.86));
+      border:1px solid rgba(0,0,0,.14);
+      box-shadow: 0 16px 28px rgba(0,0,0,.35), 0 0 16px rgba(11,207,241,.22);
+      transition: transform .18s var(--ease), filter .18s var(--ease), box-shadow .18s var(--ease);
+    }
+    .footer__btn:hover{
+      transform: translateY(-3px) scale(1.01);
+      filter: brightness(1.06);
+      box-shadow: 0 18px 34px rgba(0,0,0,.42), 0 0 18px rgba(11,207,241,.36);
+    }
+    .footer__bottom{
+      position:relative; z-index:1;
+      margin-top:18px; padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.14);
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      padding-bottom:10px;
+    }
+    .footer__copy, .footer__mini{ margin:0; opacity:.92; font-weight:800; }
+    @media (max-width: 980px){
+      .footer__grid{ grid-template-columns:1fr; }
+      .footer__logo{ width: min(220px, 60%); }
+    }
+
+    /* Extras */
+    .tableWrap{ overflow:auto; border-radius: 18px; }
+    .blogTable{ width:100%; border-collapse: collapse; min-width: 900px; }
+    .blogTable th, .blogTable td{
+      padding: 12px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+      text-align: left;
+      vertical-align: top;
+      font-weight: 700;
+      opacity: .96;
+    }
+    .blogTable thead th{
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      letter-spacing: .2px;
+      text-shadow: var(--shadow-text);
+    }
+    .pillMini{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 8px 12px; border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 12px 22px rgba(0,0,0,.22);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .mini{ opacity:.92; font-weight:700; line-height:1.6; }
+  </style>
+</head>
+
+<body class="inner">
+
+  <!-- Manchas -->
+  <div class="bg-splashes" aria-hidden="true">
+    <img class="splash splash-top-right" src="../imgs/manchader.webp" alt="">
+    <img class="splash splash-bottom-left" src="../imgs/manchaizq.webp" alt="">
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+
+      <a class="brand brand--small" href="../index.html" aria-label="Ir a Inicio">
+        <img class="brand__logo brand__logo--small" src="../imgs/logo-proink.webp" alt="PROINK">
+      </a>
+
+      <div class="top-slogan" id="topSlogan">
+        <p class="slogan">
+          Hay más <span class="word-yellow">creatividad</span> en un litro de
+          <span class="word-blue">tinta</span> que en un lienzo vacío
+        </p>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list" id="mainNav">
+          <li class="main-nav__item"><a class="main-nav__link" href="../index.html">INICIO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-controls="mobileNav"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </nav>
+
+    </div>
+
+    <!-- Menú móvil -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
+
+      <div class="mobile-nav__panel" role="dialog" aria-label="Menú móvil">
+        <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Cerrar menú">✕</button>
+
+        <ul class="mobile-nav__list">
+          <li><a class="mobile-nav__link" href="../index.html">INICIO</a></li>
+          <li><a class="mobile-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li><a class="mobile-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li><a class="mobile-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li><a class="mobile-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li><a class="mobile-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li><a class="mobile-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="article">
+    <div class="article__wrap">
+
+      <!-- HERO -->
+      <section class="articleHero" aria-label="Encabezado del artículo">
+        <div class="articleHero__top">
+          <span class="articlePill">Papelería</span>
+
+          <div class="articleMeta" aria-label="Metadatos del artículo">
+            <span>Lectura: 6–8 min</span>
+            <span>Imagen profesional</span>
+          </div>
+        </div>
+
+        <h1 class="articleTitle">Papelería corporativa imprescindible: lo básico para verte PRO</h1>
+
+        <p class="articleIntro">
+          La papelería corporativa no es “solo papel”: es la forma más rápida de que tu negocio se vea serio,
+          confiable y bien armado. Aunque vendas por WhatsApp o redes, cuando entregas una tarjeta, una cotización
+          o un paquete con tu sello y stickers, tu marca se siente <strong>profesional</strong>.
+          Aquí te dejo lo imprescindible (y cómo priorizarlo).
+        </p>
+
+        <figure class="articleCover" aria-label="Imagen del artículo">
+          <img src="../imgs/blog/blog-22.webp" alt="Papelería corporativa: tarjetas, hojas membretadas, stickers y folders">
+        </figure>
+      </section>
+
+      <!-- LAYOUT -->
+      <section class="article__layout" aria-label="Contenido del artículo">
+
+        <!-- ARTÍCULO -->
+        <article class="articleBody">
+          <div class="prose">
+
+            <div class="note note--tip">
+              <p class="note__title">Idea clave</p>
+              <p>
+                Si tu marca se ve ordenada en lo “chiquito” (tarjeta, cotización, etiqueta),
+                la gente asume que también eres ordenado en lo “grande” (calidad, tiempos y servicio).
+              </p>
+            </div>
+
+            <h2 id="que-es">1) ¿Qué incluye la papelería corporativa?</h2>
+            <p>
+              Es el conjunto de piezas impresas que usan tu identidad (logo, colores, tipografías) y se repiten en la operación diaria:
+              documentos, empaques y material para clientes.
+            </p>
+            <ul>
+              <li><strong>De venta:</strong> tarjetas, cotizaciones, carpetas.</li>
+              <li><strong>De operación:</strong> sellos, notas, formatos internos.</li>
+              <li><strong>De empaque:</strong> stickers, etiquetas, bolsas, sobres.</li>
+            </ul>
+
+            <hr class="hrGlow" />
+
+            <h2 id="imprescindible">2) Lo imprescindible (si vas a empezar)</h2>
+            <div class="note note--check">
+              <p class="note__title">Starter Pack PROINK (recomendado)</p>
+              <ul class="checklist">
+                <li>✔ <strong>Tarjetas de presentación</strong> (mínimo 100–250)</li>
+                <li>✔ <strong>Stickers con tu logo</strong> (para empaque y cierre)</li>
+                <li>✔ <strong>Hojas membretadas</strong> (cotizaciones, propuestas)</li>
+                <li>✔ <strong>Sello</strong> (si manejas recibos, garantías o control)</li>
+              </ul>
+            </div>
+
+            <p class="mini">
+              Si solo puedes elegir <strong>2</strong> para arrancar: <strong>tarjetas + stickers</strong>.
+              Con eso ya te ves marca.
+            </p>
+
+            <hr class="hrGlow" />
+
+            <h2 id="prioridades">3) Cómo priorizar según tu tipo de negocio</h2>
+            <div class="tableWrap" aria-label="Tabla de prioridades por tipo de negocio">
+              <table class="blogTable">
+                <thead>
+                  <tr>
+                    <th>Tipo de negocio</th>
+                    <th>Primero</th>
+                    <th>Después</th>
+                    <th>Extra pro</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="pillMini">Emprendimiento / ventas por redes</span></td>
+                    <td>Tarjetas + stickers</td>
+                    <td>Etiquetas + thank you cards</td>
+                    <td>Empaque con branding (bolsas / sobres)</td>
+                  </tr>
+                  <tr>
+                    <td><span class="pillMini">Servicios (consultorio, estética, agencia)</span></td>
+                    <td>Tarjetas + hojas membretadas</td>
+                    <td>Carpeta / folder para propuestas</td>
+                    <td>Señalética interior + placas</td>
+                  </tr>
+                  <tr>
+                    <td><span class="pillMini">Restaurante / cafetería</span></td>
+                    <td>Menú + stickers + etiquetas</td>
+                    <td>Porta cuenta / tarjetas</td>
+                    <td>Señalética + letreros + promos</td>
+                  </tr>
+                  <tr>
+                    <td><span class="pillMini">Tienda física / retail</span></td>
+                    <td>Etiquetas + señalética + tarjetas</td>
+                    <td>Folletos / promociones</td>
+                    <td>Displays y material de punto de venta</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="piezas">4) Piezas que elevan muchísimo tu marca (nivel “pro”)</h2>
+            <ul>
+              <li><strong>Carpetas / folders:</strong> para entregar cotizaciones o contratos.</li>
+              <li><strong>Etiquetas de producto:</strong> con datos, redes, instrucciones o QR.</li>
+              <li><strong>Thank you cards:</strong> tarjetita de agradecimiento (sube recompras).</li>
+              <li><strong>Recetarios / formatos:</strong> para consultorios o servicios (control y orden).</li>
+              <li><strong>Sobres / bolsas personalizadas:</strong> se siente marca de inmediato.</li>
+            </ul>
+
+            <div class="note note--tip">
+              <p class="note__title">Tip PRO</p>
+              <p>
+                Un <strong>QR</strong> bien puesto en tarjeta/etiqueta (WhatsApp, Google Maps o Instagram) aumenta
+                contactos sin que el cliente “te busque”.
+              </p>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="errores">5) Errores comunes (que hacen ver tu papelería “genérica”)</h2>
+            <ul>
+              <li><strong>Usar mil tipografías:</strong> se ve improvisado.</li>
+              <li><strong>Colores distintos en cada pieza:</strong> se rompe la identidad.</li>
+              <li><strong>Información incompleta:</strong> sin WhatsApp, sin redes, sin ubicación/QR.</li>
+              <li><strong>Calidad de imagen baja:</strong> logos pixeleados o borrosos.</li>
+              <li><strong>Sin jerarquía:</strong> todo igual de grande, no se entiende qué es lo importante.</li>
+            </ul>
+
+            <div class="note note--warn">
+              <p class="note__title">Ojo con impresión</p>
+              <p>
+                Los colores pueden variar según material/acabado. Si quieres consistencia,
+                lo ideal es manejar un archivo correcto (vector) y especificaciones claras.
+              </p>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="checklist">6) Checklist final (para pedir tu papelería sin estrés)</h2>
+            <div class="note note--check">
+              <p class="note__title">Checklist PROINK</p>
+              <ul class="checklist">
+                <li>✔ Logo en buena calidad (ideal AI/PDF/SVG)</li>
+                <li>✔ Colores definidos (o referencia clara)</li>
+                <li>✔ Datos exactos: WhatsApp, redes, dirección, correo</li>
+                <li>✔ Qué piezas quieres primero (prioridad)</li>
+                <li>✔ Cantidades aproximadas</li>
+                <li>✔ Si quieres acabado mate o brillante</li>
+              </ul>
+            </div>
+
+            <h2 id="cierre">Conclusión</h2>
+            <p>
+              La papelería corporativa es una inversión chiquita que sube tu percepción enorme.
+              No necesitas imprimir “todo” de golpe: empieza con lo esencial, mantén coherencia y ve escalando.
+              Si quieres, te armamos un kit a tu medida.
+            </p>
+
+            <div class="articleCTA">
+              <h3 class="articleCTA__title">¿Te armamos tu kit de papelería?</h3>
+              <p class="articleCTA__text">
+                En PROINK te proponemos el paquete ideal según tu negocio y presupuesto:
+                tarjetas, stickers, etiquetas, hojas membretadas, folders y más.
+              </p>
+              <a class="btnNeon" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                Cotizar por WhatsApp
+              </a>
+            </div>
+
+            <div class="articleNav">
+              <a href="21-dtf-textil-tendencia.html">← Anterior</a>
+              <a href="23-menus-personalizados-diseno-ventas.html">Siguiente →</a>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- TOC -->
+        <aside class="articleSide" aria-label="Tabla de contenidos">
+          <div class="toc">
+            <h3 class="toc__title">Contenido</h3>
+            <ul class="toc__list">
+              <li><a href="#que-es"><span class="tocDot"></span> Qué incluye</a></li>
+              <li><a href="#imprescindible"><span class="tocDot"></span> Imprescindible</a></li>
+              <li><a href="#prioridades"><span class="tocDot"></span> Prioridades</a></li>
+              <li><a href="#piezas"><span class="tocDot"></span> Piezas pro</a></li>
+              <li><a href="#errores"><span class="tocDot"></span> Errores</a></li>
+              <li><a href="#checklist"><span class="tocDot"></span> Checklist</a></li>
+              <li><a href="#cierre"><span class="tocDot"></span> Cierre</a></li>
+            </ul>
+
+            <p class="toc__mini">
+              Tip rápido: si vas empezando, tarjetas + stickers te suben la imagen en automático.
+            </p>
+          </div>
+        </aside>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" aria-label="Pie de página">
+    <div class="footer__wrap">
+      <div class="footer__card">
+
+        <div class="footer__grid">
+
+          <div class="footer__brand">
+            <img class="footer__logo" src="../imgs/logo-proink.webp" alt="PROINK Printed Designs">
+            <p class="footer__desc">
+              Impresión y personalización en Querétaro. Hacemos que tu marca se vea profesional con materiales de calidad,
+              acabados premium y diseño que impacta.
+            </p>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__title">Navegación</h3>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="../index.html"><span class="footer__chip">Inicio</span></a></li>
+              <li><a class="footer__link" href="../productos.html"><span class="footer__chip">Productos</span></a></li>
+              <li><a class="footer__link" href="../produccion-instalacion.html"><span class="footer__chip">Producción e instalación</span></a></li>
+              <li><a class="footer__link" href="../catalogo.html"><span class="footer__chip">Catálogo</span></a></li>
+              <li><a class="footer__link" href="../ubicacion.html"><span class="footer__chip">Ubicación</span></a></li>
+              <li><a class="footer__link" href="../blog.html"><span class="footer__chip">Blog</span></a></li>
+            </ul>
+          </div>
+
+          <div class="footer__cta">
+            <h3 class="footer__title">Contacto</h3>
+            <ul class="footer__list">
+              <li>
+                <a class="footer__link" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                  <span class="footer__chip">WhatsApp: 446 112 3494</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer__link" href="../ubicacion.html">
+                  <span class="footer__chip">Paseo Las Plazas #3, Querétaro</span>
+                </a>
+              </li>
+            </ul>
+
+            <a class="footer__btn" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">© 2026 PROINK Printed Designs</p>
+          <p class="footer__mini">Tú imagina, nosotros lo imprimimos.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a
+    href="https://wa.me/5214461123494"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img src="../imgs/icono-whatsapp.png" alt="WhatsApp" class="whatsapp-float__icon" />
+  </a>
+
+  <!-- JS base -->
+  <script src="../js-principal.js"></script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Colores corporativos: cómo influyen en la percepción — Blog PROINK</title>
+  <meta name="description" content="Aprende cómo los colores corporativos influyen en la percepción de tu marca. Significados, combinaciones recomendadas, errores comunes y checklist para elegir una paleta profesional." />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Base + Blog (IMPORTANTE: mantener estos 2) -->
+  <link rel="stylesheet" href="../styles-base.css" />
+  <link rel="stylesheet" href="../blog.css" />
+
+  <!-- FIX: si por alguna razón no cargara blog.css / styles-base.css, esto evita “footer pelón” y logo gigante de fondo -->
+  <style>
+    /* Fallback suave (solo actúa si el CSS externo falla o llega tarde) */
+    body.inner{ background-color:#1a2a6c; }
+    .site-footer{ position:relative; z-index: 2; }
+    .footer__wrap{ width:min(1250px, calc(100% - 36px)); margin:0 auto; }
+    .footer__card{
+      border-radius: 28px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.38);
+      overflow: hidden;
+      position: relative;
+      padding: clamp(20px, 3vw, 30px);
+    }
+    .footer__card::after{
+      content:"";
+      position:absolute; inset:-30px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(11,207,241,.20), transparent 55%),
+        radial-gradient(circle at 82% 45%, rgba(35,255,120,.16), transparent 55%),
+        radial-gradient(circle at 60% 92%, rgba(250,255,18,.12), transparent 55%);
+      filter: blur(14px);
+      pointer-events:none;
+    }
+    .footer__grid{
+      position:relative; z-index:1;
+      display:grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: clamp(16px, 2vw, 24px);
+      align-items:start;
+    }
+    .footer__brand{ display:flex; flex-direction:column; gap:10px; min-width:0; }
+    .footer__logo{ width:min(220px, 70%); height:auto; display:block; filter:none; }
+    .footer__desc{ margin:0; opacity:.95; line-height:1.65; font-weight:700; }
+    .footer__title{
+      margin:0 0 10px;
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: .2px;
+      text-shadow: 0 2px 10px rgba(0,0,0,.60);
+    }
+    .footer__list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+    .footer__link{
+      display:inline-flex; align-items:center; gap:10px;
+      text-decoration:none; font-weight:900; color:#fff; opacity:.95;
+      transition: transform .18s ease, filter .18s ease, opacity .18s ease;
+    }
+    .footer__link:hover{ transform: translateY(-2px); filter: brightness(1.06); opacity:1; }
+    .footer__chip{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 12px 22px rgba(0,0,0,.25);
+    }
+    .footer__cta{ display:flex; flex-direction:column; gap:12px; }
+    .footer__btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:14px 18px; border-radius:999px; text-decoration:none;
+      font-weight:900; letter-spacing:.35px; color:#000;
+      background: linear-gradient(90deg, rgba(11,207,241,.92), rgba(35,255,120,.86), rgba(250,255,18,.86));
+      border: 1px solid rgba(0,0,0,.14);
+      box-shadow: 0 16px 28px rgba(0,0,0,.35), 0 0 16px rgba(11,207,241,.22);
+      transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+    }
+    .footer__btn:hover{
+      transform: translateY(-3px) scale(1.01);
+      filter: brightness(1.06);
+      box-shadow: 0 18px 34px rgba(0,0,0,.42), 0 0 18px rgba(11,207,241,.36);
+    }
+    .footer__bottom{
+      position:relative; z-index:1;
+      margin-top:18px; padding-top:14px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      padding-bottom:10px;
+    }
+    .footer__copy, .footer__mini{ margin:0; opacity:.92; font-weight:800; }
+
+    @media (max-width: 980px){
+      .footer__grid{ grid-template-columns: 1fr; }
+      .footer__logo{ width:min(220px, 60%); }
+    }
+  </style>
+</head>
+
+<body class="inner">
+
+  <!-- Manchas -->
+  <div class="bg-splashes" aria-hidden="true">
+    <img class="splash splash-top-right" src="../imgs/manchader.webp" alt="">
+    <img class="splash splash-bottom-left" src="../imgs/manchaizq.webp" alt="">
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+
+      <a class="brand brand--small" href="../index.html" aria-label="Ir a Inicio">
+        <img class="brand__logo brand__logo--small" src="../imgs/logo-proink.webp" alt="PROINK">
+      </a>
+
+      <div class="top-slogan" id="topSlogan">
+        <p class="slogan">
+          Hay más <span class="word-yellow">creatividad</span> en un litro de
+          <span class="word-blue">tinta</span> que en un lienzo vacío
+        </p>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list" id="mainNav">
+          <li class="main-nav__item"><a class="main-nav__link" href="../index.html">INICIO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li class="main-nav__item"><a class="main-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li class="main-nav__item"><a class="main-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-controls="mobileNav"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </nav>
+
+    </div>
+
+    <!-- Menú móvil -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav__overlay" data-close="mobile" aria-hidden="true"></div>
+
+      <div class="mobile-nav__panel" role="dialog" aria-label="Menú móvil">
+        <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Cerrar menú">✕</button>
+
+        <ul class="mobile-nav__list">
+          <li><a class="mobile-nav__link" href="../index.html">INICIO</a></li>
+          <li><a class="mobile-nav__link" href="../quienes-somos.html">¿QUIÉNES SOMOS?</a></li>
+          <li><a class="mobile-nav__link" href="../productos.html">PRODUCTOS</a></li>
+          <li><a class="mobile-nav__link" href="../produccion-instalacion.html">PRODUCCIÓN E INSTALACIÓN</a></li>
+          <li><a class="mobile-nav__link" href="../catalogo.html">CATÁLOGO</a></li>
+          <li><a class="mobile-nav__link" href="../ubicacion.html">UBICACIÓN</a></li>
+          <li><a class="mobile-nav__link active" href="../blog.html">BLOG</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="article">
+    <div class="article__wrap">
+
+      <!-- HERO -->
+      <section class="articleHero" aria-label="Encabezado del artículo">
+        <div class="articleHero__top">
+          <span class="articlePill">Diseño & Branding</span>
+
+          <div class="articleMeta" aria-label="Metadatos del artículo">
+            <span>Lectura: 6–8 min</span>
+            <span>Color & Marca</span>
+          </div>
+        </div>
+
+        <h1 class="articleTitle">Colores corporativos: cómo influyen en la percepción</h1>
+
+        <p class="articleIntro">
+          Los colores no solo “se ven bonitos”: comunican.
+          En segundos, una paleta puede decir “premium”, “económico”, “juvenil”, “serio” o “confiable”.
+          Si eliges colores al azar, tu marca se puede ver inconsistente o poco profesional.
+          Aquí te explico cómo elegir bien.
+        </p>
+
+        <figure class="articleCover" aria-label="Imagen del artículo">
+          <img src="../imgs/blog/blog-08.webp" alt="Colores corporativos y percepción visual de marca">
+        </figure>
+      </section>
+
+      <!-- LAYOUT -->
+      <section class="article__layout" aria-label="Contenido del artículo">
+
+        <!-- ARTÍCULO -->
+        <article class="articleBody">
+          <div class="prose">
+
+            <div class="note note--tip">
+              <p class="note__title">Idea clave</p>
+              <p>
+                El color correcto hace que la gente <strong>entienda tu marca sin leer</strong>.
+                El color incorrecto puede hacer que se perciba “barata”, “confusa” o “poco confiable”.
+              </p>
+            </div>
+
+            <h2 id="por-que">1) ¿Por qué el color importa tanto?</h2>
+            <p>
+              Porque el color guía decisiones: qué miras primero, qué recuerdas y qué sientes.
+              Además, el color es uno de los elementos más fáciles de reconocer (y recordar) de una marca.
+            </p>
+            <ul>
+              <li><strong>Reconocimiento:</strong> la gente identifica tu marca más rápido.</li>
+              <li><strong>Coherencia:</strong> todo se ve “del mismo universo”.</li>
+              <li><strong>Percepción:</strong> tu negocio se ve más profesional y confiable.</li>
+            </ul>
+
+            <hr class="hrGlow" />
+
+            <h2 id="significados">2) Significados rápidos de colores (y cuándo usarlos)</h2>
+            <p>No es una regla absoluta, pero sí una guía muy útil:</p>
+
+            <div class="tableWrap" aria-label="Tabla de significados de color">
+              <table class="blogTable">
+                <thead>
+                  <tr>
+                    <th>Color</th>
+                    <th>Lo que suele transmitir</th>
+                    <th>Ideal para</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Azul</strong></td>
+                    <td>Confianza, seguridad, orden</td>
+                    <td>Servicios, salud, consultorías, empresas</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Verde</strong></td>
+                    <td>Bienestar, crecimiento, natural</td>
+                    <td>Salud, alimentos, eco, finanzas</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Negro</strong></td>
+                    <td>Elegancia, lujo, autoridad</td>
+                    <td>Premium, moda, marcas sobrias</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Rojo</strong></td>
+                    <td>Energía, urgencia, acción</td>
+                    <td>Promos, comida, deportes, retail</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Amarillo</strong></td>
+                    <td>Optimismo, atención, juventud</td>
+                    <td>Marcas dinámicas, señalización, avisos</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Morado</strong></td>
+                    <td>Creatividad, diferenciación, “único”</td>
+                    <td>Beauty, arte, marcas modernas</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Blanco</strong></td>
+                    <td>Limpieza, claridad, minimalismo</td>
+                    <td>Salud, estética, espacios pro</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="paleta">3) Cómo elegir una paleta profesional (sin complicarte)</h2>
+            <p>La forma más fácil es pensar en <strong>3 niveles</strong>:</p>
+            <ol>
+              <li><strong>Color principal:</strong> el que identifica tu marca (logo y puntos clave).</li>
+              <li><strong>Color secundario:</strong> acompaña sin competir (fondos, detalles, gráficos).</li>
+              <li><strong>Color de acento:</strong> para botones, llamadas a acción o promociones.</li>
+            </ol>
+
+            <div class="note note--check">
+              <p class="note__title">Regla PRO (que funciona mucho)</p>
+              <ul class="checklist">
+                <li>✔ 1 color fuerte (identidad)</li>
+                <li>✔ 1 color apoyo (equilibrio)</li>
+                <li>✔ 1 acento (llamadas a acción)</li>
+                <li>✔ Neutros (blanco/negro/grises) para descansar la vista</li>
+              </ul>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="errores">4) Errores comunes al elegir colores</h2>
+            <ul>
+              <li><strong>Usar demasiados colores:</strong> se ve saturado y poco coherente.</li>
+              <li><strong>Elegir por gusto y no por objetivo:</strong> tu marca debe comunicar, no solo gustar.</li>
+              <li><strong>No considerar impresión:</strong> un color puede verse distinto en vinil, lona o papel.</li>
+              <li><strong>Poca legibilidad:</strong> texto claro sobre fondo claro (o oscuro sobre oscuro) se pierde.</li>
+            </ul>
+
+            <div class="note note--warn">
+              <p class="note__title">Ojo con esto en impresión</p>
+              <p>
+                El acabado cambia el color: <strong>brillante</strong> suele verse más intenso,
+                <strong>mate</strong> se ve más sobrio y “premium”, y los materiales (lona, vinil, rígidos)
+                también afectan el resultado final.
+              </p>
+            </div>
+
+            <hr class="hrGlow" />
+
+            <h2 id="aplicacion">5) Cómo aplicar tu paleta en tu negocio</h2>
+            <p>No basta con “tener colores”. Deben repetirse de forma inteligente:</p>
+            <ul>
+              <li><strong>Logo:</strong> versión a color + versión 1 tinta (por si se requiere).</li>
+              <li><strong>Redes:</strong> plantillas con los mismos tonos.</li>
+              <li><strong>Papelería:</strong> tarjetas, hojas membretadas, stickers.</li>
+              <li><strong>Señalética:</strong> viniles, placas, letreros, interiores.</li>
+              <li><strong>Promocionales:</strong> que se vean “de marca”, no genéricos.</li>
+            </ul>
+
+            <hr class="hrGlow" />
+
+            <h2 id="checklist">6) Checklist final para elegir colores (rápido)</h2>
+            <div class="note note--check">
+              <p class="note__title">Checklist PROINK</p>
+              <ul class="checklist">
+                <li>✔ ¿Qué quieres que sienta la gente al ver tu marca?</li>
+                <li>✔ ¿Tus colores se ven bien en fondo claro y oscuro?</li>
+                <li>✔ ¿Son legibles en textos y señales?</li>
+                <li>✔ ¿Funcionan en impresión (vinil/lona/papel) y digital (redes)?</li>
+                <li>✔ ¿Puedes reducirlos a 2–3 tonos principales sin perder identidad?</li>
+              </ul>
+            </div>
+
+            <h2 id="cierre">Conclusión</h2>
+            <p>
+              Los colores corporativos son una herramienta estratégica.
+              Bien elegidos, hacen que tu marca se vea coherente, profesional y fácil de recordar.
+              Mal elegidos, pueden bajar tu percepción sin que te des cuenta.
+            </p>
+
+            <div class="articleCTA">
+              <h3 class="articleCTA__title">¿Quieres que te ayudemos a definir tu paleta?</h3>
+              <p class="articleCTA__text">
+                En PROINK te orientamos para que tu marca tenga colores que se vean increíbles
+                en impresión y en digital. Si ya tienes colores, también podemos ayudarte a aplicarlos
+                en papelería, vinil, señalética y promocionales.
+              </p>
+              <a class="btnNeon" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                Cotizar por WhatsApp
+              </a>
+            </div>
+
+            <div class="articleNav">
+              <a href="07-importancia-diseno-grafico-marca.html">← Anterior</a>
+              <a href="09-tipografias-para-impresion.html">Siguiente →</a>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- TOC -->
+        <aside class="articleSide" aria-label="Tabla de contenidos">
+          <div class="toc">
+            <h3 class="toc__title">Contenido</h3>
+            <ul class="toc__list">
+              <li><a href="#por-que"><span class="tocDot"></span> Por qué importa</a></li>
+              <li><a href="#significados"><span class="tocDot"></span> Significados</a></li>
+              <li><a href="#paleta"><span class="tocDot"></span> Paleta pro</a></li>
+              <li><a href="#errores"><span class="tocDot"></span> Errores</a></li>
+              <li><a href="#aplicacion"><span class="tocDot"></span> Aplicación</a></li>
+              <li><a href="#checklist"><span class="tocDot"></span> Checklist</a></li>
+              <li><a href="#cierre"><span class="tocDot"></span> Cierre</a></li>
+            </ul>
+
+            <p class="toc__mini">
+              Tip rápido: elige 1 color principal, 1 secundario y 1 acento. El resto, neutros.
+            </p>
+          </div>
+        </aside>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER (CON DISEÑO) -->
+  <footer class="site-footer" aria-label="Pie de página">
+    <div class="footer__wrap">
+      <div class="footer__card">
+
+        <div class="footer__grid">
+
+          <div class="footer__brand">
+            <img class="footer__logo" src="../imgs/logo-proink.webp" alt="PROINK Printed Designs">
+            <p class="footer__desc">
+              Impresión y personalización en Querétaro. Hacemos que tu marca se vea profesional con materiales de calidad,
+              acabados premium y diseño que impacta.
+            </p>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__title">Navegación</h3>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="../index.html"><span class="footer__chip">Inicio</span></a></li>
+              <li><a class="footer__link" href="../productos.html"><span class="footer__chip">Productos</span></a></li>
+              <li><a class="footer__link" href="../produccion-instalacion.html"><span class="footer__chip">Producción e instalación</span></a></li>
+              <li><a class="footer__link" href="../catalogo.html"><span class="footer__chip">Catálogo</span></a></li>
+              <li><a class="footer__link" href="../ubicacion.html"><span class="footer__chip">Ubicación</span></a></li>
+              <li><a class="footer__link" href="../blog.html"><span class="footer__chip">Blog</span></a></li>
+            </ul>
+          </div>
+
+          <div class="footer__cta">
+            <h3 class="footer__title">Contacto</h3>
+            <ul class="footer__list">
+              <li>
+                <a class="footer__link" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+                  <span class="footer__chip">WhatsApp: 446 112 3494</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer__link" href="../ubicacion.html">
+                  <span class="footer__chip">Paseo Las Plazas #3, Querétaro</span>
+                </a>
+              </li>
+            </ul>
+
+            <a class="footer__btn" href="https://wa.me/5214461123494" target="_blank" rel="noopener">
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">© 2026 PROINK Printed Designs</p>
+          <p class="footer__mini">Tú imagina, nosotros lo imprimimos.</p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a
+    href="https://wa.me/5214461123494"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img src="../imgs/icono-whatsapp.png" alt="WhatsApp" class="whatsapp-float__icon" />
+  </a>
+
+  <!-- JS base -->
+  <script src="../js-principal.js"></script>
+</body>
+</html>
