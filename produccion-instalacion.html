@@ -11,7 +11,9 @@
 
   <link rel="stylesheet" href="styles-base.css" />
 
-  
+     <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="imgs/favicon-proink.png">
+
 <style>
 /* =========================================================
   PRODUCCIÓN E INSTALACIÓN — DISEÑO CENTRADO + TEXTO GRANDE
@@ -209,6 +211,16 @@ main.prodinst{
   border: none;
   box-shadow: none;
   padding: 0;
+}
+/* Cuando no hay items */
+.p-card--solo{
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.p-card--solo .p-card__media{
+  width: min(450px, 100%);
+  margin: 0 auto;
 }
 
 /* =========================================================
@@ -485,7 +497,7 @@ main.prodinst{
     const SECTIONS = [
       {
         title: "CORTES Y MATERIALES",
-        image: "imgs/cortecnc.webp",
+        image: "imgs/cortesymateriales.webp",
         items: ["Corte CNC","Corte láser","Alucobond","Graboplac","Acrílico","MDF","Estireno","PVC"]
       },
       {
@@ -576,9 +588,6 @@ main.prodinst{
         const inTitle = sec.title.toLowerCase().includes(q);
         const itemsToShow = (q ? sec.items.filter(it => it.toLowerCase().includes(q)) : sec.items);
 
-        /* ✅ Quitar secciones vacías SIEMPRE (evita el espacio de items: []) */
-        if (!itemsToShow.length) return;
-
         /* ✅ Con filtro: si no coincide título y no hay items filtrados, no renderiza */
         if (q && !inTitle && !itemsToShow.length) return;
 
@@ -592,7 +601,8 @@ main.prodinst{
 
           <div class="sec__frame">
             <div class="grid">
-              <article class="p-card" tabindex="0" aria-label="${sec.title}">
+              <article class="p-card ${!itemsToShow.length ? 'p-card--solo' : ''}" tabindex="0" aria-label="${sec.title}">
+
                 ${sec.image ? `
                   <div class="p-card__media" aria-hidden="true">
                     <img src="${sec.image}" alt="" onerror="this.closest('.p-card__media').style.display='none'">
